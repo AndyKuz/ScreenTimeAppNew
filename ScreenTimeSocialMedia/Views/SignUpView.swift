@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SignUpView: View {
-    @State private var username = ""
+    @State private var email = ""
     @State private var password = ""
 
     var body: some View {
@@ -18,7 +18,7 @@ struct SignUpView: View {
                 .fontWeight(.bold)
                 .padding(.bottom, 20)
             
-            TextField("email", text: $username)
+            TextField("email", text: $email)
                 .frame(width: 275)
                 .padding()
                 .background(Color.gray.opacity(0.2))
