@@ -41,6 +41,13 @@ struct SignUpView: View {
                     .background(Color.blue)
                     .cornerRadius(10)
             }
+            
+            NavigationLink(destination: LoginView().navigationBarBackButtonHidden(true)) {
+                Text("Already have an account? Login")
+                    .font(.headline)
+                    .foregroundColor(.blue)
+                    .padding()
+            }
         }
     }
 }

@@ -42,7 +42,7 @@ struct LoginView: View {
                     .cornerRadius(10)
             }
             
-            NavigationLink(destination: SignUpView()){
+            NavigationLink(destination: SignUpView().navigationBarBackButtonHidden(true)){
                 Text("Don't have an account? Sign up")
                     .font(.headline)
                     .foregroundColor(.blue)
