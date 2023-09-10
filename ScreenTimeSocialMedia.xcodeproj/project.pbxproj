@@ -48,6 +48,12 @@
 		49C8EF162AA98C3D00B2565B /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 49C8EF152AA98C3D00B2565B /* FirebaseStorage */; };
 		49C8EF182AA98C3D00B2565B /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 49C8EF172AA98C3D00B2565B /* FirebaseStorageCombine-Community */; };
 		49C8EF1F2AA992A700B2565B /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C8EF1E2AA992A700B2565B /* AuthViewModel.swift */; };
+		49C8EF212AA9B02100B2565B /* DefaultColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C8EF202AA9B02100B2565B /* DefaultColors.swift */; };
+		49FDA9312AAD2D3C006E4059 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FDA9302AAD2D3C006E4059 /* CustomTextField.swift */; };
+		49FDA9342AAD985E006E4059 /* PermissionsManagerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FDA9332AAD985E006E4059 /* PermissionsManagerViewModel.swift */; };
+		49FDA9372AAD9EB3006E4059 /* ScreenTimeAppsSelectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FDA9362AAD9EB3006E4059 /* ScreenTimeAppsSelectModel.swift */; };
+		49FDA9392AAD9F5B006E4059 /* ScreenTimeSelectAppsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FDA9382AAD9F5B006E4059 /* ScreenTimeSelectAppsView.swift */; };
+		49FEC1F12AADB54000F89C5C /* ScreenTimeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FEC1F02AADB54000F89C5C /* ScreenTimeTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +72,13 @@
 		49C8EEDE2AA97F7E00B2565B /* SettingsRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRowView.swift; sourceTree = "<group>"; };
 		49C8EEE02AA9877500B2565B /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "ScreenTimeSocialMedia/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		49C8EF1E2AA992A700B2565B /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		49C8EF202AA9B02100B2565B /* DefaultColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultColors.swift; sourceTree = "<group>"; };
+		49FDA9302AAD2D3C006E4059 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		49FDA9322AAD9633006E4059 /* ScreenTimeSocialMedia.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ScreenTimeSocialMedia.entitlements; sourceTree = "<group>"; };
+		49FDA9332AAD985E006E4059 /* PermissionsManagerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionsManagerViewModel.swift; sourceTree = "<group>"; };
+		49FDA9362AAD9EB3006E4059 /* ScreenTimeAppsSelectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenTimeAppsSelectModel.swift; sourceTree = "<group>"; };
+		49FDA9382AAD9F5B006E4059 /* ScreenTimeSelectAppsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenTimeSelectAppsView.swift; sourceTree = "<group>"; };
+		49FEC1F02AADB54000F89C5C /* ScreenTimeTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenTimeTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,9 +138,11 @@
 		4995B0F82AA84933003A8E3A /* ScreenTimeSocialMedia */ = {
 			isa = PBXGroup;
 			children = (
+				49FDA9322AAD9633006E4059 /* ScreenTimeSocialMedia.entitlements */,
 				49C8EEDA2AA97BC300B2565B /* App */,
 				49C8EEDB2AA97BD600B2565B /* Components */,
 				49C8EED92AA97BB300B2565B /* Core */,
+				49FDA9352AAD9E2C006E4059 /* ScreenTime */,
 				49C8EED82AA97AEF00B2565B /* Model */,
 				4995B0FD2AA84934003A8E3A /* Assets.xcassets */,
 				4995B0FF2AA84934003A8E3A /* Preview Content */,
@@ -173,6 +188,8 @@
 			isa = PBXGroup;
 			children = (
 				49C8EEDE2AA97F7E00B2565B /* SettingsRowView.swift */,
+				49C8EF202AA9B02100B2565B /* DefaultColors.swift */,
+				49FDA9302AAD2D3C006E4059 /* CustomTextField.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -203,6 +220,7 @@
 				4995B1082AA84997003A8E3A /* LoginView.swift */,
 				4995B10A2AA849A2003A8E3A /* SignUpView.swift */,
 				4995B10F2AA84A08003A8E3A /* SignUpUsernameSelectView.swift */,
+				49FEC1F02AADB54000F89C5C /* ScreenTimeTest.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -211,8 +229,18 @@
 			isa = PBXGroup;
 			children = (
 				49C8EF1E2AA992A700B2565B /* AuthViewModel.swift */,
+				49FDA9332AAD985E006E4059 /* PermissionsManagerViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		49FDA9352AAD9E2C006E4059 /* ScreenTime */ = {
+			isa = PBXGroup;
+			children = (
+				49FDA9362AAD9EB3006E4059 /* ScreenTimeAppsSelectModel.swift */,
+				49FDA9382AAD9F5B006E4059 /* ScreenTimeSelectAppsView.swift */,
+			);
+			path = ScreenTime;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -318,15 +346,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49FDA9312AAD2D3C006E4059 /* CustomTextField.swift in Sources */,
 				4995B10B2AA849A2003A8E3A /* SignUpView.swift in Sources */,
 				4995B1162AA84A54003A8E3A /* ProfileView.swift in Sources */,
 				49C8EEDF2AA97F7E00B2565B /* SettingsRowView.swift in Sources */,
 				4995B1092AA84997003A8E3A /* LoginView.swift in Sources */,
 				4995B10D2AA849AD003A8E3A /* TabBarView.swift in Sources */,
 				4995B1122AA84A3F003A8E3A /* GoalsView.swift in Sources */,
+				49FDA9392AAD9F5B006E4059 /* ScreenTimeSelectAppsView.swift in Sources */,
 				4995B1142AA84A49003A8E3A /* HomeView.swift in Sources */,
 				49C8EF1F2AA992A700B2565B /* AuthViewModel.swift in Sources */,
+				49FDA9342AAD985E006E4059 /* PermissionsManagerViewModel.swift in Sources */,
+				49FDA9372AAD9EB3006E4059 /* ScreenTimeAppsSelectModel.swift in Sources */,
 				4995B1102AA84A08003A8E3A /* SignUpUsernameSelectView.swift in Sources */,
+				49FEC1F12AADB54000F89C5C /* ScreenTimeTest.swift in Sources */,
+				49C8EF212AA9B02100B2565B /* DefaultColors.swift in Sources */,
 				4995B0FA2AA84933003A8E3A /* ScreenTimeSocialMediaApp.swift in Sources */,
 				49C8EED72AA97AD900B2565B /* User.swift in Sources */,
 			);
@@ -459,6 +493,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ScreenTimeSocialMedia/ScreenTimeSocialMedia.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ScreenTimeSocialMedia/Preview Content\"";
@@ -477,6 +513,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Slugs.ScreenTimeSocialMedia;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -488,6 +525,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ScreenTimeSocialMedia/ScreenTimeSocialMedia.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ScreenTimeSocialMedia/Preview Content\"";
@@ -506,6 +545,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Slugs.ScreenTimeSocialMedia;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

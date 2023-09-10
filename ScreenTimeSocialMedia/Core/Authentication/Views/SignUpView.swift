@@ -10,6 +10,8 @@ import SwiftUI
 struct SignUpView: View {
     @State private var email = ""
     @State private var password = ""
+    
+    @StateObject private var permissionManager = PermissionsManagerViewModel()
 
     var body: some View {
         VStack {
@@ -40,7 +42,9 @@ struct SignUpView: View {
                     .frame(width:200, height: 45)
                     .background(Color.blue)
                     .cornerRadius(10)
-            }
+            } .simultaneousGesture(TapGesture().onEnded{
+                permissionManager.screenTimeRequestAuth()
+            })
             
             NavigationLink(destination: LoginView().navigationBarBackButtonHidden(true)) {
                 Text("Already have an account? Login")
