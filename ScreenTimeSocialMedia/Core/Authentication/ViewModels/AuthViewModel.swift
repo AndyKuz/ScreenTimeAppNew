@@ -21,7 +21,8 @@ class AuthViewModel: ObservableObject {
         if readData(service: "kuzy", account: username) != nil{
             return false
         }
-        saveData(passwordEntered, service: "Kuzy", account: username)
+        let passwordData = passwordEntered.data(using: .utf8)
+        saveData(passwordData, service: "Kuzy", account: username)
         return true
     }
 
@@ -35,9 +36,10 @@ class AuthViewModel: ObservableObject {
         guard storedPasswordString == passwordOld else {
             return false
         }
-        updateData(passwordNew, service: "Kuzy", account: username)
+        let passwordNewData = passwordNew.data(using: .utf8)
+        updateData(passwordNewData, service: "Kuzy", account: username)
         return true
     }
 
-    
+
 }
