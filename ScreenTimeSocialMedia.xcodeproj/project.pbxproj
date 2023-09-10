@@ -13,7 +13,6 @@
 		4995B1092AA84997003A8E3A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4995B1082AA84997003A8E3A /* LoginView.swift */; };
 		4995B10B2AA849A2003A8E3A /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4995B10A2AA849A2003A8E3A /* SignUpView.swift */; };
 		4995B10D2AA849AD003A8E3A /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4995B10C2AA849AD003A8E3A /* TabBarView.swift */; };
-		4995B1102AA84A08003A8E3A /* SignUpUsernameSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4995B10F2AA84A08003A8E3A /* SignUpUsernameSelectView.swift */; };
 		4995B1122AA84A3F003A8E3A /* GoalsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4995B1112AA84A3F003A8E3A /* GoalsView.swift */; };
 		4995B1142AA84A49003A8E3A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4995B1132AA84A49003A8E3A /* HomeView.swift */; };
 		4995B1162AA84A54003A8E3A /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4995B1152AA84A54003A8E3A /* ProfileView.swift */; };
@@ -54,6 +53,7 @@
 		49FDA9372AAD9EB3006E4059 /* ScreenTimeAppsSelectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FDA9362AAD9EB3006E4059 /* ScreenTimeAppsSelectModel.swift */; };
 		49FDA9392AAD9F5B006E4059 /* ScreenTimeSelectAppsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FDA9382AAD9F5B006E4059 /* ScreenTimeSelectAppsView.swift */; };
 		49FEC1F12AADB54000F89C5C /* ScreenTimeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FEC1F02AADB54000F89C5C /* ScreenTimeTest.swift */; };
+		49FEC1F52AADB95100F89C5C /* KeychainFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FEC1F42AADB95100F89C5C /* KeychainFunctions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,7 +64,6 @@
 		4995B1082AA84997003A8E3A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		4995B10A2AA849A2003A8E3A /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		4995B10C2AA849AD003A8E3A /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
-		4995B10F2AA84A08003A8E3A /* SignUpUsernameSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUsernameSelectView.swift; sourceTree = "<group>"; };
 		4995B1112AA84A3F003A8E3A /* GoalsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsView.swift; sourceTree = "<group>"; };
 		4995B1132AA84A49003A8E3A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		4995B1152AA84A54003A8E3A /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
@@ -79,6 +78,7 @@
 		49FDA9362AAD9EB3006E4059 /* ScreenTimeAppsSelectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenTimeAppsSelectModel.swift; sourceTree = "<group>"; };
 		49FDA9382AAD9F5B006E4059 /* ScreenTimeSelectAppsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenTimeSelectAppsView.swift; sourceTree = "<group>"; };
 		49FEC1F02AADB54000F89C5C /* ScreenTimeTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenTimeTest.swift; sourceTree = "<group>"; };
+		49FEC1F42AADB95100F89C5C /* KeychainFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainFunctions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,7 +219,6 @@
 			children = (
 				4995B1082AA84997003A8E3A /* LoginView.swift */,
 				4995B10A2AA849A2003A8E3A /* SignUpView.swift */,
-				4995B10F2AA84A08003A8E3A /* SignUpUsernameSelectView.swift */,
 				49FEC1F02AADB54000F89C5C /* ScreenTimeTest.swift */,
 			);
 			path = Views;
@@ -229,6 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				49C8EF1E2AA992A700B2565B /* AuthViewModel.swift */,
+				49FEC1F42AADB95100F89C5C /* KeychainFunctions.swift */,
 				49FDA9332AAD985E006E4059 /* PermissionsManagerViewModel.swift */,
 			);
 			path = ViewModels;
@@ -357,8 +357,8 @@
 				4995B1142AA84A49003A8E3A /* HomeView.swift in Sources */,
 				49C8EF1F2AA992A700B2565B /* AuthViewModel.swift in Sources */,
 				49FDA9342AAD985E006E4059 /* PermissionsManagerViewModel.swift in Sources */,
+				49FEC1F52AADB95100F89C5C /* KeychainFunctions.swift in Sources */,
 				49FDA9372AAD9EB3006E4059 /* ScreenTimeAppsSelectModel.swift in Sources */,
-				4995B1102AA84A08003A8E3A /* SignUpUsernameSelectView.swift in Sources */,
 				49FEC1F12AADB54000F89C5C /* ScreenTimeTest.swift in Sources */,
 				49C8EF212AA9B02100B2565B /* DefaultColors.swift in Sources */,
 				4995B0FA2AA84933003A8E3A /* ScreenTimeSocialMediaApp.swift in Sources */,

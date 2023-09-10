@@ -10,7 +10,7 @@ import AuthenticationServices
 
 class AuthViewModel: ObservableObject {
     func performLogin(username: String, passwordEntered: String) -> Bool {
-        let storedPasswordData = readData(service: "Kuzy", account: username)
+        guard let storedPasswordData = readData(service: "Kuzy", account: username) else { return false }
         if let storedPasswordString = String(data: storedPasswordData, encoding: .utf8) {
             return storedPasswordString == passwordEntered
         }
@@ -19,9 +19,10 @@ class AuthViewModel: ObservableObject {
 
     func performSignUp(username: String, passwordEntered: String) -> Bool {
         if readData(service: "kuzy", account: username) != nil{
+            print("EXISTS")
             return false
         }
-        let passwordData = passwordEntered.data(using: .utf8)
+        guard let passwordData = passwordEntered.data(using: .utf8) else { exit(EXIT_FAILURE) }
         saveData(passwordData, service: "Kuzy", account: username)
         return true
     }
@@ -36,7 +37,7 @@ class AuthViewModel: ObservableObject {
         guard storedPasswordString == passwordOld else {
             return false
         }
-        let passwordNewData = passwordNew.data(using: .utf8)
+        guard let passwordNewData = passwordNew.data(using: .utf8) else { return false }
         updateData(passwordNewData, service: "Kuzy", account: username)
         return true
     }

@@ -19,6 +19,7 @@ func saveData(_ data: Data, service: String, account: String) {
 
     if status != errSecSuccess {
         print("Error: \(status)")
+        print(SecCopyErrorMessageString(status, .none))
     }
 }
 
@@ -42,7 +43,7 @@ func readData(service: String, account: String) -> Data? {
     ] as CFDictionary
 
     var result: AnyObject?
-    SecItemCopyMattching(query, &result)
+    SecItemCopyMatching(query, &result)
     return result as? Data
 }
 
