@@ -15,6 +15,29 @@ class AuthViewModel: ObservableObject {
             return storedPasswordString == passwordEntered
         }
         return false
-
     }
+
+    func performSignUp(username: String, passwordEntered: String) -> Bool {
+        if readData(service: "kuzy", account: username) != nil{
+            return false
+        }
+        saveData(passwordEntered, service: "Kuzy", account: username)
+        return true
+    }
+
+    func updatePassword(username: String, passwordOld: String, passwordNew: String) -> Bool {
+        guard let storedPasswordData = readData(service: "Kuzy", account: username) else {
+            return false
+        }
+        guard let storedPasswordString = String(data: storedPasswordData, encoding: .utf8) else {
+            return false
+        }
+        guard storedPasswordString == passwordOld else {
+            return false
+        }
+        updateData(passwordNew, service: "Kuzy", account: username)
+        return true
+    }
+
+    
 }
