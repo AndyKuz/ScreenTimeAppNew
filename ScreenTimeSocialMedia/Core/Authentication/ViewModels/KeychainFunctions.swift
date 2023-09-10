@@ -20,10 +20,6 @@ func saveData(_ data: Data, service: String, account: String) {
     if status != errSecSuccess {
         print("Error: \(status)")
     }
-
-    if status == errSecDuplicateItem {
-        update(data, service, account: account)
-    }
 }
 
 func updateData(_ data: Data, service: String, account: String) {
@@ -59,3 +55,4 @@ func deleteData(service: String, account: String) {
 
     SecItemDelete(query)
 }
+// random comment
