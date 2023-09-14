@@ -4,10 +4,16 @@
 //
 //  Created by Chad Baker on 9/7/23.
 //
-
+/*
 import AuthenticationServices
 
 func saveData(_ data: Data, service: String, account: String) {
+    enum KeychainError: Error {
+        case noPassword
+        case unexpectedPasswordData
+        case unhandledError(status: OSStatus)
+    }
+    
     let query = [
         kSecValueData: data,
         kSecClass: kSecClassGenericPassword,
@@ -38,6 +44,7 @@ func readData(service: String, account: String) -> Data? {
     let query = [
         kSecClass: kSecClassGenericPassword,
         kSecAttrService: service,
+        kSecMatchLimit: kSecMatchLimitOne,
         kSecAttrAccount: account,
         kSecReturnData: true
     ] as CFDictionary

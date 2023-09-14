@@ -7,12 +7,37 @@
 
 import SwiftUI
 
+@MainActor
+final class SignUpViewModel: ObservableObject {
+    @Published var email = ""
+    @Published var password = ""
+
+    func signUp() {
+        guard !email.isEmpty, !password.isEmpty else {
+            print("no email or password found")
+            return
+        }
+
+        Task {
+            do {
+                let returnedUserData = try await AuthenticationManager.shared.createUser(email: email, password: password)
+                print("Success")
+            } catch {
+                print("error")
+            }
+        }
+    }
+}
+
 struct SignUpView: View {
-    @State private var username = ""
-    @State private var password = ""
+    //@State private var email = ""
+    //@State private var password = ""
     
-    @StateObject private var permissionManager = PermissionsManagerViewModel()
-    @StateObject private var Auth = AuthViewModel()
+    //@StateObject private var permissionManager = PermissionsManagerViewModel()
+    //@StateObject private var Auth = AuthViewModel()
+    @StateObject private var viewModel = SignUpViewModel()
+
+
 
     var body: some View {
         VStack {
@@ -21,14 +46,14 @@ struct SignUpView: View {
                 .fontWeight(.bold)
                 .padding(.bottom, 20)
             
-            TextField("username", text: $username)
+            TextField("email", text: viewModel.$email)
                 .frame(width: 275)
                 .padding()
                 .background(Color.gray.opacity(0.2))
                 .cornerRadius(10)
                 .padding(.bottom, 10)
             
-            TextField("password", text : $password)
+            TextField("password", text : viewModel.$password)
                 .frame(width: 275)
                 .padding()
                 .background(Color.gray.opacity(0.2))
@@ -36,15 +61,8 @@ struct SignUpView: View {
                 .padding(.bottom, 10)
             
             Button("Sign Up", action: {
-                let result = Auth.performSignUp(username: username, passwordEntered: password) // Call your function here
-                if result {
-                    print("LETS GOOOO")
-                    NavigationLink(destination: TabBarView().navigationBarBackButtonHidden(true)) {
-                        Text("Test")
-                    }
-                } else {
-                    print("showing error todo...") // Show error message
-                }
+                // let result = Auth.performSignUp(email: email, passwordEntered: password) // Call your function here
+                viewModel.signUp()
             })
             
             /*NavigationLink(destination: TabBarView().navigationBarBackButtonHidden(true)) {

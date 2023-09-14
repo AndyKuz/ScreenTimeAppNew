@@ -6,9 +6,13 @@
 //
 
 import SwiftUI
+import Firebase
 
 @main
 struct ScreenTimeApp: App {
+
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+
     var body: some Scene {
         WindowGroup {
             NavigationView {
@@ -16,4 +20,13 @@ struct ScreenTimeApp: App {
             }
         }
     }
+}
+
+class AppDelegate: NSObject, UIApplicationDelegate {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionKey : Any]? = nil) -> Bool {
+        FirebaseApp.configure()
+        print("Congiured Firebase")
+    }
+
+    return true
 }
