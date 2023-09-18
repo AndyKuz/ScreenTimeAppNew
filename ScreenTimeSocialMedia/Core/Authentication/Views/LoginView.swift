@@ -25,13 +25,13 @@ struct LoginView: View {
             CustomTextField(text: $username, placeholder: "username", type: .text)
                 .disableAutocorrection(true)
                 .autocapitalization(.none)
-                .frame(width: 275)
+                .padding(.horizontal, 30)
                 .padding(.bottom, 10)
             
             CustomTextField(text: $password, placeholder: "password", type: .secure)
                 .disableAutocorrection(true)
                 .autocapitalization(.none)
-                .frame(width: 275)
+                .padding(.horizontal, 30)
                 .padding(.bottom, 10)
             
             NavigationLink(destination: TabBarView().navigationBarBackButtonHidden(true)) {
