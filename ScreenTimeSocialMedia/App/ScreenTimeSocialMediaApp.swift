@@ -8,6 +8,7 @@
 import SwiftUI
 import Firebase
 
+
 @main
 struct ScreenTimeApp: App {
 
@@ -23,10 +24,9 @@ struct ScreenTimeApp: App {
 }
 
 class AppDelegate: NSObject, UIApplicationDelegate {
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionKey : Any]? = nil) -> Bool {
+    internal func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         FirebaseApp.configure()
         print("Congiured Firebase")
+        return true
     }
-
-    return true
 }

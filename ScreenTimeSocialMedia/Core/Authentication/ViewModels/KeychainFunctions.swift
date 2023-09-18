@@ -62,5 +62,5 @@ func deleteData(service: String, account: String) {
     ] as CFDictionary
 
     SecItemDelete(query)
-}
+}*/
 // random comment

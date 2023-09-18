@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ProfileView: View {
     var body: some View {
-        List {
+        /*List {
             Section {
                 HStack {
                     Text(User.MOCK_USER.firstLetter)
@@ -40,7 +40,8 @@ struct ProfileView: View {
                     SettingsRowView(imageName: "rectangle.portrait.and.arrow.right", title: "Log Out", tintColor: .red)
                 }
             }
-        }
+        }*/
+        Text("chad sucks")
     }
 }
 

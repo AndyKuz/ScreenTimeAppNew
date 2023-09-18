@@ -32,6 +32,7 @@ struct CustomTextField: View {
                 }
         case .secure:
             SecureField(placeholder, text: $text)
+                .focused($isFocused, equals: true)
                 .padding()
                 .background(Color.gray.opacity(0.2))
                 .cornerRadius(10)
