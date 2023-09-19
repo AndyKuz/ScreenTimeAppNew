@@ -8,10 +8,8 @@
 import SwiftUI
 
 struct SignUpView: View {
-    @State private var email = ""
-    @State private var password = ""
     
-    @StateObject private var permissionManager = PermissionsManagerViewModel()
+    @StateObject private var viewModel = SignUpViewModel()
 
     var body: some View {
         VStack {
@@ -20,31 +18,33 @@ struct SignUpView: View {
                 .fontWeight(.bold)
                 .padding(.bottom, 20)
             
-            TextField("email", text: $email)
+            if let _ = viewModel.error {
+                Text(viewModel.error ?? "")
+                    .foregroundColor(.red)
+            }
+            
+            CustomTextField(text: $viewModel.email, placeholder: "email", type: .text)
+                .disableAutocorrection(true)
+                .autocapitalization(.none)
                 .frame(width: 275)
-                .padding()
-                .background(Color.gray.opacity(0.2))
-                .cornerRadius(10)
+                .padding(.bottom, 10)
+            CustomTextField(text: $viewModel.password, placeholder: "password", type: .secure)
+                .disableAutocorrection(true)
+                .autocapitalization(.none)
+                .frame(width: 275)
                 .padding(.bottom, 10)
             
-            TextField("password", text : $password)
-                .frame(width: 275)
+            Button("Sign Up") {
+                viewModel.signUp()
+            }
+                .font(.headline)
+                .foregroundColor(.white)
                 .padding()
-                .background(Color.gray.opacity(0.2))
+                .frame(width:200, height: 45)
+                .background(Color.blue)
                 .cornerRadius(10)
-                .padding(.bottom, 10)
-            
-            NavigationLink(destination: SignUpUsernameSelectView()) {
-                Text("Sign Up")
-                    .font(.headline)
-                    .foregroundColor(.white)
-                    .padding()
-                    .frame(width:200, height: 45)
-                    .background(Color.blue)
-                    .cornerRadius(10)
-            } .simultaneousGesture(TapGesture().onEnded{
-                permissionManager.screenTimeRequestAuth()
-            })
+
+            NavigationLink("", destination: TabBarView(), isActive: $viewModel.navigateToNextView)
             
             NavigationLink(destination: LoginView().navigationBarBackButtonHidden(true)) {
                 Text("Already have an account? Login")
