@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4986CECE2AB7F5DC00D1E259 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4986CECD2AB7F5DC00D1E259 /* SearchBar.swift */; };
 		4995B0FA2AA84933003A8E3A /* ScreenTimeSocialMediaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4995B0F92AA84933003A8E3A /* ScreenTimeSocialMediaApp.swift */; };
 		4995B0FE2AA84934003A8E3A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4995B0FD2AA84934003A8E3A /* Assets.xcassets */; };
 		4995B1012AA84934003A8E3A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4995B1002AA84934003A8E3A /* Preview Assets.xcassets */; };
@@ -14,7 +15,7 @@
 		4995B10B2AA849A2003A8E3A /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4995B10A2AA849A2003A8E3A /* SignUpView.swift */; };
 		4995B10D2AA849AD003A8E3A /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4995B10C2AA849AD003A8E3A /* TabBarView.swift */; };
 		4995B1102AA84A08003A8E3A /* SignUpUsernameSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4995B10F2AA84A08003A8E3A /* SignUpUsernameSelectView.swift */; };
-		4995B1122AA84A3F003A8E3A /* GoalsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4995B1112AA84A3F003A8E3A /* GoalsView.swift */; };
+		4995B1122AA84A3F003A8E3A /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4995B1112AA84A3F003A8E3A /* FriendsView.swift */; };
 		4995B1142AA84A49003A8E3A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4995B1132AA84A49003A8E3A /* HomeView.swift */; };
 		4995B1162AA84A54003A8E3A /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4995B1152AA84A54003A8E3A /* ProfileView.swift */; };
 		49C8EED72AA97AD900B2565B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C8EED62AA97AD900B2565B /* User.swift */; };
@@ -51,12 +52,18 @@
 		49C8EF212AA9B02100B2565B /* DefaultColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C8EF202AA9B02100B2565B /* DefaultColors.swift */; };
 		49FDA9312AAD2D3C006E4059 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FDA9302AAD2D3C006E4059 /* CustomTextField.swift */; };
 		49FDA9342AAD985E006E4059 /* PermissionsManagerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FDA9332AAD985E006E4059 /* PermissionsManagerViewModel.swift */; };
-		49FDA9372AAD9EB3006E4059 /* ScreenTimeAppsSelectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FDA9362AAD9EB3006E4059 /* ScreenTimeAppsSelectModel.swift */; };
-		49FDA9392AAD9F5B006E4059 /* ScreenTimeSelectAppsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FDA9382AAD9F5B006E4059 /* ScreenTimeSelectAppsView.swift */; };
-		49FEC1F12AADB54000F89C5C /* ScreenTimeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FEC1F02AADB54000F89C5C /* ScreenTimeTest.swift */; };
+		49FEC1F12AADB54000F89C5C /* ScreenTimeTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FEC1F02AADB54000F89C5C /* ScreenTimeTestView.swift */; };
+		49FEC1FB2AAEC4DE00F89C5C /* ScreenTimeAppSelectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FEC1FA2AAEC4DE00F89C5C /* ScreenTimeAppSelectViewModel.swift */; };
+		49FEC1FE2AB030E100F89C5C /* PodsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FEC1FD2AB030E100F89C5C /* PodsView.swift */; };
+		49FEC2002AB13DA800F89C5C /* ScreenTimeMonitorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FEC1FF2AB13DA800F89C5C /* ScreenTimeMonitorViewModel.swift */; };
+		49FEC2022AB1455400F89C5C /* ScreenTImeMonitorHandlerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FEC2012AB1455400F89C5C /* ScreenTImeMonitorHandlerViewModel.swift */; };
+		49FEC2042AB146D000F89C5C /* PodSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FEC2032AB146D000F89C5C /* PodSelectionView.swift */; };
+		49FEC20D2AB2DE1000F89C5C /* FriendsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FEC20C2AB2DE1000F89C5C /* FriendsListView.swift */; };
+		49FEC2102AB2DE2800F89C5C /* FriendsRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FEC20F2AB2DE2800F89C5C /* FriendsRequestView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4986CECD2AB7F5DC00D1E259 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		4995B0F62AA84933003A8E3A /* ScreenTimeSocialMedia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScreenTimeSocialMedia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4995B0F92AA84933003A8E3A /* ScreenTimeSocialMediaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenTimeSocialMediaApp.swift; sourceTree = "<group>"; };
 		4995B0FD2AA84934003A8E3A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -65,7 +72,7 @@
 		4995B10A2AA849A2003A8E3A /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		4995B10C2AA849AD003A8E3A /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		4995B10F2AA84A08003A8E3A /* SignUpUsernameSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUsernameSelectView.swift; sourceTree = "<group>"; };
-		4995B1112AA84A3F003A8E3A /* GoalsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsView.swift; sourceTree = "<group>"; };
+		4995B1112AA84A3F003A8E3A /* FriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsView.swift; sourceTree = "<group>"; };
 		4995B1132AA84A49003A8E3A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		4995B1152AA84A54003A8E3A /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		49C8EED62AA97AD900B2565B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -76,9 +83,14 @@
 		49FDA9302AAD2D3C006E4059 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		49FDA9322AAD9633006E4059 /* ScreenTimeSocialMedia.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ScreenTimeSocialMedia.entitlements; sourceTree = "<group>"; };
 		49FDA9332AAD985E006E4059 /* PermissionsManagerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionsManagerViewModel.swift; sourceTree = "<group>"; };
-		49FDA9362AAD9EB3006E4059 /* ScreenTimeAppsSelectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenTimeAppsSelectModel.swift; sourceTree = "<group>"; };
-		49FDA9382AAD9F5B006E4059 /* ScreenTimeSelectAppsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenTimeSelectAppsView.swift; sourceTree = "<group>"; };
-		49FEC1F02AADB54000F89C5C /* ScreenTimeTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenTimeTest.swift; sourceTree = "<group>"; };
+		49FEC1F02AADB54000F89C5C /* ScreenTimeTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenTimeTestView.swift; sourceTree = "<group>"; };
+		49FEC1FA2AAEC4DE00F89C5C /* ScreenTimeAppSelectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenTimeAppSelectViewModel.swift; sourceTree = "<group>"; };
+		49FEC1FD2AB030E100F89C5C /* PodsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodsView.swift; sourceTree = "<group>"; };
+		49FEC1FF2AB13DA800F89C5C /* ScreenTimeMonitorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenTimeMonitorViewModel.swift; sourceTree = "<group>"; };
+		49FEC2012AB1455400F89C5C /* ScreenTImeMonitorHandlerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenTImeMonitorHandlerViewModel.swift; sourceTree = "<group>"; };
+		49FEC2032AB146D000F89C5C /* PodSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodSelectionView.swift; sourceTree = "<group>"; };
+		49FEC20C2AB2DE1000F89C5C /* FriendsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListView.swift; sourceTree = "<group>"; };
+		49FEC20F2AB2DE2800F89C5C /* FriendsRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsRequestView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,7 +154,7 @@
 				49C8EEDA2AA97BC300B2565B /* App */,
 				49C8EEDB2AA97BD600B2565B /* Components */,
 				49C8EED92AA97BB300B2565B /* Core */,
-				49FDA9352AAD9E2C006E4059 /* ScreenTime */,
+				49FEC1FC2AAEF59900F89C5C /* UserData */,
 				49C8EED82AA97AEF00B2565B /* Model */,
 				4995B0FD2AA84934003A8E3A /* Assets.xcassets */,
 				4995B0FF2AA84934003A8E3A /* Preview Content */,
@@ -190,6 +202,8 @@
 				49C8EEDE2AA97F7E00B2565B /* SettingsRowView.swift */,
 				49C8EF202AA9B02100B2565B /* DefaultColors.swift */,
 				49FDA9302AAD2D3C006E4059 /* CustomTextField.swift */,
+				49FEC1FD2AB030E100F89C5C /* PodsView.swift */,
+				4986CECD2AB7F5DC00D1E259 /* SearchBar.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -206,10 +220,8 @@
 		49C8EEDD2AA97C1C00B2565B /* Tabs */ = {
 			isa = PBXGroup;
 			children = (
-				4995B10C2AA849AD003A8E3A /* TabBarView.swift */,
-				4995B1112AA84A3F003A8E3A /* GoalsView.swift */,
-				4995B1132AA84A49003A8E3A /* HomeView.swift */,
-				4995B1152AA84A54003A8E3A /* ProfileView.swift */,
+				49FEC2062AB15B0200F89C5C /* ViewModels */,
+				49FEC2052AB15AEC00F89C5C /* Views */,
 			);
 			path = Tabs;
 			sourceTree = "<group>";
@@ -220,7 +232,7 @@
 				4995B1082AA84997003A8E3A /* LoginView.swift */,
 				4995B10A2AA849A2003A8E3A /* SignUpView.swift */,
 				4995B10F2AA84A08003A8E3A /* SignUpUsernameSelectView.swift */,
-				49FEC1F02AADB54000F89C5C /* ScreenTimeTest.swift */,
+				49FEC1F02AADB54000F89C5C /* ScreenTimeTestView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -237,10 +249,48 @@
 		49FDA9352AAD9E2C006E4059 /* ScreenTime */ = {
 			isa = PBXGroup;
 			children = (
-				49FDA9362AAD9EB3006E4059 /* ScreenTimeAppsSelectModel.swift */,
-				49FDA9382AAD9F5B006E4059 /* ScreenTimeSelectAppsView.swift */,
+				49FEC1FA2AAEC4DE00F89C5C /* ScreenTimeAppSelectViewModel.swift */,
+				49FEC1FF2AB13DA800F89C5C /* ScreenTimeMonitorViewModel.swift */,
+				49FEC2012AB1455400F89C5C /* ScreenTImeMonitorHandlerViewModel.swift */,
 			);
 			path = ScreenTime;
+			sourceTree = "<group>";
+		};
+		49FEC1FC2AAEF59900F89C5C /* UserData */ = {
+			isa = PBXGroup;
+			children = (
+				49FDA9352AAD9E2C006E4059 /* ScreenTime */,
+			);
+			path = UserData;
+			sourceTree = "<group>";
+		};
+		49FEC2052AB15AEC00F89C5C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4995B10C2AA849AD003A8E3A /* TabBarView.swift */,
+				4995B1112AA84A3F003A8E3A /* FriendsView.swift */,
+				49FEC2092AB2DDD900F89C5C /* FriendsTabs */,
+				4995B1132AA84A49003A8E3A /* HomeView.swift */,
+				4995B1152AA84A54003A8E3A /* ProfileView.swift */,
+				49FEC2032AB146D000F89C5C /* PodSelectionView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		49FEC2062AB15B0200F89C5C /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		49FEC2092AB2DDD900F89C5C /* FriendsTabs */ = {
+			isa = PBXGroup;
+			children = (
+				49FEC20C2AB2DE1000F89C5C /* FriendsListView.swift */,
+				49FEC20F2AB2DE2800F89C5C /* FriendsRequestView.swift */,
+			);
+			path = FriendsTabs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -346,23 +396,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49FEC2042AB146D000F89C5C /* PodSelectionView.swift in Sources */,
+				49FEC2102AB2DE2800F89C5C /* FriendsRequestView.swift in Sources */,
 				49FDA9312AAD2D3C006E4059 /* CustomTextField.swift in Sources */,
 				4995B10B2AA849A2003A8E3A /* SignUpView.swift in Sources */,
 				4995B1162AA84A54003A8E3A /* ProfileView.swift in Sources */,
 				49C8EEDF2AA97F7E00B2565B /* SettingsRowView.swift in Sources */,
 				4995B1092AA84997003A8E3A /* LoginView.swift in Sources */,
+				49FEC20D2AB2DE1000F89C5C /* FriendsListView.swift in Sources */,
 				4995B10D2AA849AD003A8E3A /* TabBarView.swift in Sources */,
-				4995B1122AA84A3F003A8E3A /* GoalsView.swift in Sources */,
-				49FDA9392AAD9F5B006E4059 /* ScreenTimeSelectAppsView.swift in Sources */,
+				4995B1122AA84A3F003A8E3A /* FriendsView.swift in Sources */,
 				4995B1142AA84A49003A8E3A /* HomeView.swift in Sources */,
+				49FEC1FB2AAEC4DE00F89C5C /* ScreenTimeAppSelectViewModel.swift in Sources */,
 				49C8EF1F2AA992A700B2565B /* AuthViewModel.swift in Sources */,
 				49FDA9342AAD985E006E4059 /* PermissionsManagerViewModel.swift in Sources */,
-				49FDA9372AAD9EB3006E4059 /* ScreenTimeAppsSelectModel.swift in Sources */,
 				4995B1102AA84A08003A8E3A /* SignUpUsernameSelectView.swift in Sources */,
-				49FEC1F12AADB54000F89C5C /* ScreenTimeTest.swift in Sources */,
+				49FEC1F12AADB54000F89C5C /* ScreenTimeTestView.swift in Sources */,
+				4986CECE2AB7F5DC00D1E259 /* SearchBar.swift in Sources */,
 				49C8EF212AA9B02100B2565B /* DefaultColors.swift in Sources */,
 				4995B0FA2AA84933003A8E3A /* ScreenTimeSocialMediaApp.swift in Sources */,
+				49FEC2002AB13DA800F89C5C /* ScreenTimeMonitorViewModel.swift in Sources */,
+				49FEC2022AB1455400F89C5C /* ScreenTImeMonitorHandlerViewModel.swift in Sources */,
 				49C8EED72AA97AD900B2565B /* User.swift in Sources */,
+				49FEC1FE2AB030E100F89C5C /* PodsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

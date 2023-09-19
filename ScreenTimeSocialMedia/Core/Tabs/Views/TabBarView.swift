@@ -15,14 +15,14 @@ struct TabBarView: View {
                     Image(systemName: "house.fill")
                     Text("Home")
                 }
-            GoalsView()
+            FriendsView()
                 .tabItem {
-                    Image(systemName: "medal")
-                    Text("Goals")
+                    Image(systemName: "person.badge.plus")
+                    Text("Friends")
                 }
             ProfileView()
                 .tabItem {
-                    Image(systemName: "person")
+                    Image(systemName: "gear")
                     Text("Profile")
                 }
         }

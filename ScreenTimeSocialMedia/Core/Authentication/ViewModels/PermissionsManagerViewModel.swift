@@ -14,9 +14,9 @@ class PermissionsManagerViewModel: ObservableObject{
         Task {
             do{
                 try await ac.requestAuthorization(for: .individual)
-                print("SUCCESS")
+                print("REQUESTED SCREENTIME AUTH")
             } catch {
-                print("FAILED")
+                print("FAILED TO REQUEST SCREENTIME AUTH")
             }
         }
     }
