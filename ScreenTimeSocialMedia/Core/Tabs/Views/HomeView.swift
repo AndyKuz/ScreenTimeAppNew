@@ -11,6 +11,12 @@ struct HomeView: View {
                     HStack {
                         pod
                     }
+                } 
+                .onDelete { indexSet in     // adds swipe to delete functionality to each pod
+                    pods.remove(atOffsets: indexSet)
+                }
+                .onMove { indexSet, index in    // adds hold to move functionality to each pod
+                    pods.move(fromOffsets: indexSet, toOffset: index)
                 }
             }
 
@@ -20,8 +26,6 @@ struct HomeView: View {
                     // print error message
                 } else {
                     isSheetPresented.toggle()
-                    // let newPod = PodsView(name: "Pod1", description: "Description", group:.screenTime)
-                    // pods.append(newPod)
                 }
             }) {
                 Circle()
