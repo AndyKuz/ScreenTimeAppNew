@@ -8,11 +8,7 @@
 import SwiftUI
 
 struct LoginView: View {
-    @State private var username = ""
-    @State private var password = ""
-    
-    @FocusState var usernameFocused: Bool
-    @FocusState var passwordFocused: Bool
+    @StateObject private var viewModel = LoginViewModel()
     
     var body: some View {
         VStack {
@@ -22,27 +18,34 @@ struct LoginView: View {
                 .fontWeight(.bold)
                 .padding(.bottom, 20)
             
-            CustomTextField(text: $username, placeholder: "username", type: .text)
-                .disableAutocorrection(true)
-                .autocapitalization(.none)
-                .padding(.horizontal, 30)
-                .padding(.bottom, 10)
-            
-            CustomTextField(text: $password, placeholder: "password", type: .secure)
-                .disableAutocorrection(true)
-                .autocapitalization(.none)
-                .padding(.horizontal, 30)
-                .padding(.bottom, 10)
-            
-            NavigationLink(destination: TabBarView().navigationBarBackButtonHidden(true)) {
-                Text("Login")
-                    .font(.headline)
-                    .foregroundColor(.white)
-                    .padding()
-                    .frame(width:200, height: 45)
-                    .background(!username.isEmpty && !password.isEmpty ? DefaultColors.teal1 : DefaultColors.lightGray)
-                    .cornerRadius(10)
+            if let error = viewModel.error {
+                Text(error)
+                    .foregroundColor(.red)
             }
+            
+            CustomTextField(text: $viewModel.email, placeholder: "email", type: .text)
+                .disableAutocorrection(true)
+                .autocapitalization(.none)
+                .frame(width: 275)
+                .padding(.bottom, 10)
+            
+            CustomTextField(text: $viewModel.password, placeholder: "password", type: .secure)
+                .disableAutocorrection(true)
+                .autocapitalization(.none)
+                .frame(width: 275)
+                .padding(.bottom, 10)
+            
+            Button("Login") {
+                viewModel.signIn()
+            }
+                .font(.headline)
+                .foregroundColor(.white)
+                .padding()
+                .frame(width:200, height: 45)
+                .background(Color.blue)
+                .cornerRadius(10)
+
+            NavigationLink("", destination: TabBarView().navigationBarBackButtonHidden(), isActive: $viewModel.navigateToNextView)
             
             NavigationLink(destination: SignUpView().navigationBarBackButtonHidden(true)){
                 Text("Don't have an account? Sign up")
