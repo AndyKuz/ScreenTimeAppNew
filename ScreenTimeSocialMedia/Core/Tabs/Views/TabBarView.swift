@@ -8,19 +8,26 @@
 import SwiftUI
 
 struct TabBarView: View {
+    
     var body: some View {
         TabView {
-            HomeView()
+            ZStack{
+                HomeView()
+            }
                 .tabItem {
                     Image(systemName: "house.fill")
                     Text("Home")
                 }
-            FriendsView()
+            ZStack {
+                FriendsView()
+            }
                 .tabItem {
                     Image(systemName: "person.badge.plus")
                     Text("Friends")
                 }
-            ProfileView()
+            ZStack {
+                ProfileView()
+            }
                 .tabItem {
                     Image(systemName: "gear")
                     Text("Profile")
