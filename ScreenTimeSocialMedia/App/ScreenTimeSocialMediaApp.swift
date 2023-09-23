@@ -17,7 +17,8 @@ struct ScreenTimeApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                LoginView()
+                // LoginView() - Default
+                TabBarView()
             }
         }
     }
