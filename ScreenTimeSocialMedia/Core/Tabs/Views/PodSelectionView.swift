@@ -11,12 +11,12 @@ struct PodSelectionView: View {
     @Binding var isSheetPresented: Bool
     @State var name = ""
     @State var group: groupType = .screenTime
-    @State var numWeeks = 2
+    @State var numWeeks: Double = 2
     @State var numStrikes = 3
     
     @State var printError = false
     
-    var addPod: (String, groupType, Int, Int) -> Void
+    var addPod: (String, groupType, Double, Int) -> Void
     
     var body: some View {
         VStack {

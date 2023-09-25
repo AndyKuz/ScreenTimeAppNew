@@ -54,6 +54,8 @@
 		49E3039E2ABCCF23004C2A49 /* CustomNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E3039D2ABCCF23004C2A49 /* CustomNavBar.swift */; };
 		49E303A42ABE4E69004C2A49 /* MainPodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E303A32ABE4E69004C2A49 /* MainPodView.swift */; };
 		49E303A62ABE4E77004C2A49 /* MembersPodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E303A52ABE4E77004C2A49 /* MembersPodView.swift */; };
+		49E303AA2AC122FB004C2A49 /* ChatPodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E303A92AC122FB004C2A49 /* ChatPodView.swift */; };
+		49E303AC2AC12AAF004C2A49 /* TabBarPodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E303AB2AC12AAF004C2A49 /* TabBarPodView.swift */; };
 		49FDA9312AAD2D3C006E4059 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FDA9302AAD2D3C006E4059 /* CustomTextField.swift */; };
 		49FDA9342AAD985E006E4059 /* PermissionsManagerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FDA9332AAD985E006E4059 /* PermissionsManagerViewModel.swift */; };
 		49FEC1F12AADB54000F89C5C /* ScreenTimeTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FEC1F02AADB54000F89C5C /* ScreenTimeTestView.swift */; };
@@ -88,6 +90,8 @@
 		49E3039D2ABCCF23004C2A49 /* CustomNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavBar.swift; sourceTree = "<group>"; };
 		49E303A32ABE4E69004C2A49 /* MainPodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPodView.swift; sourceTree = "<group>"; };
 		49E303A52ABE4E77004C2A49 /* MembersPodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembersPodView.swift; sourceTree = "<group>"; };
+		49E303A92AC122FB004C2A49 /* ChatPodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatPodView.swift; sourceTree = "<group>"; };
+		49E303AB2AC12AAF004C2A49 /* TabBarPodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarPodView.swift; sourceTree = "<group>"; };
 		49FDA9302AAD2D3C006E4059 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		49FDA9322AAD9633006E4059 /* ScreenTimeSocialMedia.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ScreenTimeSocialMedia.entitlements; sourceTree = "<group>"; };
 		49FDA9332AAD985E006E4059 /* PermissionsManagerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionsManagerViewModel.swift; sourceTree = "<group>"; };
@@ -259,8 +263,10 @@
 		49E3039A2ABBB4A5004C2A49 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
+				49E303AB2AC12AAF004C2A49 /* TabBarPodView.swift */,
 				49E303A32ABE4E69004C2A49 /* MainPodView.swift */,
 				49E303A52ABE4E77004C2A49 /* MembersPodView.swift */,
+				49E303A92AC122FB004C2A49 /* ChatPodView.swift */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -417,6 +423,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				49E303A62ABE4E77004C2A49 /* MembersPodView.swift in Sources */,
+				49E303AC2AC12AAF004C2A49 /* TabBarPodView.swift in Sources */,
 				49FEC2042AB146D000F89C5C /* PodSelectionView.swift in Sources */,
 				49FEC2102AB2DE2800F89C5C /* FriendsRequestView.swift in Sources */,
 				49FDA9312AAD2D3C006E4059 /* CustomTextField.swift in Sources */,
@@ -434,6 +441,7 @@
 				4986CED02AB956AA00D1E259 /* SignUpViewModel.swift in Sources */,
 				49FDA9342AAD985E006E4059 /* PermissionsManagerViewModel.swift in Sources */,
 				49FEC1F12AADB54000F89C5C /* ScreenTimeTestView.swift in Sources */,
+				49E303AA2AC122FB004C2A49 /* ChatPodView.swift in Sources */,
 				4986CECE2AB7F5DC00D1E259 /* SearchBar.swift in Sources */,
 				49C8EF212AA9B02100B2565B /* DefaultColors.swift in Sources */,
 				49E303A42ABE4E69004C2A49 /* MainPodView.swift in Sources */,

@@ -17,7 +17,7 @@ struct PodsView: View, Identifiable {
     var id = UUID()
     let podName: String
     let group: groupType
-    let timeFrame: Int
+    let timeFrame: Double
     let totalNumStrikes: Int
     
     // based on the chosen case from groupType enum assign a emoji representation
@@ -31,7 +31,7 @@ struct PodsView: View, Identifiable {
 
     var body: some View {
         // when the pod is clicked on from the HomeView navigate to its MainView
-        NavigationLink(destination: MainPodView(podName: podName, podType: group, timeFrame: timeFrame, totalNumStrikes: totalNumStrikes)) {
+        NavigationLink(destination: TabBarPodView(podName: podName, podType: group, timeframe: timeFrame, totalNumStrikes: totalNumStrikes)) {
             HStack {
                 Text(podName)
                     .font(.title2)

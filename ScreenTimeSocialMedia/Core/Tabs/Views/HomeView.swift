@@ -25,19 +25,22 @@ struct HomeView: View {
             
             VStack {
                 Spacer()
-                // shows error message
-                if !errorMessage.isEmpty {
-                    Text(errorMessage)
-                        .foregroundColor(.red)
-                }
+                Text(errorMessage)
+                    .foregroundColor(.red)
+                    .opacity(errorMessage.isEmpty ? 0.0 : 1.0) // hide error message if error message empty
                 
                 Button(action: {
                     // Add your action code here
                     if(pods.count >= 4) {
-                        // print error message
-                        errorMessage = "Maximum pod amount reached"
+                        errorMessage = "Maximum pod amount reached" // print error message
+                        
+                        // timer to remove error message after 3 seconds
+                        Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false) { _ in
+                            withAnimation {
+                                errorMessage = ""
+                            }
+                        }
                     } else {
-                        errorMessage = ""
                         isSheetPresented.toggle()
                     }
                 }) {
