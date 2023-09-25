@@ -7,15 +7,20 @@
 
 import SwiftUI
 
+// enum containing different pod types
+// TODO - add water and gym types
 enum groupType: String, CaseIterable {
     case screenTime = "Screen Time"
 }
 
 struct PodsView: View, Identifiable {
     var id = UUID()
-    let name: String
+    let podName: String
     let group: groupType
+    let timeFrame: Double
+    let totalNumStrikes: Int
     
+    // based on the chosen case from groupType enum assign a emoji representation
     var groupEmoji: String{
         switch(group) {
         case .screenTime:
@@ -25,9 +30,10 @@ struct PodsView: View, Identifiable {
     }
 
     var body: some View {
-        NavigationLink(destination: EmptyView()) {
+        // when the pod is clicked on from the HomeView navigate to its MainView
+        NavigationLink(destination: TabBarPodView(podName: podName, podType: group, timeframe: timeFrame, totalNumStrikes: totalNumStrikes)) {
             HStack {
-                Text(name)
+                Text(podName)
                     .font(.title2)
                     .bold()
                 Spacer()
