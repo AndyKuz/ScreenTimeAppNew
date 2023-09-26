@@ -8,7 +8,7 @@
 import Foundation
 import DeviceActivity
 
-class ScreenTImeMonitorHandlerViewModel: DeviceActivityMonitor{
+class ScreenTimeMonitorHandlerViewModel: DeviceActivityMonitor{
     override func eventDidReachThreshold(
         _ event: DeviceActivityEvent.Name,
         activity: DeviceActivityName

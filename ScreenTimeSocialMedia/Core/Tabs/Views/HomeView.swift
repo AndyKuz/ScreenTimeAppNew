@@ -14,9 +14,6 @@ struct HomeView: View {
                             pod
                         }
                     }
-                    .onDelete { indexSet in     // adds swipe to delete functionality to each pod
-                        pods.remove(atOffsets: indexSet)
-                    }
                     .onMove { indexSet, index in    // adds hold to move functionality to each pod
                         pods.move(fromOffsets: indexSet, toOffset: index)
                     }

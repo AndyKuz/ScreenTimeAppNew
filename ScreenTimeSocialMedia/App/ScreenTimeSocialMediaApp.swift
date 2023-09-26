@@ -27,7 +27,7 @@ struct ScreenTimeApp: App {
 class AppDelegate: NSObject, UIApplicationDelegate {
     internal func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         FirebaseApp.configure()
-        print("Congiured Firebase")
+        print("Configured Firebase")
         return true
     }
 }
