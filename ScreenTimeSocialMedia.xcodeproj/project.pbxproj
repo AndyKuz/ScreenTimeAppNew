@@ -56,6 +56,7 @@
 		49E303A62ABE4E77004C2A49 /* MembersPodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E303A52ABE4E77004C2A49 /* MembersPodView.swift */; };
 		49E303AA2AC122FB004C2A49 /* ChatPodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E303A92AC122FB004C2A49 /* ChatPodView.swift */; };
 		49E303AC2AC12AAF004C2A49 /* TabBarPodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E303AB2AC12AAF004C2A49 /* TabBarPodView.swift */; };
+		49E303AE2AC29885004C2A49 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E303AD2AC29885004C2A49 /* ProfileViewModel.swift */; };
 		49FDA9312AAD2D3C006E4059 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FDA9302AAD2D3C006E4059 /* CustomTextField.swift */; };
 		49FDA9342AAD985E006E4059 /* PermissionsManagerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FDA9332AAD985E006E4059 /* PermissionsManagerViewModel.swift */; };
 		49FEC1F12AADB54000F89C5C /* ScreenTimeTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FEC1F02AADB54000F89C5C /* ScreenTimeTestView.swift */; };
@@ -92,6 +93,7 @@
 		49E303A52ABE4E77004C2A49 /* MembersPodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembersPodView.swift; sourceTree = "<group>"; };
 		49E303A92AC122FB004C2A49 /* ChatPodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatPodView.swift; sourceTree = "<group>"; };
 		49E303AB2AC12AAF004C2A49 /* TabBarPodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarPodView.swift; sourceTree = "<group>"; };
+		49E303AD2AC29885004C2A49 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		49FDA9302AAD2D3C006E4059 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		49FDA9322AAD9633006E4059 /* ScreenTimeSocialMedia.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ScreenTimeSocialMedia.entitlements; sourceTree = "<group>"; };
 		49FDA9332AAD985E006E4059 /* PermissionsManagerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionsManagerViewModel.swift; sourceTree = "<group>"; };
@@ -306,6 +308,7 @@
 		49FEC2062AB15B0200F89C5C /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				49E303AD2AC29885004C2A49 /* ProfileViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -446,6 +449,7 @@
 				49C8EF212AA9B02100B2565B /* DefaultColors.swift in Sources */,
 				49E303A42ABE4E69004C2A49 /* MainPodView.swift in Sources */,
 				4995B0FA2AA84933003A8E3A /* ScreenTimeSocialMediaApp.swift in Sources */,
+				49E303AE2AC29885004C2A49 /* ProfileViewModel.swift in Sources */,
 				49FEC2002AB13DA800F89C5C /* ScreenTimeMonitorViewModel.swift in Sources */,
 				4986CED22AB956B200D1E259 /* LoginViewModel.swift in Sources */,
 				49FEC2022AB1455400F89C5C /* ScreenTimeMonitorHandlerViewModel.swift in Sources */,
