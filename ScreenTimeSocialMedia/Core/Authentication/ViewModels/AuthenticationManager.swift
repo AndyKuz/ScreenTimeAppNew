@@ -26,6 +26,17 @@ final class AuthenticationManager {
         return AuthDataResultModel(user: authDataResult.user)
     }
     
+    func deleteUser() {
+        let currentUser = Auth.auth().currentUser
+        currentUser?.delete{ error in
+            if let error = error {
+              print("Error Deleting Account")
+            } else {
+              print("Account Successfully Deleted")
+            }
+          }
+    }
+    
     func signIn(email: String, password: String) async throws -> AuthDataResultModel {
         let authDataResult = try await Auth.auth().signIn(withEmail: email, password: password)
         return AuthDataResultModel(user: authDataResult.user)
@@ -33,6 +44,17 @@ final class AuthenticationManager {
 
     func signOut() throws {
         try Auth.auth().signOut()
+        UserDefaults.standard.set(false, forKey: "isUserSignedIn")
+    }
+    
+    func resetPassword(email: String) {
+        Auth.auth().sendPasswordReset(withEmail: email) { error in
+            if let error = error {
+                print("Error Reseting Password")
+            } else {
+                print("Password Reset")
+            }
+        }
     }
 
 }
