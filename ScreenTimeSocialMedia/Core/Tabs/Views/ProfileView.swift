@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ProfileView: View {
+    @StateObject private var viewModel = ProfileViewModel()
+    
     var body: some View {
         List {
             Section {
@@ -35,12 +37,24 @@ struct ProfileView: View {
             
             Section("Account") {
                 Button {
-                    print("Log Out...")
+                    Task {
+                        do {
+                            try viewModel.signOut()
+                        } catch {
+                            print("Error signing out")
+                        }
+                    }
                 } label: {
                     SettingsRowView(imageName: "rectangle.portrait.and.arrow.right", title: "Log Out", tintColor: .red)
                 }
             }
         }
+        NavigationLink(
+            destination: LoginView().navigationBarBackButtonHidden(true),
+            isActive: $viewModel.showLoginView,
+            label: {EmptyView()}
+        )
+        .isDetailLink(false)
     }
 }
 

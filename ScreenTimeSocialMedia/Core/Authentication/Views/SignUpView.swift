@@ -44,7 +44,7 @@ struct SignUpView: View {
                 .background(Color.blue)
                 .cornerRadius(10)
 
-            NavigationLink("", destination: TabBarView(), isActive: $viewModel.navigateToNextView)
+            NavigationLink("", destination: TabBarView().navigationBarBackButtonHidden(true), isActive: $viewModel.navigateToNextView)
             
             NavigationLink(destination: LoginView().navigationBarBackButtonHidden(true)) {
                 Text("Already have an account? Login")

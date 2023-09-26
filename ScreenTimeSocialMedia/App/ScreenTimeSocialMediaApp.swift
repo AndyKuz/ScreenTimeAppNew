@@ -17,8 +17,11 @@ struct ScreenTimeApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                // LoginView() - Default
-                TabBarView()
+                if let alreadySignedIn = Auth.auth().currentUser {
+                    TabBarView()
+                } else {
+                    LoginView()
+                }
             }
         }
     }
