@@ -6,6 +6,41 @@
 //
 import SwiftUI
 
+// Sheet configuration to allow user to select their personal goal
+struct GoalSheet: View {
+    @Binding var sheetPresented: Bool
+    var podType: groupType
+    @State var numHours = 1
+    
+    var body: some View {
+        VStack {
+            Text("Before beginning please select your \(podType.rawValue) goal")
+                .font(.title2)
+                .padding(.top, 30)
+                .multilineTextAlignment(.center)
+            
+            // gives user options from 1-6 hours for goal
+            HStack {
+                Picker("Hours", selection: $numHours) {
+                    ForEach(1..<6, id: \.self) { selection in
+                        Text("\(selection)")
+                    }
+                }
+                Text("hours per day")
+            }
+            .padding(.top, 10)
+            
+            Button("Go!", action: {
+                sheetPresented = false
+            })
+            .padding(.top, 20)
+            Spacer()
+            
+        }
+        
+    }
+}
+
 // view that builds the progress bar for the timeline of the pod
 struct SegmentedProgressBar: View {
     var failedDays: [Int]
@@ -37,6 +72,7 @@ struct MainPodView: View {
     @State var podType: groupType
     @State var timeframe: Double
     @State var totalNumStrikes: Int
+    @State var presentGoalSheet = false
     
     var body: some View {
         ZStack {
@@ -53,6 +89,7 @@ struct MainPodView: View {
                 }
             }
             
+            // Displays all the necessary info about pod
             VStack {
                 Text(podName)
                     .fontWeight(.semibold)
@@ -66,6 +103,9 @@ struct MainPodView: View {
                 Spacer()
             }
         }
+        .sheet(isPresented: $presentGoalSheet, content: {
+            GoalSheet(sheetPresented: $presentGoalSheet, podType: podType)
+        })
     }
 }
 
