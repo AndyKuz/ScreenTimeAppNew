@@ -14,6 +14,7 @@ final class SignUpViewModel: ObservableObject {
     
     @Published var email = ""
     @Published var password = ""
+    @Published var username = ""
 
     func signUp(){
         guard !email.isEmpty, !password.isEmpty else {
@@ -23,7 +24,8 @@ final class SignUpViewModel: ObservableObject {
 
         Task {
             do {
-                _ = try await AuthenticationManager.shared.createUser(email: email, password: password)
+                let user = try await AuthenticationManager.shared.createUser(email: email, password: password)
+                FireBaseFunctions().signUpFireBase(username: username, email: user.email ?? "", uid: user.uid)
                 self.navigateToNextView = true
                 
             } catch {

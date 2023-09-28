@@ -33,10 +33,6 @@ struct SearchBar: View {
                 .padding(.horizontal, 40)
                 
             }
-            if isEditing {
-                Text("currently editing")
-                    .foregroundColor(.red)
-            }
         }
     }
 }

@@ -10,12 +10,11 @@ struct AuthDataResultModel {
     let uid: String
     let email: String?
 
-    init(user: User) {
+    init(user: FirebaseAuth.User) {
         self.uid = user.uid
         self.email = user.email
     }
 }
-
 
 final class AuthenticationManager {
     static let shared = AuthenticationManager()
@@ -29,7 +28,7 @@ final class AuthenticationManager {
     func deleteUser() {
         let currentUser = Auth.auth().currentUser
         currentUser?.delete{ error in
-            if let error = error {
+            if let _ = error {
                 print("Error Deleting Account")
             } else {
                 print("Account Successfully Deleted")
@@ -49,7 +48,7 @@ final class AuthenticationManager {
 
     func resetPassword(email: String) {
         Auth.auth().sendPasswordReset(withEmail: email) { error in
-            if let error = error {
+            if let _ = error {
                 print("Error Reseting Password")
             } else {
                 print("Password Reset")
