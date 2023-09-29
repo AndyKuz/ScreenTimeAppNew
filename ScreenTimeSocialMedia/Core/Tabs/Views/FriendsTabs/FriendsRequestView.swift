@@ -8,8 +8,29 @@
 import SwiftUI
 
 struct FriendsRequestView: View {
+    @State private var friendRequestsList: [User] = [] // init empty list of User type
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Text("Friend Requests")
+            List {
+                ForEach(friendRequestsList, id: \.uid) { user in
+                    HStack {
+                        Text(user.username)
+                    }
+                    Divider().background(Color.gray)
+                }
+            }
+            .onAppear {
+                FriendsSystem.system.loadFriendRequests { users in
+                    friendRequestsList = users
+                }
+            }
+            .frame(width: 350)
+            .listStyle(PlainListStyle())    // remove list style
+            .listRowInsets(EdgeInsets())  // remove space between list elements
+            .background(Color(UIColor.systemBackground))
+        }
     }
 }
 

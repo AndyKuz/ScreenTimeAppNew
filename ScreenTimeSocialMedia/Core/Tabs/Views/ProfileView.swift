@@ -10,11 +10,23 @@ import SwiftUI
 struct ProfileView: View {
     @StateObject private var viewModel = ProfileViewModel()
     
+    var email: String {
+        FriendsSystem.system.CURRENT_USER_EMAIL
+    }
+    
+    var username: String {
+        FriendsSystem.system.CURRENT_USER_USERNAME
+    }
+    
+    var firstLetter: String {
+        return String(username.prefix(1)).capitalized
+    }
+    
     var body: some View {
         List {
             Section {
                 HStack {
-                    Text("A")
+                    Text(firstLetter)
                         .font(.title)
                         .fontWeight(.semibold)
                         .foregroundColor(.white)
@@ -23,11 +35,11 @@ struct ProfileView: View {
                         .clipShape(.circle)
                     
                     VStack(alignment: .leading, spacing: 4) {
-                        Text("AndyKuz")
+                        Text(username)
                             .fontWeight(.semibold)
                             .padding(.top, 4)
                         
-                        Text("andrew.kuz137@gmail.com")
+                        Text(email)
                             .font(.footnote)
                             .foregroundColor(.gray)
                     }
