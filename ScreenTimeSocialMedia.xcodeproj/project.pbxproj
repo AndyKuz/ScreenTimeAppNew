@@ -67,6 +67,7 @@
 		49FEC2042AB146D000F89C5C /* PodSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FEC2032AB146D000F89C5C /* PodSelectionView.swift */; };
 		49FEC20D2AB2DE1000F89C5C /* FriendsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FEC20C2AB2DE1000F89C5C /* FriendsListView.swift */; };
 		49FEC2102AB2DE2800F89C5C /* FriendsRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FEC20F2AB2DE2800F89C5C /* FriendsRequestView.swift */; };
+		63DB831C2AC2A19C002E88BF /* DatabaseFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DB831B2AC2A19C002E88BF /* DatabaseFunctions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -105,6 +106,7 @@
 		49FEC2032AB146D000F89C5C /* PodSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodSelectionView.swift; sourceTree = "<group>"; };
 		49FEC20C2AB2DE1000F89C5C /* FriendsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListView.swift; sourceTree = "<group>"; };
 		49FEC20F2AB2DE2800F89C5C /* FriendsRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsRequestView.swift; sourceTree = "<group>"; };
+		63DB831B2AC2A19C002E88BF /* DatabaseFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseFunctions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +173,7 @@
 				49FEC1FC2AAEF59900F89C5C /* UserData */,
 				49C8EED82AA97AEF00B2565B /* Model */,
 				4995B0FD2AA84934003A8E3A /* Assets.xcassets */,
+				63DB831A2AC2A158002E88BF /* Database */,
 				4995B0FF2AA84934003A8E3A /* Preview Content */,
 				49C8EEE02AA9877500B2565B /* GoogleService-Info.plist */,
 			);
@@ -322,6 +325,14 @@
 			path = FriendsTabs;
 			sourceTree = "<group>";
 		};
+		63DB831A2AC2A158002E88BF /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				63DB831B2AC2A19C002E88BF /* DatabaseFunctions.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -432,6 +443,7 @@
 				49FDA9312AAD2D3C006E4059 /* CustomTextField.swift in Sources */,
 				4995B10B2AA849A2003A8E3A /* SignUpView.swift in Sources */,
 				4995B1162AA84A54003A8E3A /* ProfileView.swift in Sources */,
+				63DB831C2AC2A19C002E88BF /* DatabaseFunctions.swift in Sources */,
 				49C8EEDF2AA97F7E00B2565B /* SettingsRowView.swift in Sources */,
 				4995B1092AA84997003A8E3A /* LoginView.swift in Sources */,
 				49FEC20D2AB2DE1000F89C5C /* FriendsListView.swift in Sources */,
