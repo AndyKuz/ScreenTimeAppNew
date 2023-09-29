@@ -40,5 +40,25 @@ extension FriendsSystem {
                 completion(users)
             }
     }
+    
+    
+    func loadFriendRequests(completion: @escaping ([User]) -> Void) {
+        CURRENT_USER_REQUESTS_REF
+            .addSnapshotListener { querySnapshot, error in
+                guard let documents = querySnapshot?.documents else {
+                    print("LoadUserData(): Error fetching documents: \(error!)")
+                    return
+                }
+                if let querySnapshot = querySnapshot {
+                    let users = querySnapshot.documents.compactMap { document -> User? in
+                        let data = document.data()
+                        let uid = document.documentID
+                        let username = data["username"] as? String
+                        return (User(username: username ?? "", userID: uid))
+                    }
+                    completion(users)
+                }
+            }
+    }
 }
 

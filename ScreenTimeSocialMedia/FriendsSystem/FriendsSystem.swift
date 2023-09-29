@@ -11,17 +11,6 @@ import FirebaseCore
 import FirebaseFirestore
 import FirebaseAuth
 
-// struct that compactly formats necessary user data
-struct User {
-    var username: String!
-    var uid: String!
-    
-    init(username: String, userID: String) {
-        self.username = username
-        self.uid = userID
-    }
-}
-
 struct FireBaseFunctions {
 
     func signUpFireBase(username:String, email:String, uid:String) {
@@ -60,29 +49,69 @@ class FriendsSystem {
     var CURRENT_USER_REQUESTS_REF: CollectionReference {
         return CURRENT_USER_REF.collection("requests")
     }
-    
+
+    // gets current logged in user's uid
     var CURRENT_USER_UID: String {
         let id = Auth.auth().currentUser!.uid
         return id
     }
     
+    // gets current logged in user's username
+    var CURRENT_USER_USERNAME: String {
+        if let displayName = Auth.auth().currentUser?.displayName {
+            return displayName
+        } else {
+            return "username" // Provide a default value or handle the case where displayName is nil
+        }
+    }
+
+    
+    // gets current logged in user's email
+    var CURRENT_USER_EMAIL: String {
+        if let email = Auth.auth().currentUser?.email {
+            return email
+        } else {
+            return "email"
+        }
+    }
+    
+    
     // FRIEND REQUEST SYSTEM FUNCTIONS
     
+    // puts current users id and username into userID's collection
     func sendFriendRequestToUser(_ userID: String) {
-        USER_REF.document(userID).collection("requests").document(CURRENT_USER_UID).setData("username": )
+        USER_REF.document(userID).collection("requests").document(CURRENT_USER_UID).setData(["username": CURRENT_USER_USERNAME])
     }
     
     // removes friends from both users in firestore
     func removeFriend(_ userID: String) {
-        CURRENT_USER_REF.collection("friends").document(userID).delete()
+        CURRENT_USER_FRIENDS_REF.document(userID).delete()
         USER_REF.document(userID).collection("friends").document(userID).delete()
     }
     
     func acceptFriendRequest(_ userID: String) {
-        // removes USERID from "requests" and adds it to "friends"
-        CURRENT_USER_REF.collection("requests").document(userID).delete()
-        CURRENT_USER_REF.collection("friends").document(userID)
+        // get's userID's username
+        let userIDRef = USER_REF.document(userID)
+        var userIDUsername = ""
         
-        USER_REF.document(userID).collection("friends").document(CURRENT_USER_UID)
+        userIDRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                userIDUsername = document.data()?["username"] as? String ?? "username"
+            } else {
+                return
+            }
+        }
+        
+        // removes current user from "requests" and adds it to "friends" for userID's collection
+        CURRENT_USER_REQUESTS_REF.document(userID).delete()
+        CURRENT_USER_FRIENDS_REF.document(userID).setData(["username": userIDUsername])
+        
+        // adds userID's uid and username to current user's "friends" collection
+        USER_REF.document(userID).collection("friends").document(CURRENT_USER_UID).setData(["username": CURRENT_USER_USERNAME])
+    }
+    
+    // removes userID focument from Current users requests collection
+    func rejectFriendRequest(_ userID: String) {
+        CURRENT_USER_REQUESTS_REF.document(userID).delete()
     }
 }

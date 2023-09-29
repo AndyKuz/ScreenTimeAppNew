@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Firebase
 
 @MainActor
 final class SignUpViewModel: ObservableObject {
@@ -24,8 +25,11 @@ final class SignUpViewModel: ObservableObject {
 
         Task {
             do {
+                // firebase Auth
                 let user = try await AuthenticationManager.shared.createUser(email: email, password: password)
-                FireBaseFunctions().signUpFireBase(username: username, email: user.email ?? "", uid: user.uid)
+                AuthenticationManager.shared.setUsername(username: username) // sets .displayName
+                // sets firestore
+                self.signUpFireBase(username: username, email: user.email ?? "", uid: user.uid)
                 self.navigateToNextView = true
                 
             } catch {
@@ -34,4 +38,19 @@ final class SignUpViewModel: ObservableObject {
             }
         }
     }
+    
+    func signUpFireBase(username:String, email:String, uid:String) {
+        Firestore.firestore().collection("users").document(uid).setData([
+            "username": username,
+            "email": email
+        ]) { err in
+            if let err = err {
+                print("Error writing document: \(err)")
+            } else {
+                print("Document successfully written!")
+            }
+        }
+    }
 }
+
+

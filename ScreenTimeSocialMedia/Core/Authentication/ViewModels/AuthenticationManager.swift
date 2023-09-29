@@ -43,7 +43,6 @@ final class AuthenticationManager {
     
     func signOut() throws {
         try Auth.auth().signOut()
-        UserDefaults.standard.set(false, forKey: "isUserSignedIn")
     }
 
     func resetPassword(email: String) {
@@ -54,6 +53,23 @@ final class AuthenticationManager {
                 print("Password Reset")
             }
         }
+    }
+    
+    func setUsername(username: String) {
+        if let user = Auth.auth().currentUser {
+            let changeRequest = user.createProfileChangeRequest()
+            changeRequest.displayName = username // set display name to username
+            changeRequest.commitChanges { error in
+                if let error = error {
+                    // Handle the error
+                    print("Error clearing display name: \(error.localizedDescription)")
+                } else {
+                    // Display name cleared successfully
+                    print("Display name cleared.")
+                }
+            }
+        }
+
     }
 
 }
