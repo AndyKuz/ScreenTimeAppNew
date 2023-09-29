@@ -19,10 +19,11 @@ struct FriendsView: View {
             HStack {
                 Spacer()
                 ZStack {
-                    Image(systemName: "bell.fill")
-                        .resizable()
-                        .frame(width: 30, height: 32)
-                        .padding()
+                    NavigationLink(destination: FriendsRequestView().navigationBarBackButtonHidden(false)) {
+                        Label("FriendsRequests", systemImage: "bell.fill")
+                            .frame(width: 30, height: 32)
+                            .padding()
+                    }
                         
                     if tempFriendRequests > 0 {
                         Text("\(tempFriendRequests)")
