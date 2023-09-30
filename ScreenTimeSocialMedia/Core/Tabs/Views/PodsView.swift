@@ -28,6 +28,8 @@ struct PodsView: View, Identifiable {
         }
         
     }
+    
+    
 
     var body: some View {
         // when the pod is clicked on from the HomeView navigate to its MainView
