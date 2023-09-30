@@ -18,6 +18,7 @@ struct SearchBar: View {
                 TextField("Search ...", text: $text, onEditingChanged: { editing in
                     isEditing = editing // Update isEditing when editing state changes
                 })
+                .textInputAutocapitalization(.none)
                 .padding(7)
                 .padding(.horizontal, 25)
                 .background(Color(.systemGray6))

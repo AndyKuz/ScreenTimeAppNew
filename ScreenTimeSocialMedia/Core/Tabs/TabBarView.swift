@@ -10,21 +10,21 @@ import SwiftUI
 struct TabBarView: View {
     var body: some View {
         TabView {
-            ZStack {
+            VStack {
                 HomeView()
             }
                 .tabItem {
                     Image(systemName: "house.fill")
                     Text("Home")
                 }
-            ZStack {
+            VStack {
                 FriendsView()
             }
                 .tabItem {
                     Image(systemName: "person.badge.plus")
                     Text("Friends")
                 }
-            ZStack {
+            VStack {
                 ProfileView()
             }
                 .tabItem {

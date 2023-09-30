@@ -89,25 +89,30 @@ class FriendsSystem {
         USER_REF.document(userID).collection("friends").document(userID).delete()
     }
     
+    // removes request for current users collection and add's userID as friend
+    // adds current user as friend in userID's collection
     func acceptFriendRequest(_ userID: String) {
-        // get's userID's username
         let userIDRef = USER_REF.document(userID)
-        var userIDUsername = ""
         
+        // gets document associated with userID
         userIDRef.getDocument { (document, error) in
             if let document = document, document.exists {
-                userIDUsername = document.data()?["username"] as? String ?? "username"
+                if let userIDUsername = document.data()?["username"] as? String {
+                    // Remove current user from "requests" and add to "friends" for userID's collection
+                    self.CURRENT_USER_REQUESTS_REF.document(userID).delete()
+                    self.CURRENT_USER_FRIENDS_REF.document(userID).setData(["username": userIDUsername])
+                    
+                    // Add userID's uid and username to current user's "friends" collection
+                    self.USER_REF.document(userID).collection("friends").document(self.CURRENT_USER_UID).setData(["username": self.CURRENT_USER_USERNAME])
+                } else {
+                    // Handle the case where username is not available
+                    print("Username not available")
+                }
             } else {
-                return
+                // Handle the case where the document doesn't exist
+                print("Document does not exist")
             }
         }
-        
-        // removes current user from "requests" and adds it to "friends" for userID's collection
-        CURRENT_USER_REQUESTS_REF.document(userID).delete()
-        CURRENT_USER_FRIENDS_REF.document(userID).setData(["username": userIDUsername])
-        
-        // adds userID's uid and username to current user's "friends" collection
-        USER_REF.document(userID).collection("friends").document(CURRENT_USER_UID).setData(["username": CURRENT_USER_USERNAME])
     }
     
     // removes userID focument from Current users requests collection
