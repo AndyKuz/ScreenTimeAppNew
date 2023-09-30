@@ -74,13 +74,17 @@ struct MainPodView: View {
     @State var totalNumStrikes: Int
     @State var presentGoalSheet = false
     
+    @State var navigateToMemberView:Bool = false
+    
     var body: some View {
         ZStack {
             // friends button in the top right corner
             HStack {
                 Spacer() // pushes friends button all the way right
                 VStack {
-                    Button(action: { print("Clicked!") }) {
+                    Button(action: {
+                        navigateToMemberView = true
+                    }) {
                         Image(systemName: "person.3.sequence.fill")
                     }
                     .buttonStyle(PlainButtonStyle())
@@ -106,6 +110,7 @@ struct MainPodView: View {
         .sheet(isPresented: $presentGoalSheet, content: {
             GoalSheet(sheetPresented: $presentGoalSheet, podType: podType)
         })
+        NavigationLink("", destination: MembersPodView(), isActive: $navigateToMemberView)
     }
 }
 
