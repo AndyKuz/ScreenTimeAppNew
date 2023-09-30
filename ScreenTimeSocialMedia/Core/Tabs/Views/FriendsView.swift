@@ -11,6 +11,8 @@ struct FriendsView: View {
     @State private var searchQuery = ""
     @State private var searchResults: [User] = []
     
+    @State var sentFriendRequestsList: [User] = []
+    
     @State var numFriendRequests = 0    // store count of number of friend requests
     @State var friendRequestList: [User] = [] // init list of friendRequests
     
@@ -74,7 +76,7 @@ struct FriendsView: View {
                         
                         if friendsList.contains( where: {$0.uid == user.uid}) {
                             Text("friends")
-                        } else if friendRequestList.contains( where: {$0.uid == user.uid}) {
+                        } else if sentFriendRequestsList.contains( where: {$0.uid == user.uid}) {
                             Text("requested")
                         }
                         else {
@@ -102,9 +104,13 @@ struct FriendsView: View {
                 friendsList = users
             }
             
-            FriendsSystem.system.loadFriendRequests { users in
+            FriendsSystem.system.loadRecievedFriendRequests { users in
                 numFriendRequests = users.count
                 friendRequestList = users
+            }
+            
+            FriendsSystem.system.loadSentFriendRequests { users in
+                sentFriendRequestsList = users
             }
         }
     }

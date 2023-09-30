@@ -35,7 +35,7 @@ class PodFunctions {
             "strikes": pod.strikes,
             "timeframe": pod.timeframe
         ]) { err in
-            if let err = err {
+            if let _ = err {
                 print("error adding pod")
             } else {
                 print("pod added successfully")

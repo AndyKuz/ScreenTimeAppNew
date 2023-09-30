@@ -178,8 +178,8 @@
 				49C8EED92AA97BB300B2565B /* Core */,
 				49E303B12AC4C41E004C2A49 /* FriendsSystem */,
 				49FEC1FC2AAEF59900F89C5C /* UserData */,
-				4995B0FD2AA84934003A8E3A /* Assets.xcassets */,
 				63DB831A2AC2A158002E88BF /* Database */,
+				4995B0FD2AA84934003A8E3A /* Assets.xcassets */,
 				4995B0FF2AA84934003A8E3A /* Preview Content */,
 				49C8EEE02AA9877500B2565B /* GoogleService-Info.plist */,
 			);
