@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FriendsRequestView: View {
-    @State private var friendRequestsList: [User] = [] // init empty list of User type
+    @State var friendRequestsList: [User] // pass in a list of friend requests
     
     var body: some View {
         VStack {
@@ -17,13 +17,20 @@ struct FriendsRequestView: View {
                 ForEach(friendRequestsList, id: \.uid) { user in
                     HStack {
                         Text(user.username)
+                        Spacer()
+                        // when button clicked accept corresponding user's friend request
+                        Button(action: {
+                            FriendsSystem.system.acceptFriendRequest(user.uid)
+                        }) {
+                            Text("accept")
+                        }
+                        
+                        Button(action: {
+                            FriendsSystem.system.rejectFriendRequest(user.uid)
+                        }) {
+                            Image(systemName: "multiply.circle.fill")
+                        }
                     }
-                    Divider().background(Color.gray)
-                }
-            }
-            .onAppear {
-                FriendsSystem.system.loadFriendRequests { users in
-                    friendRequestsList = users
                 }
             }
             .frame(width: 350)
@@ -32,8 +39,4 @@ struct FriendsRequestView: View {
             .background(Color(UIColor.systemBackground))
         }
     }
-}
-
-#Preview {
-    FriendsRequestView()
 }

@@ -43,10 +43,11 @@ extension FriendsSystem {
     
     
     func loadFriendRequests(completion: @escaping ([User]) -> Void) {
+        // adds a listener to the friend request collection of the current user
         CURRENT_USER_REQUESTS_REF
             .addSnapshotListener { querySnapshot, error in
-                guard let documents = querySnapshot?.documents else {
-                    print("LoadUserData(): Error fetching documents: \(error!)")
+                guard let _ = querySnapshot?.documents else {
+                    print("loadUserData(): Error fetching documents: \(error!)")
                     return
                 }
                 if let querySnapshot = querySnapshot {
@@ -56,6 +57,27 @@ extension FriendsSystem {
                         let username = data["username"] as? String
                         return (User(username: username ?? "", userID: uid))
                     }
+                    // creates a list of type User encompassing all friend requests
+                    completion(users)
+                }
+            }
+    }
+    
+    func loadFriends(completion: @escaping ([User]) -> Void) {
+        CURRENT_USER_FRIENDS_REF
+            .addSnapshotListener { querySnapshot, error in
+                guard let _ = querySnapshot?.documents else {
+                    print("loadFriends(): Error fetching documents: \(error!)")
+                    return
+                }
+                if let querySnapshot = querySnapshot {
+                    let users = querySnapshot.documents.compactMap { document -> User? in
+                        let data = document.data()
+                        let uid = document.documentID
+                        let username = data["username"] as? String
+                        return (User(username: username ?? "", userID: uid))
+                    }
+                    // creates a list of type User encompassing all friends
                     completion(users)
                 }
             }
