@@ -69,7 +69,8 @@
 		49FEC2042AB146D000F89C5C /* PodSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FEC2032AB146D000F89C5C /* PodSelectionView.swift */; };
 		49FEC20D2AB2DE1000F89C5C /* FriendsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FEC20C2AB2DE1000F89C5C /* FriendsListView.swift */; };
 		49FEC2102AB2DE2800F89C5C /* FriendsRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FEC20F2AB2DE2800F89C5C /* FriendsRequestView.swift */; };
-		63DB831C2AC2A19C002E88BF /* DatabaseFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DB831B2AC2A19C002E88BF /* DatabaseFunctions.swift */; };
+		635849022AC8D25E00A6F8C4 /* PodViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635849012AC8D25E00A6F8C4 /* PodViewModel.swift */; };
+		63DB831C2AC2A19C002E88BF /* PodFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DB831B2AC2A19C002E88BF /* PodFunctions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -110,7 +111,8 @@
 		49FEC2032AB146D000F89C5C /* PodSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodSelectionView.swift; sourceTree = "<group>"; };
 		49FEC20C2AB2DE1000F89C5C /* FriendsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListView.swift; sourceTree = "<group>"; };
 		49FEC20F2AB2DE2800F89C5C /* FriendsRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsRequestView.swift; sourceTree = "<group>"; };
-		63DB831B2AC2A19C002E88BF /* DatabaseFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseFunctions.swift; sourceTree = "<group>"; };
+		635849012AC8D25E00A6F8C4 /* PodViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodViewModel.swift; sourceTree = "<group>"; };
+		63DB831B2AC2A19C002E88BF /* PodFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodFunctions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -318,6 +320,7 @@
 			children = (
 				49E303AD2AC29885004C2A49 /* ProfileViewModel.swift */,
 				49E303B22AC5473F004C2A49 /* FriendsViewModel.swift */,
+				635849012AC8D25E00A6F8C4 /* PodViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -334,7 +337,7 @@
 		63DB831A2AC2A158002E88BF /* Database */ = {
 			isa = PBXGroup;
 			children = (
-				63DB831B2AC2A19C002E88BF /* DatabaseFunctions.swift */,
+				63DB831B2AC2A19C002E88BF /* PodFunctions.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -449,7 +452,7 @@
 				49FDA9312AAD2D3C006E4059 /* CustomTextField.swift in Sources */,
 				4995B10B2AA849A2003A8E3A /* SignUpView.swift in Sources */,
 				4995B1162AA84A54003A8E3A /* ProfileView.swift in Sources */,
-				63DB831C2AC2A19C002E88BF /* DatabaseFunctions.swift in Sources */,
+				63DB831C2AC2A19C002E88BF /* PodFunctions.swift in Sources */,
 				49C8EEDF2AA97F7E00B2565B /* SettingsRowView.swift in Sources */,
 				49E303B32AC5473F004C2A49 /* FriendsViewModel.swift in Sources */,
 				4995B1092AA84997003A8E3A /* LoginView.swift in Sources */,
@@ -472,6 +475,7 @@
 				49E303B52AC633AF004C2A49 /* UserModel.swift in Sources */,
 				49FEC2002AB13DA800F89C5C /* ScreenTimeMonitorViewModel.swift in Sources */,
 				4986CED22AB956B200D1E259 /* LoginViewModel.swift in Sources */,
+				635849022AC8D25E00A6F8C4 /* PodViewModel.swift in Sources */,
 				49FEC2022AB1455400F89C5C /* ScreenTimeMonitorHandlerViewModel.swift in Sources */,
 				49E303B02AC2A76F004C2A49 /* FriendsSystem.swift in Sources */,
 				49FEC1FE2AB030E100F89C5C /* PodsView.swift in Sources */,
