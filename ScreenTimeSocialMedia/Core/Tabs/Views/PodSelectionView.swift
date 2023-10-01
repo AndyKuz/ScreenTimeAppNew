@@ -16,6 +16,7 @@ struct PodSelectionView: View {
     
     @State var printError = false
     
+    
     var addPod: (String, groupType, Double, Int) -> Void
     
     var body: some View {
@@ -97,6 +98,7 @@ struct PodSelectionView: View {
                 } else {
                     // Add the new pod and dismiss the sheet
                     addPod(name, group, numWeeks, numStrikes)
+                    PodFunctions.system.createPod(pod: Pods(podID: "pp", title: name, description: "", podType: group.rawValue, strikes: numStrikes, timeframe: numWeeks))
                     isSheetPresented = false
                 }
             }) {
