@@ -9,15 +9,14 @@ import SwiftUI
 
 struct PodSelectionView: View {
     @Binding var isSheetPresented: Bool
+    @Binding var pods: [Pods]
+    
     @State var name = ""
-    @State var group: groupType = .screenTime
-    @State var numWeeks: Double = 2
-    @State var numStrikes = 3
+    @State var podType: groupType = .screenTime // default picker value
+    @State var numWeeks: Double = 2 // default picker value
+    @State var totalStrikes = 3 // default picker values
     
     @State var printError = false
-    
-    
-    var addPod: (String, groupType, Double, Int) -> Void
     
     var body: some View {
         VStack {
@@ -39,7 +38,7 @@ struct PodSelectionView: View {
                 .padding()
                 .padding(.bottom, 40)
             
-            
+            // if done button clicked w/ no name specified show error
             if printError {
                 Text("Please provide a name")
                     .foregroundColor(.red)
@@ -53,7 +52,7 @@ struct PodSelectionView: View {
             // picker for pod type [screentime]
             HStack {
                 Text("Pod Type:")
-                Picker("group", selection: $group) {
+                Picker("group", selection: $podType) {
                     ForEach(groupType.allCases, id: \.self) { selection in
                         Text(selection.rawValue).tag(selection)
                     }
@@ -79,7 +78,7 @@ struct PodSelectionView: View {
             // picker for number of strikes
             HStack {
                 Text("Strikes:")
-                Picker("strikes", selection: $numStrikes) {
+                Picker("strikes", selection: $totalStrikes) {
                     ForEach([3,4,5,6,7,8,9,10], id: \.self) { selection in
                         Text("\(selection) strikes")
                     }
@@ -96,9 +95,15 @@ struct PodSelectionView: View {
                     printError = true
                     
                 } else {
-                    // Add the new pod and dismiss the sheet
-                    addPod(name, group, numWeeks, numStrikes)
-                    PodFunctions.system.createPod(pod: Pods(podID: "pp", title: name, description: "", podType: group.rawValue, strikes: numStrikes, timeframe: numWeeks))
+                    // add new pod in firestore
+                    FirestoreFunctions.system.createPod(pod: Pods(podID: "temp", title: name, podType: podType, totalStrikes: totalStrikes, timeframe: numWeeks))
+                    
+                    // load the newly added pod
+                    FirestoreFunctions.system.loadPods() { pod in
+                            pods = pod
+                    }
+                    
+                    // dismiss the sheet
                     isSheetPresented = false
                 }
             }) {

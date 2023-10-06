@@ -68,12 +68,8 @@ struct SegmentedProgressBar: View {
 
 // View for main screen of pod
 struct MainPodView: View {
-    @State var podName: String
-    @State var podType: groupType
-    @State var timeframe: Double
-    @State var totalNumStrikes: Int
+    var pod: Pods
     @State var presentGoalSheet = false
-    
     @State var navigateToMemberView:Bool = false
     
     var body: some View {
@@ -95,25 +91,21 @@ struct MainPodView: View {
             
             // Displays all the necessary info about pod
             VStack {
-                Text(podName)
+                Text(pod.title!)
                     .fontWeight(.semibold)
                     .font(.title)
                     .padding(.horizontal, 30)
                     .padding(.top, 50)
                     .padding(.bottom, 7)
                 SegmentedProgressBar(failedDays: [3, 7, 12], completedDays: 37, totalDays: 56)
-                Text("0/\(totalNumStrikes) Strikes")
+                Text("0/\(pod.totalStrikes!) Strikes")
                     .padding(.horizontal, 30)
                 Spacer()
             }
         }
         .sheet(isPresented: $presentGoalSheet, content: {
-            GoalSheet(sheetPresented: $presentGoalSheet, podType: podType)
+            GoalSheet(sheetPresented: $presentGoalSheet, podType: pod.podType!)
         })
         NavigationLink("", destination: MembersPodView(), isActive: $navigateToMemberView)
     }
-}
-
-#Preview {
-    MainPodView(podName: "PodName", podType: .screenTime, timeframe: 2, totalNumStrikes: 7)
 }

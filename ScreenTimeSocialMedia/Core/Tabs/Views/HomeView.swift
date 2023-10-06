@@ -1,12 +1,12 @@
 import SwiftUI
 
 struct HomeView: View {
-    @State private var pods: [PodsView] = []
-    @State private var isSheetPresented = false
+    @State var pods: [Pods] = []
+    @State var isSheetPresented = false
     @State var errorMessage = ""
 
     var body: some View {
-        ZStack {
+        /*ZStack {
             VStack {
                 List {
                     ForEach(pods) { pod in
@@ -18,16 +18,15 @@ struct HomeView: View {
                         pods.move(fromOffsets: indexSet, toOffset: index)
                     }
                 }
-            }
+            }*/
             
-            VStack {
+            /*VStack {
                 Spacer()
                 Text(errorMessage)
                     .foregroundColor(.red)
                     .opacity(errorMessage.isEmpty ? 0.0 : 1.0) // hide error message if error message empty
                 
                 Button(action: {
-                    // Add your action code here
                     if(pods.count >= 4) {
                         errorMessage = "Maximum pod amount reached" // print error message
                         
@@ -52,15 +51,31 @@ struct HomeView: View {
                 }
                 .padding()
             }
+        }*/
+        List {
+            ForEach(pods, id: \.podID) { pod in
+                PodsView(pod: pod)
+            }
+            Section(footer:
+                HStack(alignment: .center) {
+                    Spacer()
+
+                    Button("Button") {
+                        isSheetPresented = true
+                    }
+                    Spacer()
+
+            }) {
+                EmptyView()
+            }
+        }
+        .onAppear() {
+            FirestoreFunctions.system.loadPods { pod in
+                pods = pod
+            }
         }
         .sheet(isPresented: $isSheetPresented) {
-            PodSelectionView(isSheetPresented: $isSheetPresented, addPod: {name, group, timeFrame, totalNumStrikes in
-                let newPod = PodsView(podName: name,
-                                      group: group,
-                                      timeFrame: timeFrame,
-                                      totalNumStrikes: totalNumStrikes)
-                pods.append(newPod)
-            })
+            PodSelectionView(isSheetPresented: $isSheetPresented, pods: $pods)
         }
     }
 }

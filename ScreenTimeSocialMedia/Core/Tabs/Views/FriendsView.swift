@@ -63,7 +63,7 @@ struct FriendsView: View {
                     // waits until searchQuery changes
                     .onChange(of: searchQuery) { newQuery in
                         // calls searchUsers with the newQuery
-                        FriendsSystem.system.searchUsers(query: newQuery) { users in
+                        FirestoreFunctions.system.searchUsers(query: newQuery) { users in
                             self.searchResults = users
                         }
                     }
@@ -82,7 +82,7 @@ struct FriendsView: View {
                         else {
                             // if button clicked add associated user
                             Button (action: {
-                                FriendsSystem.system.sendFriendRequestToUser(user.uid)
+                                FirestoreFunctions.system.sendFriendRequestToUser(user.uid)
                             }){
                                 Image(systemName: "plus.circle.fill")
                             }
@@ -99,17 +99,17 @@ struct FriendsView: View {
         }
         .onAppear() {
             // load friends list
-            FriendsSystem.system.loadFriends { users in
+            FirestoreFunctions.system.loadFriends { users in
                 numFriends = users.count
                 friendsList = users
             }
             
-            FriendsSystem.system.loadRecievedFriendRequests { users in
+            FirestoreFunctions.system.loadRecievedFriendRequests { users in
                 numFriendRequests = users.count
                 friendRequestList = users
             }
             
-            FriendsSystem.system.loadSentFriendRequests { users in
+            FirestoreFunctions.system.loadSentFriendRequests { users in
                 sentFriendRequestsList = users
             }
         }

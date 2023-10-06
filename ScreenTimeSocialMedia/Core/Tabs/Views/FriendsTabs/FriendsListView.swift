@@ -19,7 +19,7 @@ struct FriendsListView: View {
                         Text(user.username)
                         Spacer()
                         Button(action: {
-                            FriendsSystem.system.removeFriend(user.uid)
+                            FirestoreFunctions.system.removeFriend(user.uid)
                         }) {
                             Image(systemName: "multiply.circle.fill")
                         }

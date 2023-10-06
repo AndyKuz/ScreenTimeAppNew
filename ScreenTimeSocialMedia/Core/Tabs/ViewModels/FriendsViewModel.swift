@@ -9,7 +9,7 @@ import Firebase
 import FirebaseFirestore
 import FirebaseAuth
 
-extension FriendsSystem {
+extension FirestoreFunctions {
     // MARK: - User Search Functions
 
     // functionality to load search bar results

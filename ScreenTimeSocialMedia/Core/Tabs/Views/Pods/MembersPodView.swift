@@ -22,7 +22,7 @@ struct MembersPodView: View {
                 // waits until searchQuery changes
                 .onChange(of: searchQuery) { newQuery in
                     // calls searchUsers with the newQuery
-                    FriendsSystem.system.searchUsers(query: newQuery) { users in
+                    FirestoreFunctions.system.searchUsers(query: newQuery) { users in
                         self.searchResults = users
                     }
                 }
@@ -38,7 +38,7 @@ struct MembersPodView: View {
                     } else {
                         // if button clicked add associated user
                         Button (action: {
-                            FriendsSystem.system.sendFriendRequestToUser(user.uid)
+                            FirestoreFunctions.system.sendFriendRequestToUser(user.uid)
                         }){
                             Image(systemName: "plus.circle.fill")
                         }

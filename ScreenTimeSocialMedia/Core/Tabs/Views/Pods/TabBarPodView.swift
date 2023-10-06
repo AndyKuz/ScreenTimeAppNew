@@ -8,15 +8,12 @@
 import SwiftUI
 
 struct TabBarPodView: View {
-    var podName: String
-    var podType: groupType
-    var timeframe: Double
-    var totalNumStrikes: Int
+    var pod: Pods
     
     var body: some View {
         TabView {
             HStack {
-                MainPodView(podName: podName, podType: podType, timeframe: timeframe, totalNumStrikes: totalNumStrikes)
+                MainPodView(pod: pod)
             }
                 .tabItem {
                     Image(systemName: "house.fill")
@@ -32,6 +29,3 @@ struct TabBarPodView: View {
     }
 }
 
-#Preview {
-    TabBarPodView(podName: "podName", podType: .screenTime, timeframe: 3, totalNumStrikes: 7)
-}

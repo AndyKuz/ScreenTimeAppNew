@@ -11,11 +11,11 @@ struct ProfileView: View {
     @StateObject private var viewModel = ProfileViewModel()
     
     var email: String {
-        FriendsSystem.system.CURRENT_USER_EMAIL
+        FirestoreFunctions.system.CURRENT_USER_EMAIL
     }
     
     var username: String {
-        FriendsSystem.system.CURRENT_USER_USERNAME
+        FirestoreFunctions.system.CURRENT_USER_USERNAME
     }
     
     var firstLetter: String {
