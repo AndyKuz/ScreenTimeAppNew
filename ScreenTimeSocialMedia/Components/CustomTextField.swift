@@ -21,25 +21,39 @@ struct CustomTextField: View {
     var body: some View {
         switch type {
         case .text:
-            TextField(placeholder, text: $text)
-                .focused($isFocused, equals: true)
-                .padding()
-                .background(Color.gray.opacity(0.2))
-                .cornerRadius(10)
-                .overlay {
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke((isFocused ?? false) ? DefaultColors.teal1 : Color.white, lineWidth: 3)
+            ZStack(alignment: .leading) {
+                if text.isEmpty {
+                    Text(placeholder)
+                        .padding()
+                        .foregroundColor(DefaultColors.lightGrayColor)
                 }
+                TextField(placeholder, text: $text)
+                    .focused($isFocused, equals: true)
+                    .padding()
+                    .background(Color.gray.opacity(0.0))
+                    .cornerRadius(15)
+                    .overlay {
+                        RoundedRectangle(cornerRadius: 15)
+                            .stroke((isFocused ?? false) ? DefaultColors.teal1 : DefaultColors.lightGrayColor, lineWidth: 1)
+                    }
+            }
         case .secure:
-            SecureField(placeholder, text: $text)
-                .focused($isFocused, equals: true)
-                .padding()
-                .background(Color.gray.opacity(0.2))
-                .cornerRadius(10)
-                .overlay{
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke((isFocused ?? false) ? DefaultColors.teal1 : Color.white, lineWidth: 3)
+            ZStack(alignment: .leading) {
+                if text.isEmpty {
+                    Text(placeholder)
+                        .padding()
+                        .foregroundColor(DefaultColors.lightGrayColor)
                 }
+                SecureField(placeholder, text: $text)
+                    .focused($isFocused, equals: true)
+                    .padding()
+                    .background(Color.gray.opacity(0.0))
+                    .cornerRadius(15)
+                    .overlay{
+                        RoundedRectangle(cornerRadius: 15)
+                            .stroke((isFocused ?? false) ? DefaultColors.teal1 : DefaultColors.lightGrayColor, lineWidth: 1)
+                    }
+            }
         }
     }
     
