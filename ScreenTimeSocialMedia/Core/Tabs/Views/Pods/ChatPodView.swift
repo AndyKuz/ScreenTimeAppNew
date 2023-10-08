@@ -6,23 +6,27 @@
 //
 
 import SwiftUI
+import Firebase
 
-struct ChatPodView: View {
-    @State var message = ""
-    
-    var body: some View {
-        VStack {
-            Spacer()
-            TextField("message", text: $message)
-                .padding()
-                .background(Color.gray.opacity(0.2))
-                .frame(width: 300, height: 40)
-                .cornerRadius(10)
-        }
-        .padding(.bottom, 30)
-    }
+class ChatPodViewModel: ObservableObject {
+    @Published var data = [
+        Messages(from: Auth.auth().currentUser!.uid, text: "ur mom", createdAt: Date())
+    ]
 }
 
-#Preview {
-    ChatPodView()
+struct ChatPodView: View {
+    @StateObject var viewModel = ChatPodViewModel()
+    @State var message = ""
+     
+    var body: some View {
+        VStack {
+            ScrollView(showsIndicators: false) {
+                VStack(spacing: 8) {
+                    ForEach(viewModel.data) { message in
+                        MessageView(currentMessage: message)
+                    }
+                }
+            }
+        }
+    }
 }

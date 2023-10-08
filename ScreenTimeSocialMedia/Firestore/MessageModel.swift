@@ -7,7 +7,9 @@
 
 import Foundation
 
-struct Messages {
+struct Messages: Identifiable {
+    var id = UUID()
     let from: String
     let text: String
+    let createdAt: Date
 }
