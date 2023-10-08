@@ -55,6 +55,10 @@
 		49D5F7FD2ACF91FC0010A644 /* FirestoreFunctionPodsSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D5F7FC2ACF91FC0010A644 /* FirestoreFunctionPodsSystem.swift */; };
 		49D5F7FF2ACF92440010A644 /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D5F7FE2ACF92440010A644 /* MessageModel.swift */; };
 		49D5F8012ACF9BD20010A644 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D5F8002ACF9BD20010A644 /* HomeViewModel.swift */; };
+		49D5F8092AD13DA40010A644 /* DeviceActivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49D5F8082AD13DA30010A644 /* DeviceActivity.framework */; };
+		49D5F80C2AD13DA40010A644 /* DeviceActivityMonitorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D5F80B2AD13DA40010A644 /* DeviceActivityMonitorExtension.swift */; };
+		49D5F8112AD13DA40010A644 /* MyMonitorExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 49D5F8062AD13DA30010A644 /* MyMonitorExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		49D5F82D2AD2804E0010A644 /* ScreenTimeAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D5F82C2AD2804E0010A644 /* ScreenTimeAuthView.swift */; };
 		49E3039E2ABCCF23004C2A49 /* CustomNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E3039D2ABCCF23004C2A49 /* CustomNavBar.swift */; };
 		49E303A42ABE4E69004C2A49 /* MainPodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E303A32ABE4E69004C2A49 /* MainPodView.swift */; };
 		49E303A62ABE4E77004C2A49 /* MembersPodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E303A52ABE4E77004C2A49 /* MembersPodView.swift */; };
@@ -65,16 +69,37 @@
 		49E303B52AC633AF004C2A49 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E303B42AC633AF004C2A49 /* UserModel.swift */; };
 		49FDA9312AAD2D3C006E4059 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FDA9302AAD2D3C006E4059 /* CustomTextField.swift */; };
 		49FDA9342AAD985E006E4059 /* PermissionsManagerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FDA9332AAD985E006E4059 /* PermissionsManagerViewModel.swift */; };
-		49FEC1F12AADB54000F89C5C /* ScreenTimeTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FEC1F02AADB54000F89C5C /* ScreenTimeTestView.swift */; };
-		49FEC1FB2AAEC4DE00F89C5C /* ScreenTimeAppSelectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FEC1FA2AAEC4DE00F89C5C /* ScreenTimeAppSelectViewModel.swift */; };
+		49FEC1FB2AAEC4DE00F89C5C /* ScreenTimeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FEC1FA2AAEC4DE00F89C5C /* ScreenTimeViewModel.swift */; };
 		49FEC1FE2AB030E100F89C5C /* PodsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FEC1FD2AB030E100F89C5C /* PodsView.swift */; };
-		49FEC2002AB13DA800F89C5C /* ScreenTimeMonitorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FEC1FF2AB13DA800F89C5C /* ScreenTimeMonitorViewModel.swift */; };
-		49FEC2022AB1455400F89C5C /* ScreenTimeMonitorHandlerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FEC2012AB1455400F89C5C /* ScreenTimeMonitorHandlerViewModel.swift */; };
 		49FEC2042AB146D000F89C5C /* PodSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FEC2032AB146D000F89C5C /* PodSelectionView.swift */; };
 		49FEC20D2AB2DE1000F89C5C /* FriendsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FEC20C2AB2DE1000F89C5C /* FriendsListView.swift */; };
 		49FEC2102AB2DE2800F89C5C /* FriendsRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FEC20F2AB2DE2800F89C5C /* FriendsRequestView.swift */; };
 		635849042AC8E08200A6F8C4 /* PodModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635849032AC8E08200A6F8C4 /* PodModel.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		49D5F80F2AD13DA40010A644 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4995B0EE2AA84933003A8E3A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 49D5F8052AD13DA30010A644;
+			remoteInfo = MyMonitorExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		49D5F8152AD13DA40010A644 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				49D5F8112AD13DA40010A644 /* MyMonitorExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		4986CECD2AB7F5DC00D1E259 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
@@ -99,6 +124,12 @@
 		49D5F7FC2ACF91FC0010A644 /* FirestoreFunctionPodsSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreFunctionPodsSystem.swift; sourceTree = "<group>"; };
 		49D5F7FE2ACF92440010A644 /* MessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
 		49D5F8002ACF9BD20010A644 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		49D5F8062AD13DA30010A644 /* MyMonitorExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MyMonitorExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		49D5F8082AD13DA30010A644 /* DeviceActivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DeviceActivity.framework; path = System/Library/Frameworks/DeviceActivity.framework; sourceTree = SDKROOT; };
+		49D5F80B2AD13DA40010A644 /* DeviceActivityMonitorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceActivityMonitorExtension.swift; sourceTree = "<group>"; };
+		49D5F80D2AD13DA40010A644 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		49D5F80E2AD13DA40010A644 /* MyMonitorExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MyMonitorExtension.entitlements; sourceTree = "<group>"; };
+		49D5F82C2AD2804E0010A644 /* ScreenTimeAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenTimeAuthView.swift; sourceTree = "<group>"; };
 		49E3039D2ABCCF23004C2A49 /* CustomNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavBar.swift; sourceTree = "<group>"; };
 		49E303A32ABE4E69004C2A49 /* MainPodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPodView.swift; sourceTree = "<group>"; };
 		49E303A52ABE4E77004C2A49 /* MembersPodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembersPodView.swift; sourceTree = "<group>"; };
@@ -110,11 +141,8 @@
 		49FDA9302AAD2D3C006E4059 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		49FDA9322AAD9633006E4059 /* ScreenTimeSocialMedia.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ScreenTimeSocialMedia.entitlements; sourceTree = "<group>"; };
 		49FDA9332AAD985E006E4059 /* PermissionsManagerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionsManagerViewModel.swift; sourceTree = "<group>"; };
-		49FEC1F02AADB54000F89C5C /* ScreenTimeTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenTimeTestView.swift; sourceTree = "<group>"; };
-		49FEC1FA2AAEC4DE00F89C5C /* ScreenTimeAppSelectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenTimeAppSelectViewModel.swift; sourceTree = "<group>"; };
+		49FEC1FA2AAEC4DE00F89C5C /* ScreenTimeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenTimeViewModel.swift; sourceTree = "<group>"; };
 		49FEC1FD2AB030E100F89C5C /* PodsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodsView.swift; sourceTree = "<group>"; };
-		49FEC1FF2AB13DA800F89C5C /* ScreenTimeMonitorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenTimeMonitorViewModel.swift; sourceTree = "<group>"; };
-		49FEC2012AB1455400F89C5C /* ScreenTimeMonitorHandlerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenTimeMonitorHandlerViewModel.swift; sourceTree = "<group>"; };
 		49FEC2032AB146D000F89C5C /* PodSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodSelectionView.swift; sourceTree = "<group>"; };
 		49FEC20C2AB2DE1000F89C5C /* FriendsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListView.swift; sourceTree = "<group>"; };
 		49FEC20F2AB2DE2800F89C5C /* FriendsRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsRequestView.swift; sourceTree = "<group>"; };
@@ -156,6 +184,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		49D5F8032AD13DA30010A644 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				49D5F8092AD13DA40010A644 /* DeviceActivity.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -163,6 +199,8 @@
 			isa = PBXGroup;
 			children = (
 				4995B0F82AA84933003A8E3A /* ScreenTimeSocialMedia */,
+				49D5F80A2AD13DA40010A644 /* MyMonitorExtension */,
+				49D5F8072AD13DA30010A644 /* Frameworks */,
 				4995B0F72AA84933003A8E3A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -171,6 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				4995B0F62AA84933003A8E3A /* ScreenTimeSocialMedia.app */,
+				49D5F8062AD13DA30010A644 /* MyMonitorExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -202,6 +241,7 @@
 		49C8EED92AA97BB300B2565B /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				49FDA9332AAD985E006E4059 /* PermissionsManagerViewModel.swift */,
 				49C8EEDD2AA97C1C00B2565B /* Tabs */,
 				49C8EEDC2AA97BEF00B2565B /* Authentication */,
 			);
@@ -252,7 +292,7 @@
 			children = (
 				4995B1082AA84997003A8E3A /* LoginView.swift */,
 				4995B10A2AA849A2003A8E3A /* SignUpView.swift */,
-				49FEC1F02AADB54000F89C5C /* ScreenTimeTestView.swift */,
+				49D5F82C2AD2804E0010A644 /* ScreenTimeAuthView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -261,7 +301,6 @@
 			isa = PBXGroup;
 			children = (
 				4986CED52AB9573400D1E259 /* AuthenticationManager.swift */,
-				49FDA9332AAD985E006E4059 /* PermissionsManagerViewModel.swift */,
 				4986CECF2AB956AA00D1E259 /* SignUpViewModel.swift */,
 				4986CED12AB956B200D1E259 /* LoginViewModel.swift */,
 			);
@@ -281,6 +320,24 @@
 			path = Firestore;
 			sourceTree = "<group>";
 		};
+		49D5F8072AD13DA30010A644 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				49D5F8082AD13DA30010A644 /* DeviceActivity.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		49D5F80A2AD13DA40010A644 /* MyMonitorExtension */ = {
+			isa = PBXGroup;
+			children = (
+				49D5F80B2AD13DA40010A644 /* DeviceActivityMonitorExtension.swift */,
+				49D5F80D2AD13DA40010A644 /* Info.plist */,
+				49D5F80E2AD13DA40010A644 /* MyMonitorExtension.entitlements */,
+			);
+			path = MyMonitorExtension;
+			sourceTree = "<group>";
+		};
 		49E3039A2ABBB4A5004C2A49 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -295,9 +352,7 @@
 		49FDA9352AAD9E2C006E4059 /* ScreenTime */ = {
 			isa = PBXGroup;
 			children = (
-				49FEC1FA2AAEC4DE00F89C5C /* ScreenTimeAppSelectViewModel.swift */,
-				49FEC1FF2AB13DA800F89C5C /* ScreenTimeMonitorViewModel.swift */,
-				49FEC2012AB1455400F89C5C /* ScreenTimeMonitorHandlerViewModel.swift */,
+				49FEC1FA2AAEC4DE00F89C5C /* ScreenTimeViewModel.swift */,
 			);
 			path = ScreenTime;
 			sourceTree = "<group>";
@@ -353,10 +408,12 @@
 				4995B0F22AA84933003A8E3A /* Sources */,
 				4995B0F32AA84933003A8E3A /* Frameworks */,
 				4995B0F42AA84933003A8E3A /* Resources */,
+				49D5F8152AD13DA40010A644 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				49D5F8102AD13DA40010A644 /* PBXTargetDependency */,
 			);
 			name = ScreenTimeSocialMedia;
 			packageProductDependencies = (
@@ -392,6 +449,23 @@
 			productReference = 4995B0F62AA84933003A8E3A /* ScreenTimeSocialMedia.app */;
 			productType = "com.apple.product-type.application";
 		};
+		49D5F8052AD13DA30010A644 /* MyMonitorExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 49D5F8122AD13DA40010A644 /* Build configuration list for PBXNativeTarget "MyMonitorExtension" */;
+			buildPhases = (
+				49D5F8022AD13DA30010A644 /* Sources */,
+				49D5F8032AD13DA30010A644 /* Frameworks */,
+				49D5F8042AD13DA30010A644 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MyMonitorExtension;
+			productName = MyMonitorExtension;
+			productReference = 49D5F8062AD13DA30010A644 /* MyMonitorExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -403,6 +477,9 @@
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					4995B0F52AA84933003A8E3A = {
+						CreatedOnToolsVersion = 15.0;
+					};
+					49D5F8052AD13DA30010A644 = {
 						CreatedOnToolsVersion = 15.0;
 					};
 				};
@@ -424,6 +501,7 @@
 			projectRoot = "";
 			targets = (
 				4995B0F52AA84933003A8E3A /* ScreenTimeSocialMedia */,
+				49D5F8052AD13DA30010A644 /* MyMonitorExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -436,6 +514,13 @@
 				4995B1012AA84934003A8E3A /* Preview Assets.xcassets in Resources */,
 				4995B0FE2AA84934003A8E3A /* Assets.xcassets in Resources */,
 				49C8EEE12AA9877500B2565B /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		49D5F8042AD13DA30010A644 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,13 +546,12 @@
 				4986CED62AB9573400D1E259 /* AuthenticationManager.swift in Sources */,
 				4995B1122AA84A3F003A8E3A /* FriendsView.swift in Sources */,
 				4995B1142AA84A49003A8E3A /* HomeView.swift in Sources */,
-				49FEC1FB2AAEC4DE00F89C5C /* ScreenTimeAppSelectViewModel.swift in Sources */,
+				49FEC1FB2AAEC4DE00F89C5C /* ScreenTimeViewModel.swift in Sources */,
 				635849042AC8E08200A6F8C4 /* PodModel.swift in Sources */,
 				49E3039E2ABCCF23004C2A49 /* CustomNavBar.swift in Sources */,
 				4986CED02AB956AA00D1E259 /* SignUpViewModel.swift in Sources */,
 				49D5F8012ACF9BD20010A644 /* HomeViewModel.swift in Sources */,
 				49FDA9342AAD985E006E4059 /* PermissionsManagerViewModel.swift in Sources */,
-				49FEC1F12AADB54000F89C5C /* ScreenTimeTestView.swift in Sources */,
 				49E303AA2AC122FB004C2A49 /* ChatPodView.swift in Sources */,
 				49D5F7F82ACF91670010A644 /* FirestoreFunctions.swift in Sources */,
 				49D5F7FA2ACF91A20010A644 /* FirestoreFunctionsFriendsSystem.swift in Sources */,
@@ -476,17 +560,32 @@
 				49E303A42ABE4E69004C2A49 /* MainPodView.swift in Sources */,
 				4995B0FA2AA84933003A8E3A /* ScreenTimeSocialMediaApp.swift in Sources */,
 				49E303AE2AC29885004C2A49 /* ProfileViewModel.swift in Sources */,
+				49D5F82D2AD2804E0010A644 /* ScreenTimeAuthView.swift in Sources */,
 				49E303B52AC633AF004C2A49 /* UserModel.swift in Sources */,
 				49D5F7FF2ACF92440010A644 /* MessageModel.swift in Sources */,
 				49D5F7FD2ACF91FC0010A644 /* FirestoreFunctionPodsSystem.swift in Sources */,
-				49FEC2002AB13DA800F89C5C /* ScreenTimeMonitorViewModel.swift in Sources */,
 				4986CED22AB956B200D1E259 /* LoginViewModel.swift in Sources */,
-				49FEC2022AB1455400F89C5C /* ScreenTimeMonitorHandlerViewModel.swift in Sources */,
 				49FEC1FE2AB030E100F89C5C /* PodsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		49D5F8022AD13DA30010A644 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				49D5F80C2AD13DA40010A644 /* DeviceActivityMonitorExtension.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		49D5F8102AD13DA40010A644 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 49D5F8052AD13DA30010A644 /* MyMonitorExtension */;
+			targetProxy = 49D5F80F2AD13DA40010A644 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		4995B1022AA84934003A8E3A /* Debug */ = {
@@ -541,7 +640,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				"INFOPLIST_KEY_CLKComplicationPrincipalClass[sdk=*]" = MyMonitorExtension;
+				"INFOPLIST_KEY_NSPrincipalClass[sdk=*]" = MyMonitorExtension;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -598,7 +698,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				"INFOPLIST_KEY_CLKComplicationPrincipalClass[sdk=*]" = MyMonitorExtension;
+				"INFOPLIST_KEY_NSPrincipalClass[sdk=*]" = MyMonitorExtension;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -611,6 +712,7 @@
 		4995B1052AA84934003A8E3A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = ScreenTimeSocialMedia/ScreenTimeSocialMedia.entitlements;
@@ -643,6 +745,7 @@
 		4995B1062AA84934003A8E3A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = ScreenTimeSocialMedia/ScreenTimeSocialMedia.entitlements;
@@ -672,6 +775,62 @@
 			};
 			name = Release;
 		};
+		49D5F8132AD13DA40010A644 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = MyMonitorExtension/MyMonitorExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = GB457U8UXN;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MyMonitorExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = MyMonitorExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Slugs.ScreenTimeSocialMedia.MyMonitorExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		49D5F8142AD13DA40010A644 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = MyMonitorExtension/MyMonitorExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = GB457U8UXN;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MyMonitorExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = MyMonitorExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Slugs.ScreenTimeSocialMedia.MyMonitorExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -689,6 +848,15 @@
 			buildConfigurations = (
 				4995B1052AA84934003A8E3A /* Debug */,
 				4995B1062AA84934003A8E3A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		49D5F8122AD13DA40010A644 /* Build configuration list for PBXNativeTarget "MyMonitorExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				49D5F8132AD13DA40010A644 /* Debug */,
+				49D5F8142AD13DA40010A644 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

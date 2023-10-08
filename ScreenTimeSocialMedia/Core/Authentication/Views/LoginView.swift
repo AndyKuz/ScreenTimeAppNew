@@ -9,6 +9,7 @@ import SwiftUI
 
 struct LoginView: View {
     @StateObject private var viewModel = LoginViewModel()
+    @State var permissionManager = PermissionsManagerViewModel()
     
     var body: some View {
         ZStack {
@@ -48,7 +49,10 @@ struct LoginView: View {
                 .background(Color.blue)
                 .cornerRadius(10)
                 
-                NavigationLink("", destination: TabBarView().navigationBarBackButtonHidden(true), isActive: $viewModel.navigateToNextView)
+                NavigationLink(destination: permissionManager.screenTimeAuth() ? AnyView(TabBarView()) : AnyView(ScreenTimeAuthIntroView()), isActive: $viewModel.navigateToNextView) {
+                    EmptyView() // You can use EmptyView if you don't want a visible label
+                }
+
                 
                 NavigationLink(destination: SignUpView().navigationBarBackButtonHidden(true)){
                     Text("Don't have an account? Sign up")

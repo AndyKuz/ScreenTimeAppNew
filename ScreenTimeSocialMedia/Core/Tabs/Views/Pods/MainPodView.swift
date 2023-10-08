@@ -5,6 +5,7 @@
 //  Created by Andrew Kuznetsov on 9/22/23.
 //
 import SwiftUI
+import UserNotifications
 
 // Sheet configuration to allow user to select their personal goal
 struct GoalSheet: View {
@@ -47,20 +48,17 @@ struct SegmentedProgressBar: View {
     var completedDays: Int
     var totalDays: Int
     
-    var height: CGFloat = 20
-    var width: CGFloat = 330
-    var spacing: CGFloat = 2
     var selectedColor: Color = .accentColor
     var unselectedColor: Color = Color.secondary.opacity(0.3)
     
     var body: some View {
-        HStack(spacing: spacing) {
+        HStack(spacing: 2) {
             ForEach(0 ..< totalDays, id: \.self) { index in
                 Rectangle()
                     .foregroundColor(index < self.completedDays ? (failedDays.contains(index) ? .red : .green) : self.unselectedColor)
             }
         }
-        .frame(maxWidth: width, maxHeight: height)
+        .frame(maxWidth: 330, maxHeight: 20)
         .clipShape(Capsule())
     }
 }
@@ -68,8 +66,10 @@ struct SegmentedProgressBar: View {
 
 // View for main screen of pod
 struct MainPodView: View {
+    @StateObject var screenTimeManager = ScreenTimeViewModel()
     var pod: Pods
     @State var presentGoalSheet = false
+    @State var presentScreenTimeSheet = false
     @State var navigateToMemberView:Bool = false
     
     var body: some View {
@@ -100,12 +100,49 @@ struct MainPodView: View {
                 SegmentedProgressBar(failedDays: [3, 7, 12], completedDays: 37, totalDays: 56)
                 Text("0/\(pod.totalStrikes!) Strikes")
                     .padding(.horizontal, 30)
+                Button(action: {
+                    screenTimeManager.startMonitoring(goalHours: 1, pod: pod)
+                }) {
+                    Text("beging monitoring")
+                }
+                
+                Button(action: {
+                    let notificationContent = UNMutableNotificationContent()
+                    notificationContent.title = "Hello world!"
+                    notificationContent.subtitle = "Here's how you send a notification in SwiftUI"
+
+                    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+                    
+                    let req = UNNotificationRequest(identifier: UUID().uuidString, content: notificationContent, trigger: trigger)
+
+                    UNUserNotificationCenter.current().add(req)
+                }) {
+                    Text("Send push notification")
+                }
                 Spacer()
             }
+        }
+        .onAppear(perform: {
+            PermissionsManagerViewModel().screenTimeRequestAuth()
+            // Check if something is saved for a specific key
+            if let savedValue = UserDefaults.standard.object(forKey: "ScreenTimeSelection") {
+                // There is something saved for the key
+                print("Value exists: \(savedValue)")
+            } else {
+                // Nothing is saved for the key
+                presentScreenTimeSheet = true
+            }
+        })
+        .familyActivityPicker(
+            isPresented: $presentScreenTimeSheet,
+            selection: $screenTimeManager.activitySelection
+        )
+        .onChange(of: screenTimeManager.activitySelection) {
+            screenTimeManager.saveSelection()
         }
         .sheet(isPresented: $presentGoalSheet, content: {
             GoalSheet(sheetPresented: $presentGoalSheet, podType: pod.podType!)
         })
-        NavigationLink("", destination: MembersPodView(), isActive: $navigateToMemberView)
+        NavigationLink("", destination: MembersPodView(pod: pod), isActive: $navigateToMemberView)
     }
 }

@@ -8,24 +8,14 @@
 import SwiftUI
 
 struct MembersPodView: View {
-    @State var currentMembers: [User] = []
-    @State var searchResults: [User] = []
-    @State var searchQuery: String = ""
+    var pod: Pods
     
     var body: some View {
         VStack {
-            Text("Invite Members")
-            SearchBar(text: $searchQuery)
-                .disableAutocorrection(true)
-                .autocapitalization(.none)
-                .padding(.top, 20)
-                // waits until searchQuery changes
-                .onChange(of: searchQuery) { newQuery in
-                    // calls searchUsers with the newQuery
-                    FirestoreFunctions.system.searchUsers(query: newQuery) { users in
-                        self.searchResults = users
-                    }
-                }
+            
+        }
+        /*VStack {
+            Text("Members")
             
             // displays search results
             List(searchResults, id: \.uid, rowContent: { user in
@@ -51,10 +41,6 @@ struct MembersPodView: View {
             .listRowInsets(EdgeInsets())  // remove space between list elements
             .background(Color(UIColor.systemBackground))
             Spacer()
-        }
+        }*/
     }
-}
-
-#Preview {
-    MembersPodView()
 }
