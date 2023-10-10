@@ -49,9 +49,16 @@ struct LoginView: View {
                 .background(Color.blue)
                 .cornerRadius(10)
                 
-                NavigationLink(destination: permissionManager.screenTimeAuth() ? AnyView(TabBarView()) : AnyView(ScreenTimeAuthIntroView()), isActive: $viewModel.navigateToNextView) {
-                    EmptyView() // You can use EmptyView if you don't want a visible label
+                // checks for if user has all screen time authorization setup on device navigates based on result
+                NavigationLink(
+                    destination: permissionManager.screenTimeAuth() ?
+                        AnyView(TabBarView().navigationBarBackButtonHidden(true)) :
+                        AnyView(ScreenTimeAuthIntroView().navigationBarBackButtonHidden(true)),
+                    isActive: $viewModel.navigateToNextView
+                ) {
+                    EmptyView()
                 }
+
 
                 
                 NavigationLink(destination: SignUpView().navigationBarBackButtonHidden(true)){

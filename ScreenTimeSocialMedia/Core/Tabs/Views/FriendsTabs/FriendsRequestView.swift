@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FriendsRequestView: View {
-    @State var friendRequestsList: [User] // pass in a list of friend requests
+    @Binding var friendRequestsList: [User] // pass in a list of friend requests
     
     var body: some View {
         VStack {

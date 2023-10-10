@@ -17,7 +17,7 @@ struct ScreenTimeAuthIntroView: View {
         VStack {
             Text("Welcome to App Name!")
             Text("Before we get started we need to set a few things up")
-            NavigationLink(destination: ScreenTimeAuthPermissionView()) {
+            NavigationLink(destination: ScreenTimeAuthPermissionView().navigationBarBackButtonHidden(true)) {
                 Text("Continue")
             }
         }
@@ -41,7 +41,7 @@ struct ScreenTimeAuthPermissionView: View {
                 Text("Allow Access")
             }
             NavigationLink(
-                destination: ScreenTimeAuthAppsSelectView(),
+                destination: ScreenTimeAuthAppsSelectView().navigationBarBackButtonHidden(true),
                 isActive: $permissionGranted,
                 label: { EmptyView() }
             )
@@ -62,7 +62,7 @@ struct ScreenTimeAuthAppsSelectView: View {
                 Text("Choose Apps")
             }
             
-            NavigationLink(destination: TabBarView()) {
+            NavigationLink(destination: TabBarView().navigationBarBackButtonHidden(true)) {
                 Text("Finish!")
             }
         }

@@ -67,7 +67,8 @@ class FirestoreFunctions {
         }
     }
     
-    func getUsername(_ userID: String, completion: @escaping (String) -> Void) {
+    // given a userID return the users associated username
+    func getUsername(_ userID: String, completion: @escaping(String) -> Void){
         let userIDRef = USER_REF.document(userID)
         
         // gets document associated with userID
