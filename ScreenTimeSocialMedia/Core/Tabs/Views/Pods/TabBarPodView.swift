@@ -20,7 +20,7 @@ struct TabBarPodView: View {
                 }
             
             HStack {
-                ChatPodView()
+                ChatPodView(pod: pod)
             }
                 .tabItem {
                     Image(systemName: "message.fill")

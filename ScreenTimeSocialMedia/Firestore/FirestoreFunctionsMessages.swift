@@ -9,26 +9,26 @@ import Foundation
 import FirebaseFirestore
 
 extension FirestoreFunctions {
-    func getMessage(message: Messages, pod: Pods) {
-        PODS_REF.document(pod.podID).collection("messages").getDocuments { snapshot, err in
-            if let err = err {
-                print("error getting message")
-            } else {
-                print("message grabbed successfully")
-            }
+    func getMessageDatabase(message: Messages, pod: Pods, completion: @escaping ([Messages]?, Error?) -> Void) {
+        let MESSAGE_COLLECTION_REF = PODS_REF.document(pod.podID).collection("messages")
             
-            let docs = snapshot!.documents
-            
+        let _ = MESSAGE_COLLECTION_REF.addSnapshotListener { snapshot, error in
+            if let error = error {
+                // Handle the error
+                print("Error listening for messages: \(error)")
+                completion(nil, error)
+                    return
+                }
             var messages = [Messages]()
-            for doc in docs {
+            for doc in snapshot?.documents ?? []{
                 let data = doc.data()
                 let text = data["text"] as? String ?? "Error"
                 let from = data["from"] as? String ?? "Error"
                 let createdAt = data["createdAt"] as? Timestamp ?? Timestamp()
-                
                 let msg = Messages(from: from, text: text, createdAt: createdAt.dateValue())
                 messages.append(msg)
             }
+            completion(messages, nil)
         }
     }
     
