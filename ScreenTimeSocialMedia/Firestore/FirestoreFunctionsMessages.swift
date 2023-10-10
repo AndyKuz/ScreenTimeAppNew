@@ -9,8 +9,8 @@ import Foundation
 import FirebaseFirestore
 
 extension FirestoreFunctions {
-    func getMessageDatabase(message: Messages, pod: Pods, completion: @escaping ([Messages]?, Error?) -> Void) {
-        let MESSAGE_COLLECTION_REF = PODS_REF.document(pod.podID).collection("messages")
+    func getMessageDatabase(podID: String, completion: @escaping ([Messages]?, Error?) -> Void) {
+        let MESSAGE_COLLECTION_REF = PODS_REF.document(podID).collection("messages")
             
         let _ = MESSAGE_COLLECTION_REF.addSnapshotListener { snapshot, error in
             if let error = error {
@@ -23,23 +23,25 @@ extension FirestoreFunctions {
             for doc in snapshot?.documents ?? []{
                 let data = doc.data()
                 let text = data["text"] as? String ?? "Error"
-                let from = data["from"] as? String ?? "Error"
+                let userID = data["userID"] as? String ?? "Error"
+                let username = data["username"] as? String ?? "Error"
                 let createdAt = data["createdAt"] as? Timestamp ?? Timestamp()
-                let msg = Messages(from: from, text: text, createdAt: createdAt.dateValue())
+                let msg = Messages(userID: userID, username: username, text: text, createdAt: createdAt.dateValue())
                 messages.append(msg)
             }
             completion(messages, nil)
         }
     }
     
-    func sendMessagesDatabase(message: Messages, pod: Pods) {
+    func sendMessagesDatabase(message: Messages, podID: String) {
         let message = [
-            "from": message.from,
+            "userID": message.userID,
+            "username": message.username,
             "text": message.text,
             "createdAt": message.createdAt
         ] as [String: Any]
         
-        PODS_REF.document(pod.podID).collection("messages").addDocument(data: message) { err in
+        PODS_REF.document(podID).collection("messages").addDocument(data: message) { err in
             if let err = err {
                 print("Error saving message: \(err)")
             } else {

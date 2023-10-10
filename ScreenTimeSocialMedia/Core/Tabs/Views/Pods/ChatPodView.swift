@@ -36,13 +36,12 @@ struct ChatPodView: View {
                 
                 Button(action: {
                     // Handle sending the message
-                    viewModel.data.append(Messages(from: Auth.auth().currentUser!.uid, text: message, createdAt: Date()))
-                    FirestoreFunctions.system.sendMessagesDatabase(message: Messages(from: Auth.auth().currentUser!.uid, text: message, createdAt: Date()), pod: pod)
+                    FirestoreFunctions.system.sendMessagesDatabase(message: Messages(userID: Auth.auth().currentUser!.uid, username: (Auth.auth().currentUser?.displayName)!, text: message, createdAt: Date()), podID: pod.podID)
                     message = ""
                 }) {
                     Text("Send")
                         .padding()
-                        .background(Color.blue)
+                        .background(DefaultColors.teal1)
                         .foregroundColor(.white)
                         .cornerRadius(10)
                 }
@@ -50,7 +49,7 @@ struct ChatPodView: View {
             }
         }
         .onAppear() {
-            FirestoreFunctions.system.getMessageDatabase(message: Messages(from: Auth.auth().currentUser!.uid, text: message, createdAt: Date()), pod: pod) { (retrievedMessages, error) in
+            FirestoreFunctions.system.getMessageDatabase(podID: pod.podID) { (retrievedMessages, error) in
                 if let error = error {
                     // Handle the error
                     print("Error: \(error)")

@@ -8,7 +8,8 @@
 import Foundation
 
 struct Messages {
-    let from: String
+    let userID: String
+    let username: String
     let text: String
     let createdAt: Date
 }
