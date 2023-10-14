@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SignUpView: View {
-    
+    @Environment(\.presentationMode) var presentationMode
     @StateObject private var viewModel = SignUpViewModel()
 
     var body: some View {
@@ -51,7 +51,9 @@ struct SignUpView: View {
 
             NavigationLink("", destination: TabBarView().navigationBarBackButtonHidden(true), isActive: $viewModel.navigateToNextView)
             
-            NavigationLink(destination: LoginView().navigationBarBackButtonHidden(true)) {
+            Button(action: {
+                presentationMode.wrappedValue.dismiss() // go back to parent view (LoginView)
+            }) {
                 Text("Already have an account? Login")
                     .font(.headline)
                     .foregroundColor(.blue)

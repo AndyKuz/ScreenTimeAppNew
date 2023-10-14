@@ -59,6 +59,13 @@
 		49D5F80C2AD13DA40010A644 /* DeviceActivityMonitorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D5F80B2AD13DA40010A644 /* DeviceActivityMonitorExtension.swift */; };
 		49D5F8112AD13DA40010A644 /* MyMonitorExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 49D5F8062AD13DA30010A644 /* MyMonitorExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		49D5F82D2AD2804E0010A644 /* ScreenTimeAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D5F82C2AD2804E0010A644 /* ScreenTimeAuthView.swift */; };
+		49D5F8302AD5273C0010A644 /* PodsInviteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D5F82F2AD5273C0010A644 /* PodsInviteView.swift */; };
+		49D5F8342AD8AC220010A644 /* MembersInvitePodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D5F8332AD8AC220010A644 /* MembersInvitePodView.swift */; };
+		49D5F8392AD8B7B20010A644 /* CheckBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D5F8382AD8B7B20010A644 /* CheckBoxView.swift */; };
+		49D5F83D2AD8BA6B0010A644 /* MembersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D5F83C2AD8BA6B0010A644 /* MembersViewModel.swift */; };
+		49D5F83F2AD9094D0010A644 /* SettingsPodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D5F83E2AD9094D0010A644 /* SettingsPodView.swift */; };
+		49D5F8412AD90CEA0010A644 /* MainPodViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D5F8402AD90CEA0010A644 /* MainPodViewModel.swift */; };
+		49D5F8432ADA5ECF0010A644 /* RowButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D5F8422ADA5ECF0010A644 /* RowButtonView.swift */; };
 		49E3039E2ABCCF23004C2A49 /* CustomNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E3039D2ABCCF23004C2A49 /* CustomNavBar.swift */; };
 		49E303A42ABE4E69004C2A49 /* MainPodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E303A32ABE4E69004C2A49 /* MainPodView.swift */; };
 		49E303A62ABE4E77004C2A49 /* MembersPodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E303A52ABE4E77004C2A49 /* MembersPodView.swift */; };
@@ -130,6 +137,13 @@
 		49D5F80D2AD13DA40010A644 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49D5F80E2AD13DA40010A644 /* MyMonitorExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MyMonitorExtension.entitlements; sourceTree = "<group>"; };
 		49D5F82C2AD2804E0010A644 /* ScreenTimeAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenTimeAuthView.swift; sourceTree = "<group>"; };
+		49D5F82F2AD5273C0010A644 /* PodsInviteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodsInviteView.swift; sourceTree = "<group>"; };
+		49D5F8332AD8AC220010A644 /* MembersInvitePodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembersInvitePodView.swift; sourceTree = "<group>"; };
+		49D5F8382AD8B7B20010A644 /* CheckBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBoxView.swift; sourceTree = "<group>"; };
+		49D5F83C2AD8BA6B0010A644 /* MembersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembersViewModel.swift; sourceTree = "<group>"; };
+		49D5F83E2AD9094D0010A644 /* SettingsPodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPodView.swift; sourceTree = "<group>"; };
+		49D5F8402AD90CEA0010A644 /* MainPodViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPodViewModel.swift; sourceTree = "<group>"; };
+		49D5F8422ADA5ECF0010A644 /* RowButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowButtonView.swift; sourceTree = "<group>"; };
 		49E3039D2ABCCF23004C2A49 /* CustomNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavBar.swift; sourceTree = "<group>"; };
 		49E303A32ABE4E69004C2A49 /* MainPodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPodView.swift; sourceTree = "<group>"; };
 		49E303A52ABE4E77004C2A49 /* MembersPodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembersPodView.swift; sourceTree = "<group>"; };
@@ -264,6 +278,8 @@
 				49FDA9302AAD2D3C006E4059 /* CustomTextField.swift */,
 				4986CECD2AB7F5DC00D1E259 /* SearchBar.swift */,
 				49E3039D2ABCCF23004C2A49 /* CustomNavBar.swift */,
+				49D5F8382AD8B7B20010A644 /* CheckBoxView.swift */,
+				49D5F8422ADA5ECF0010A644 /* RowButtonView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -338,13 +354,33 @@
 			path = MyMonitorExtension;
 			sourceTree = "<group>";
 		};
-		49E3039A2ABBB4A5004C2A49 /* Pods */ = {
+		49D5F83A2AD8BA3F0010A644 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				49E303AB2AC12AAF004C2A49 /* TabBarPodView.swift */,
 				49E303A32ABE4E69004C2A49 /* MainPodView.swift */,
 				49E303A52ABE4E77004C2A49 /* MembersPodView.swift */,
+				49D5F8332AD8AC220010A644 /* MembersInvitePodView.swift */,
 				49E303A92AC122FB004C2A49 /* ChatPodView.swift */,
+				49D5F83E2AD9094D0010A644 /* SettingsPodView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		49D5F83B2AD8BA460010A644 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				49D5F8402AD90CEA0010A644 /* MainPodViewModel.swift */,
+				49D5F83C2AD8BA6B0010A644 /* MembersViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		49E3039A2ABBB4A5004C2A49 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				49D5F83B2AD8BA460010A644 /* ViewModels */,
+				49D5F83A2AD8BA3F0010A644 /* Views */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -369,6 +405,7 @@
 			isa = PBXGroup;
 			children = (
 				4995B1132AA84A49003A8E3A /* HomeView.swift */,
+				49D5F82F2AD5273C0010A644 /* PodsInviteView.swift */,
 				49FEC1FD2AB030E100F89C5C /* PodsView.swift */,
 				49FEC2032AB146D000F89C5C /* PodSelectionView.swift */,
 				49E3039A2ABBB4A5004C2A49 /* Pods */,
@@ -538,14 +575,17 @@
 				49FDA9312AAD2D3C006E4059 /* CustomTextField.swift in Sources */,
 				4995B10B2AA849A2003A8E3A /* SignUpView.swift in Sources */,
 				4995B1162AA84A54003A8E3A /* ProfileView.swift in Sources */,
+				49D5F8432ADA5ECF0010A644 /* RowButtonView.swift in Sources */,
 				49C8EEDF2AA97F7E00B2565B /* SettingsRowView.swift in Sources */,
 				49E303B32AC5473F004C2A49 /* FriendsViewModel.swift in Sources */,
+				49D5F8412AD90CEA0010A644 /* MainPodViewModel.swift in Sources */,
 				4995B1092AA84997003A8E3A /* LoginView.swift in Sources */,
 				49FEC20D2AB2DE1000F89C5C /* FriendsListView.swift in Sources */,
 				4995B10D2AA849AD003A8E3A /* TabBarView.swift in Sources */,
 				4986CED62AB9573400D1E259 /* AuthenticationManager.swift in Sources */,
 				4995B1122AA84A3F003A8E3A /* FriendsView.swift in Sources */,
 				4995B1142AA84A49003A8E3A /* HomeView.swift in Sources */,
+				49D5F8302AD5273C0010A644 /* PodsInviteView.swift in Sources */,
 				49FEC1FB2AAEC4DE00F89C5C /* ScreenTimeViewModel.swift in Sources */,
 				635849042AC8E08200A6F8C4 /* PodModel.swift in Sources */,
 				49E3039E2ABCCF23004C2A49 /* CustomNavBar.swift in Sources */,
@@ -555,8 +595,11 @@
 				49E303AA2AC122FB004C2A49 /* ChatPodView.swift in Sources */,
 				49D5F7F82ACF91670010A644 /* FirestoreFunctions.swift in Sources */,
 				49D5F7FA2ACF91A20010A644 /* FirestoreFunctionsFriendsSystem.swift in Sources */,
+				49D5F83F2AD9094D0010A644 /* SettingsPodView.swift in Sources */,
+				49D5F8342AD8AC220010A644 /* MembersInvitePodView.swift in Sources */,
 				4986CECE2AB7F5DC00D1E259 /* SearchBar.swift in Sources */,
 				49C8EF212AA9B02100B2565B /* DefaultColors.swift in Sources */,
+				49D5F83D2AD8BA6B0010A644 /* MembersViewModel.swift in Sources */,
 				49E303A42ABE4E69004C2A49 /* MainPodView.swift in Sources */,
 				4995B0FA2AA84933003A8E3A /* ScreenTimeSocialMediaApp.swift in Sources */,
 				49E303AE2AC29885004C2A49 /* ProfileViewModel.swift in Sources */,
@@ -564,6 +607,7 @@
 				49E303B52AC633AF004C2A49 /* UserModel.swift in Sources */,
 				49D5F7FF2ACF92440010A644 /* MessageModel.swift in Sources */,
 				49D5F7FD2ACF91FC0010A644 /* FirestoreFunctionPodsSystem.swift in Sources */,
+				49D5F8392AD8B7B20010A644 /* CheckBoxView.swift in Sources */,
 				4986CED22AB956B200D1E259 /* LoginViewModel.swift in Sources */,
 				49FEC1FE2AB030E100F89C5C /* PodsView.swift in Sources */,
 			);

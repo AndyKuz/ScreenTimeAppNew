@@ -21,13 +21,8 @@ struct CustomTextField: View {
     var body: some View {
         switch type {
         case .text:
-            ZStack(alignment: .leading) {
-                if text.isEmpty {   // if nothing typed in textfield add placeholder
-                    Text(placeholder)
-                        .foregroundColor(DefaultColors.lightGray2)
-                        .padding()
-                }
-                TextField("", text: $text)
+            HStack {
+                TextField(placeholder, text: $text)
                     .focused($isFocused, equals: true)
                     .padding()
                     .background(Color.gray.opacity(0.0))
@@ -35,16 +30,11 @@ struct CustomTextField: View {
                     .cornerRadius(10)
                     .overlay {
                         RoundedRectangle(cornerRadius: 10)
-                            .stroke((isFocused ?? false) ? DefaultColors.teal1 : DefaultColors.lightGray2, lineWidth: 2)
+                            .stroke((isFocused ?? false) ? DefaultColors.teal1 : DefaultColors.lightGray2, lineWidth: 2.5)
                     }
             }
         case .secure:
-            ZStack(alignment: .leading) {
-                if text.isEmpty {
-                    Text(placeholder)
-                        .foregroundColor(DefaultColors.lightGray2)
-                        .padding()
-                }
+            HStack {
                 SecureField(placeholder, text: $text)
                     .focused($isFocused, equals: true)
                     .padding()
@@ -53,7 +43,7 @@ struct CustomTextField: View {
                     .cornerRadius(10)
                     .overlay{
                         RoundedRectangle(cornerRadius: 10)
-                            .stroke((isFocused ?? false) ? DefaultColors.teal1 : DefaultColors.lightGray2, lineWidth: 2)
+                            .stroke((isFocused ?? false) ? DefaultColors.teal1 : DefaultColors.lightGray2, lineWidth: 2.5)
                     }
             }
         }

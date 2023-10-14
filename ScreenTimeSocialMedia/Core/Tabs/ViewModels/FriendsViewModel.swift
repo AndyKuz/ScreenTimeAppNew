@@ -10,8 +10,6 @@ import FirebaseFirestore
 import FirebaseAuth
 
 extension FirestoreFunctions {
-    // MARK: - User Search Functions
-
     // functionality to load search bar results
     func searchUsers(query: String, completion: @escaping ([User]) -> Void) {
         USER_REF
@@ -33,6 +31,9 @@ extension FirestoreFunctions {
                 let users = documents.compactMap { document -> User? in
                     let data = document.data()
                     let uid = document.documentID
+                    if uid == self.CURRENT_USER_UID {
+                        return nil
+                    }
                     let username = data["username"] as? String
                     return User(username: username ?? "", userID: uid)
                 }
@@ -41,10 +42,9 @@ extension FirestoreFunctions {
             }
     }
     
-    
     func loadRecievedFriendRequests(completion: @escaping ([User]) -> Void) {
         // adds a listener to the friend request collection of the current user
-        CURRENT_USER_RECEIVED_REQUESTS_REF
+        CURRENT_USER_RECEIVED_FRIENDS_REQUESTS_REF
             .addSnapshotListener { querySnapshot, error in
                 guard let _ = querySnapshot?.documents else {
                     print("loadUserData(): Error fetching documents: \(error!)")
@@ -59,12 +59,15 @@ extension FirestoreFunctions {
                     }
                     // creates a list of type User encompassing all friend requests
                     completion(users)
+                } else {
+                    print("loadReceivedFriendsRequests(): Error could not get querySnapshot")
+                    return
                 }
             }
     }
     
     func loadSentFriendRequests(completion: @escaping ([User]) -> Void) {
-        CURRENT_USER_SENT_REQUESTS_REF
+        CURRENT_USER_SENT_FRIENDS_REQUESTS_REF
             .addSnapshotListener { querySnapshot, error in
                 guard let _ = querySnapshot?.documents else {
                     print("loadFriends(): Error fetching documents: \(error!)")

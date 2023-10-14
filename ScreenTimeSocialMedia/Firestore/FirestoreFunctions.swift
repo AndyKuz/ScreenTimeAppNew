@@ -30,12 +30,24 @@ class FirestoreFunctions {
         return CURRENT_USER_REF.collection("friends")
     }
     
-    var CURRENT_USER_RECEIVED_REQUESTS_REF: CollectionReference {
-        return CURRENT_USER_REF.collection("receivedRequests")
+    var CURRENT_USER_RECEIVED_FRIENDS_REQUESTS_REF: CollectionReference {
+        return CURRENT_USER_REF.collection("receivedFriendsRequests")
     }
     
-    var CURRENT_USER_SENT_REQUESTS_REF: CollectionReference {
-        return CURRENT_USER_REF.collection("sentRequests")
+    var CURRENT_USER_SENT_FRIENDS_REQUESTS_REF: CollectionReference {
+        return CURRENT_USER_REF.collection("sentFriendsRequests")
+    }
+    
+    var CURRENT_USER_RECEIVED_PODS_REQUEST_REF: CollectionReference {
+        return CURRENT_USER_REF.collection("receivedPodsRequests")
+    }
+    
+    var CURRENT_USER_SENT_PODS_REQUEST_REF: CollectionReference {
+        return CURRENT_USER_REF.collection("sentPodsRequests")
+    }
+    
+    var CURRENT_USER_PODS_REF: CollectionReference {
+        return CURRENT_USER_REF.collection("pods")
     }
     
     var PODS_REF: CollectionReference {

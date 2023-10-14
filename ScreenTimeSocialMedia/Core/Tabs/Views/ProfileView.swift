@@ -63,6 +63,7 @@ struct ProfileView: View {
                 } label: {
                     SettingsRowView(imageName: "rectangle.portrait.and.arrow.right", title: "Log Out", tintColor: .red)
                 }
+                
                 Button(action: {
                     presentScreenTimeSheet = true
                 }) {

@@ -122,17 +122,6 @@ struct MainPodView: View {
                 Spacer()
             }
         }
-        .onAppear(perform: {
-            PermissionsManagerViewModel().screenTimeRequestAuth()
-            // Check if something is saved for a specific key
-            if let savedValue = UserDefaults.standard.object(forKey: "ScreenTimeSelection") {
-                // There is something saved for the key
-                print("Value exists: \(savedValue)")
-            } else {
-                // Nothing is saved for the key
-                presentScreenTimeSheet = true
-            }
-        })
         .familyActivityPicker(
             isPresented: $presentScreenTimeSheet,
             selection: $screenTimeManager.activitySelection

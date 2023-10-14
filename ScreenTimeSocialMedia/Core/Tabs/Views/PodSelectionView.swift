@@ -14,7 +14,7 @@ struct PodSelectionView: View {
     @State var name = ""
     @State var podType: groupType = .screenTime // default picker value
     @State var numWeeks: Double = 2 // default picker value
-    @State var totalStrikes = 3 // default picker values
+    @State var totalStrikes: Int = 3 // default picker values
     
     @State var printError = false
     
@@ -96,12 +96,7 @@ struct PodSelectionView: View {
                     
                 } else {
                     // add new pod in firestore
-                    FirestoreFunctions.system.createPod(pod: Pods(podID: "temp", title: name, podType: podType, totalStrikes: totalStrikes, timeframe: numWeeks))
-                    
-                    // load the newly added pod
-                    FirestoreFunctions.system.loadPods() { pod in
-                            pods = pod
-                    }
+                    FirestoreFunctions.system.createPod(pod: Pods(podID: "temp", title: name, podType: podType, totalStrikes: totalStrikes, currentStrikes: 0, timeframe: numWeeks))
                     
                     // dismiss the sheet
                     isSheetPresented = false

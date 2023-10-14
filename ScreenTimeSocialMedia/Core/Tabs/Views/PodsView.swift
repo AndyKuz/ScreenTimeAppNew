@@ -9,6 +9,7 @@ import SwiftUI
 
 struct PodsView: View {
     var pod: Pods
+    var fetchUsersPods: () -> Void
     
     // based on the chosen case from groupType enum assign a emoji representation
     var groupEmoji: String{
@@ -20,18 +21,20 @@ struct PodsView: View {
     }
 
     var body: some View {
-        // when the pod is clicked on from the HomeView navigate to its MainView
-        NavigationLink(destination: TabBarPodView(pod: pod)) {
-            HStack {
-                Text(pod.title!)
-                    .font(.title2)
-                    .bold()
-                Spacer()
-                Text(groupEmoji)
-                    .font(.subheadline)
+        HStack {
+            // when the pod is clicked on from the HomeView navigate to its MainView
+            NavigationLink(destination: TabBarPodView(pod: pod, fetchUsersPods: fetchUsersPods)) {
+                HStack {
+                    Text(pod.title!)
+                        .font(.title2)
+                        .bold()
+                    Spacer()
+                    Text(groupEmoji)
+                        .font(.subheadline)
+                }
+                .padding(.horizontal)
             }
-            .padding(.horizontal)
+            .frame(height: 80)
         }
-        .frame(height: 80)
     }
 }

@@ -14,12 +14,12 @@ extension FirestoreFunctions {
     // puts userID's uid and username in sent requests
     func sendFriendRequestToUser(_ userID: String) {
         // configures userID's received requests
-        USER_REF.document(userID).collection("receivedRequests").document(CURRENT_USER_UID).setData(["username": CURRENT_USER_USERNAME])
+        USER_REF.document(userID).collection("receivedFriendsRequests").document(CURRENT_USER_UID).setData(["username": CURRENT_USER_USERNAME])
     
         // gets userID's username
         getUsername(userID) { username in
             // configures userID's sent requests
-            self.CURRENT_USER_SENT_REQUESTS_REF.document(userID).setData(["username": username])
+            self.CURRENT_USER_SENT_FRIENDS_REQUESTS_REF.document(userID).setData(["username": username])
         }
     }
     
@@ -33,7 +33,7 @@ extension FirestoreFunctions {
     // adds current user as friend in userID's collection
     func acceptFriendRequest(_ userID: String) {
         // Remove current user from "recievedRequests" and add to "friends" for userID's collection
-        CURRENT_USER_RECEIVED_REQUESTS_REF.document(userID).delete()
+        CURRENT_USER_RECEIVED_FRIENDS_REQUESTS_REF.document(userID).delete()
         
         // get userID's username
         getUsername(userID) { username in
@@ -42,12 +42,12 @@ extension FirestoreFunctions {
         }
                     
         // Remove current user from "recievedRequests" and add to "friends" for userID's collection
-        USER_REF.document(userID).collection("sentRequests").document(CURRENT_USER_UID).delete()
+        USER_REF.document(userID).collection("sentFriendsRequests").document(CURRENT_USER_UID).delete()
         USER_REF.document(userID).collection("friends").document(CURRENT_USER_UID).setData(["username": CURRENT_USER_USERNAME])
     }
     
     // removes userID focument from Current users requests collection
     func rejectFriendRequest(_ userID: String) {
-        CURRENT_USER_RECEIVED_REQUESTS_REF.document(userID).delete()
+        CURRENT_USER_RECEIVED_FRIENDS_REQUESTS_REF.document(userID).delete()
     }
 }
