@@ -3,7 +3,6 @@ import SwiftUI
 struct MembersInvitePodView: View {
     @State var nonPodFriendsList: [User] = []
     @State var sentPodsRequestsList: [User] = []
-    var podID: String
 
     var body: some View {
         VStack {
@@ -17,7 +16,7 @@ struct MembersInvitePodView: View {
                             Text("Invited")
                         } else {
                             Button(action: {
-                                FirestoreFunctions.system.sendPodRequest(podID: podID, user: User(username: user.username.wrappedValue, userID: user.uid.wrappedValue))
+                                FirestoreFunctions.system.sendPodRequest(podID: FirestoreFunctions.system.currentPod.podID, user: User(username: user.username.wrappedValue, userID: user.uid.wrappedValue))
                             }) {
                                 Image(systemName: "plus.circle.fill")
                             }
@@ -31,11 +30,12 @@ struct MembersInvitePodView: View {
         .listRowInsets(EdgeInsets())  // remove space between list elements
         .background(Color(UIColor.systemBackground))
         .onAppear() {
-            FirestoreFunctions.system.loadNonPodFriends(podID: podID) { users in
+            let podID = FirestoreFunctions.system.currentPod.podID
+            FirestoreFunctions.system.loadNonPodFriends(podID: podID!) { users in
                 nonPodFriendsList = users
             }
             
-            FirestoreFunctions.system.loadSentPodRequests(podID: podID) { users in
+            FirestoreFunctions.system.loadSentPodRequests(podID: podID!) { users in
                 sentPodsRequestsList = users
             }
         }

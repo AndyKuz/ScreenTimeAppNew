@@ -36,7 +36,7 @@ class ScreenTimeViewModel: ObservableObject {
         }
     }
     
-    func startMonitoring(goalHours: Int, pod: Pods) {
+    func startMonitoring(pod: Pods) {
         let schedule = DeviceActivitySchedule(
             intervalStart: DateComponents(hour: 0, minute: 0, second: 0),
             intervalEnd: DateComponents(hour: 23, minute: 59, second: 59),
@@ -52,7 +52,7 @@ class ScreenTimeViewModel: ObservableObject {
             applications: selection.applicationTokens,
             categories: selection.categoryTokens,
             webDomains: selection.webDomainTokens,
-            threshold: DateComponents(hour: 5)
+            threshold: DateComponents(hour: pod.goal)
         )
         
         let center = DeviceActivityCenter()

@@ -9,11 +9,11 @@ import SwiftUI
 
 struct PodSelectionView: View {
     @Binding var isSheetPresented: Bool
-    @Binding var pods: [Pods]
     
     @State var name = ""
     @State var podType: groupType = .screenTime // default picker value
-    @State var numWeeks: Double = 2 // default picker value
+    @State var goal: Int = 2 // default picker value
+    @State var numWeeks: Int = 2 // default picker value
     @State var totalStrikes: Int = 3 // default picker values
     
     @State var printError = false
@@ -62,12 +62,25 @@ struct PodSelectionView: View {
             .padding(.horizontal, 30)
             .padding(.bottom, 10)
             
+            // picker for daily pod goal
+            HStack {
+                Text("Daily Goal")
+                Picker("goal", selection: $goal) {
+                    ForEach([2, 3, 4, 5], id: \.self) { selection in
+                        Text("\(selection) hours")
+                    }
+                }
+                .pickerStyle(DefaultPickerStyle())
+            }
+            .padding(.horizontal, 30)
+            .padding(.bottom, 10)
+            
             // picker for timeframe of pod
             HStack {
                 Text("Timeframe:")
                 Picker("timeframe", selection: $numWeeks) {
                     ForEach([2,4,8,12], id: \.self) { selection in
-                        Text("\(selection) weeks")
+                        Text("\(selection) weeks").tag(selection)
                     }
                 }
                 .pickerStyle(DefaultPickerStyle())
@@ -96,7 +109,7 @@ struct PodSelectionView: View {
                     
                 } else {
                     // add new pod in firestore
-                    FirestoreFunctions.system.createPod(pod: Pods(podID: "temp", title: name, podType: podType, totalStrikes: totalStrikes, currentStrikes: 0, timeframe: numWeeks))
+                    FirestoreFunctions.system.createPod(pod: Pods(podID: "temp", title: name, podType: podType, totalStrikes: totalStrikes, currentStrikes: 0, goal: goal, timeframe: Double(numWeeks), started: false, failedDays: [], completedDays: 0))
                     
                     // dismiss the sheet
                     isSheetPresented = false

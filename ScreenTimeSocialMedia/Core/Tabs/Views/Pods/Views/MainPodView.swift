@@ -6,41 +6,7 @@
 //
 import SwiftUI
 import UserNotifications
-
-// Sheet configuration to allow user to select their personal goal
-struct GoalSheet: View {
-    @Binding var sheetPresented: Bool
-    var podType: groupType
-    @State var numHours = 1
-    
-    var body: some View {
-        VStack {
-            Text("Before beginning please select your \(podType.rawValue) goal")
-                .font(.title2)
-                .padding(.top, 30)
-                .multilineTextAlignment(.center)
-            
-            // gives user options from 1-6 hours for goal
-            HStack {
-                Picker("Hours", selection: $numHours) {
-                    ForEach(1..<6, id: \.self) { selection in
-                        Text("\(selection)")
-                    }
-                }
-                Text("hours per day")
-            }
-            .padding(.top, 10)
-            
-            Button("Go!", action: {
-                sheetPresented = false
-            })
-            .padding(.top, 20)
-            Spacer()
-            
-        }
-        
-    }
-}
+import DeviceActivity
 
 // view that builds the progress bar for the timeline of the pod
 struct SegmentedProgressBar: View {
@@ -66,11 +32,10 @@ struct SegmentedProgressBar: View {
 
 // View for main screen of pod
 struct MainPodView: View {
+    @StateObject var db = FirestoreFunctions.system
     @StateObject var screenTimeManager = ScreenTimeViewModel()
-    var pod: Pods
-    @State var presentGoalSheet = false
-    @State var presentScreenTimeSheet = false
-    @State var navigateToMemberView:Bool = false
+    @State var startConfirmation = false
+    @State var navigateToMemberView: Bool = false
     
     var body: some View {
         ZStack {
@@ -91,47 +56,44 @@ struct MainPodView: View {
             
             // Displays all the necessary info about pod
             VStack {
-                Text(pod.title!)
+                Text(db.currentPod.title!)
                     .fontWeight(.semibold)
                     .font(.title)
                     .padding(.horizontal, 30)
                     .padding(.top, 50)
                     .padding(.bottom, 7)
-                SegmentedProgressBar(failedDays: [3, 7, 12], completedDays: 37, totalDays: 56)
-                Text("0/\(pod.totalStrikes!) Strikes")
+                SegmentedProgressBar(failedDays: db.currentPod.failedDays, completedDays: db.currentPod.completedDays, totalDays: Int(db.currentPod.timeframe * 7.0))
+                Text("\(Int(FirestoreFunctions.system.currentPod.timeframe!)) Weeks")
                     .padding(.horizontal, 30)
-                Button(action: {
-                    screenTimeManager.startMonitoring(goalHours: 1, pod: pod)
-                }) {
-                    Text("beging monitoring")
-                }
+                    .padding(.bottom, 5)
                 
-                Button(action: {
-                    let notificationContent = UNMutableNotificationContent()
-                    notificationContent.title = "Hello world!"
-                    notificationContent.subtitle = "Here's how you send a notification in SwiftUI"
-
-                    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-                    
-                    let req = UNNotificationRequest(identifier: UUID().uuidString, content: notificationContent, trigger: trigger)
-
-                    UNUserNotificationCenter.current().add(req)
-                }) {
-                    Text("Send push notification")
-                }
+                Text("\(FirestoreFunctions.system.currentPod.currentStrikes)/\(FirestoreFunctions.system.currentPod.totalStrikes)")
+                
                 Spacer()
+                
+                if !db.currentPod.started {
+                    Button (action: {
+                        startConfirmation = true
+                    }) {
+                        Text("Start Pod?")
+                    }
+                    .padding()
+                    .confirmationDialog("Are you sure?", isPresented: $startConfirmation, titleVisibility: .visible) {
+                        Button(action: {
+                            screenTimeManager.startMonitoring(pod: FirestoreFunctions.system.currentPod)
+                            db.startPod(podID: FirestoreFunctions.system.currentPod.podID)
+                        }) {
+                            Text("Start Pod!")
+                        }
+                    } message: {
+                        Text("Once you start the pod you will not be able to invite anymore friends nor stop the pod")
+                    }
+                    
+                    Spacer()
+                }
             }
         }
-        .familyActivityPicker(
-            isPresented: $presentScreenTimeSheet,
-            selection: $screenTimeManager.activitySelection
-        )
-        .onChange(of: screenTimeManager.activitySelection) {
-            screenTimeManager.saveSelection()
-        }
-        .sheet(isPresented: $presentGoalSheet, content: {
-            GoalSheet(sheetPresented: $presentGoalSheet, podType: pod.podType!)
-        })
-        NavigationLink("", destination: MembersPodView(pod: pod), isActive: $navigateToMemberView)
+        NavigationLink("", destination: MembersPodView(), isActive: $navigateToMemberView)
+        
     }
 }

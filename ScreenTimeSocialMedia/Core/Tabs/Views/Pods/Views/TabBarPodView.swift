@@ -14,7 +14,7 @@ struct TabBarPodView: View {
     var body: some View {
         TabView {
             HStack {
-                MainPodView(pod: pod)
+                MainPodView()
             }
             .tabItem {
                 Image(systemName: "house.fill")
@@ -28,11 +28,15 @@ struct TabBarPodView: View {
             }
             
             HStack {
-                SettingsPodView(pod: pod, fetchUsersPods: fetchUsersPods)
+                SettingsPodView(fetchUsersPods: fetchUsersPods)
             }
             .tabItem {
                 Image(systemName: "gear")
             }
+        }
+        .onAppear() {
+            print("set currentPod")
+            FirestoreFunctions.system.currentPod = pod
         }
     }
 }

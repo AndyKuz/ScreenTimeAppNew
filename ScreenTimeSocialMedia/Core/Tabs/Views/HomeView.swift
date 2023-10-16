@@ -1,18 +1,21 @@
 import SwiftUI
+import FirebaseFirestore
 
 struct HomeView: View {
-    @State var pods: [Pods] = []
+    @ObservedObject var db = FirestoreFunctions.system
     @State var isSheetPresented = false
     @State var errorMessage = ""
     
     @State var podsRequestList: [Pods] = []
     @State var numPodsRequests = 0
+    
+    @State var didAppear = false
 
     var body: some View {
         VStack {
             HStack {
                 Spacer()
-                NavigationLink(destination: PodsInviteView(podsRequestList: $podsRequestList, pods: $pods, fetchUsersPodsRequests: fetchUsersPodsRequests)) {
+                NavigationLink(destination: PodsInviteView(podsRequestList: $podsRequestList, fetchUsersPodsRequests: fetchUsersPodsRequests)) {
                     ZStack {
                         // clickable bell at top right of the screen
                         Image(systemName: "bell.fill")
@@ -35,11 +38,11 @@ struct HomeView: View {
             }
             List {
                 // display each pod
-                ForEach(pods, id: \.podID) { pod in
+                ForEach(db.allPodsList, id: \.podID) { pod in
                     PodsView(pod: pod, fetchUsersPods: fetchUsersPods)
                 }
                 .onMove { indexSet, index in    // adds hold to move functionality to each pod
-                    pods.move(fromOffsets: indexSet, toOffset: index)
+                    db.allPodsList.move(fromOffsets: indexSet, toOffset: index)
                 }
                 
                 Section(footer:
@@ -54,7 +57,7 @@ struct HomeView: View {
                             .padding()
                         
                         Button(action: {
-                            if pods.count >= 4 {
+                            if db.allPodsList.count >= 4 {
                                 errorMessage = "Maximum pod amount reached" // print error message
                                 
                                 // timer to remove error message after 3 seconds
@@ -91,17 +94,18 @@ struct HomeView: View {
             }
             .onAppear() {
                 // load all current pods
-                FirestoreFunctions.system.loadPods { pod in
-                    pods = pod
+                if !didAppear {
+                    db.beginListeningPods()
+                    didAppear = true
                 }
                 
-                FirestoreFunctions.system.loadPodRequests { pod in
-                    podsRequestList = pod
+                db.loadPodRequests { newPods in
+                    podsRequestList = newPods
                     numPodsRequests = podsRequestList.count
                 }
             }
             .sheet(isPresented: $isSheetPresented) {
-                PodSelectionView(isSheetPresented: $isSheetPresented, pods: $pods)
+                PodSelectionView(isSheetPresented: $isSheetPresented)
             }
         }
     }
@@ -109,14 +113,16 @@ struct HomeView: View {
     // manually updates pods list
     // used on pod deletion when listener isn't called
     func fetchUsersPods() {
-        FirestoreFunctions.system.queryPods { pods in
-            self.pods = pods
+        db.queryPods { newPods in
+            db.allPodsList = newPods
         }
     }
     
+    // manually updates pods list
+    // used on pod deletion when listener isn't called
     func fetchUsersPodsRequests() {
-        FirestoreFunctions.system.queryPodsRequests { pods in
-            self.podsRequestList = pods
+        db.queryPodsRequests { newPods in
+            self.podsRequestList = newPods
             self.numPodsRequests = self.podsRequestList.count
         }
     }

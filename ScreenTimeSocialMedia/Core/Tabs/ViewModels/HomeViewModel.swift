@@ -63,8 +63,12 @@ extension FirestoreFunctions {
                                let podType = groupType(rawValue: (data["podType"] as? String) ?? "Screen Time"),
                                let currentStrikes = data["currentStrikes"] as? Int,
                                let totalStrikes = data["totalStrikes"] as? Int,
-                               let timeframe = data["timeframe"] as? Double {
-                                let pod = Pods(podID: podID, title: title, podType: podType, totalStrikes: totalStrikes, currentStrikes: currentStrikes, timeframe: timeframe)
+                               let goal = data["goal"] as? Int,
+                               let timeframe = data["timeframe"] as? Double,
+                               let started = data["started"] as? Bool,
+                               let failedDays = data["failedDays"] as? [Int],
+                               let completedDays = data["completedDays"] as? Int {
+                                let pod = Pods(podID: podID, title: title, podType: podType, totalStrikes: totalStrikes, currentStrikes: currentStrikes, goal: goal, timeframe: timeframe, started: started, failedDays: failedDays, completedDays: completedDays)
                                 userPods.append(pod)
                             }
 
@@ -73,60 +77,6 @@ extension FirestoreFunctions {
                         }
                     }
                 }
-            }
-        }
-    }
-
-    
-    // fetches all the pods the user is in from firestore
-    func loadPods(completion: @escaping ([Pods]) -> Void) {
-        // Create an array to store the group listeners.
-        var podListeners: [ListenerRegistration] = []
-        var userPods: [Pods] = []
-        
-        // Listen to changes in the user's groups.
-        CURRENT_USER_PODS_REF.addSnapshotListener { (querySnapshot, error) in
-            guard let querySnapshot = querySnapshot else {
-                print("loadPods(): Error listening to user's pods: \(error?.localizedDescription ?? "Unknown error")")
-                return
-            }
-            
-            // Clear the previous group listeners.
-            for listener in podListeners {
-                listener.remove()
-            }
-            
-            podListeners.removeAll()
-            userPods.removeAll()
-            
-            for document in querySnapshot.documents {
-                let podID = document.documentID
-                
-                // Create a reference to the pod document.
-                let podRef = self.PODS_REF.document(podID)
-                
-                // Listen to changes in the pod data.
-                let listener = podRef.addSnapshotListener { (podDocument, podError) in
-                    if let podError = podError {
-                        print("loadPods(): Error fetching pod data: \(podError)")
-                        return
-                    }
-                    
-                    if let data = podDocument?.data(),
-                       let title = data["title"] as? String,
-                       let podType = groupType(rawValue: (data["podType"] as? String) ?? "Screen Time"),
-                       let currentStrikes = data["currentStrikes"] as? Int,
-                       let totalStrikes = data["totalStrikes"] as? Int,
-                       let timeframe = data["timeframe"] as? Double {
-                        let pod = Pods(podID: podID, title: title, podType: podType, totalStrikes: totalStrikes, currentStrikes: currentStrikes, timeframe: timeframe)
-                        userPods.append(pod)
-                    }
-                    
-                    // Call the completion handler with the updated user pods.
-                    completion(userPods)
-                }
-                
-                podListeners.append(listener)
             }
         }
     }
@@ -165,11 +115,14 @@ extension FirestoreFunctions {
                                let podType = groupType(rawValue: (data["podType"] as? String) ?? "Screen Time"),
                                let currentStrikes = data["currentStrikes"] as? Int,
                                let totalStrikes = data["totalStrikes"] as? Int,
-                               let timeframe = data["timeframe"] as? Double {
-                                let pod = Pods(podID: podID, title: title, podType: podType, totalStrikes: totalStrikes, currentStrikes: currentStrikes, timeframe: timeframe, inviter: inviter)
+                               let goal = data["goal"] as? Int,
+                               let timeframe = data["timeframe"] as? Double,
+                               let started = data["started"] as? Bool,
+                               let failedDays = data["failedDays"] as? [Int],
+                               let completedDays = data["completedDays"] as? Int {
+                                let pod = Pods(podID: podID, title: title, podType: podType, totalStrikes: totalStrikes, currentStrikes: currentStrikes, goal: goal, timeframe: timeframe, started: started, failedDays: failedDays, completedDays: completedDays, inviter: inviter)
                                 userPods.append(pod)
                             }
-
                             // Call the completion handler with the updated user pods
                             completion(userPods)
                         }
@@ -220,8 +173,12 @@ extension FirestoreFunctions {
                        let podType = groupType(rawValue: (data["podType"] as? String) ?? "Screen Time"),
                        let currentStrikes = data["currentStrikes"] as? Int,
                        let totalStrikes = data["totalStrikes"] as? Int,
-                       let timeframe = data["timeframe"] as? Double {
-                        let pod = Pods(podID: podID, title: title, podType: podType, totalStrikes: totalStrikes, currentStrikes: currentStrikes, timeframe: timeframe, inviter: inviter)
+                       let goal = data["goal"] as? Int,
+                       let timeframe = data["timeframe"] as? Double,
+                       let started = data["started"] as? Bool,
+                       let failedDays = data["failedDays"] as? [Int],
+                       let completedDays = data["completedDays"] as? Int {
+                        let pod = Pods(podID: podID, title: title, podType: podType, totalStrikes: totalStrikes, currentStrikes: currentStrikes, goal: goal, timeframe: timeframe, started: started, failedDays: failedDays, completedDays: completedDays, inviter: inviter)
                         userPods.append(pod)
                     }
                     

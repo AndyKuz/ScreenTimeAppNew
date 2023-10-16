@@ -8,23 +8,48 @@
 import SwiftUI
 
 struct SettingsPodView: View {
-    var pod: Pods
+    @StateObject var db = FirestoreFunctions.system
     var fetchUsersPods: () -> Void
-    @Environment(\.presentationMode) var presentationMode
+    @State var presentLeaveConfirmation: Bool = false
+    @State var leavePod = false
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
-        List {
-            Section("Utility") {
-                Button {
-                    Task {
-                        FirestoreFunctions.system.removeUserFromPod(podID: pod.podID, user: User(username: FirestoreFunctions.system.CURRENT_USER_USERNAME, userID: FirestoreFunctions.system.CURRENT_USER_UID))
-                        fetchUsersPods()    // fetch new list of pods and update it in HomeView
-                        presentationMode.wrappedValue.dismiss() // forcefully leave pod view
+        VStack {
+            List {
+                Section("Utility") {
+                    Button {
+                        Task {
+                            presentLeaveConfirmation = true
+                        }
+                    } label: {
+                        SettingsRowView(imageName: "rectangle.portrait.and.arrow.right", title: "Leave Pod", tintColor: .red)
                     }
-                } label: {
-                    SettingsRowView(imageName: "rectangle.portrait.and.arrow.right", title: "Leave Pod", tintColor: .red)
+                    .confirmationDialog("Are you sure?",
+                                        isPresented: $presentLeaveConfirmation) {   // allows user to confirm Leave
+                        Button("Leave?", role: .destructive) {
+                            print("clicked")
+                            FirestoreFunctions.system.removeUserFromPod(podID: FirestoreFunctions.system.currentPod.podID, user: User(username: FirestoreFunctions.system.CURRENT_USER_USERNAME, userID: FirestoreFunctions.system.CURRENT_USER_UID)) {
+                                fetchUsersPods()    // fetch new list of pods and update it in HomeView
+                                
+                                // TODO: Need a way to not use NavigationLink
+                                if db.currentPod.started {
+                                    print("started true")
+                                    leavePod = true
+                                } else {
+                                    print("started false")
+                                    dismiss()
+                                }
+                            }
+                        }
+                    }
                 }
+                
             }
         }
+        NavigationLink(destination: HomeView().navigationBarBackButtonHidden(true), isActive: $leavePod) {
+            EmptyView()
+        }
+        .isDetailLink(false)
     }
 }

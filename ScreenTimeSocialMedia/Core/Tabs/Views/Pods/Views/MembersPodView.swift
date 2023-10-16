@@ -9,14 +9,13 @@ import SwiftUI
 
 struct MembersPodView: View {
     @State var membersList: [User] = []
-    var pod: Pods
     
     var body: some View {
         VStack {
             ZStack {
                 HStack {
                     Spacer()
-                    NavigationLink(destination: MembersInvitePodView(podID: pod.podID)) {
+                    NavigationLink(destination: MembersInvitePodView()) {
                         Image(systemName: "plus")
                             .padding()
                     }
@@ -37,7 +36,7 @@ struct MembersPodView: View {
             .background(Color(UIColor.systemBackground))
         }
         .onAppear() {
-            FirestoreFunctions.system.loadPodUsers(podID: pod.podID) { users in
+            FirestoreFunctions.system.loadPodUsers(podID: FirestoreFunctions.system.currentPod.podID) { users in
                 membersList = users
             }
         }

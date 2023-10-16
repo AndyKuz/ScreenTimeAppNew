@@ -22,17 +22,6 @@ class MyMonitorExtension: DeviceActivityMonitor {
     }
     
     override func eventDidReachThreshold(_ event: DeviceActivityEvent.Name, activity: DeviceActivityName) {
-        super.eventDidReachThreshold(event, activity: activity)
-        
-        let notificationContent = UNMutableNotificationContent()
-        notificationContent.title = "Threshold Reached"
-        notificationContent.subtitle = "!!!!!!!!!!!!!!"
-
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-        
-        let req = UNNotificationRequest(identifier: UUID().uuidString, content: notificationContent, trigger: trigger)
-
-        UNUserNotificationCenter.current().add(req)
         
         // sets up UserDefaults for app group shared between app and extension
         let sharedDefaults = UserDefaults(suiteName: "group.GB457U8UXN.com.ScreenTimeMonitor")

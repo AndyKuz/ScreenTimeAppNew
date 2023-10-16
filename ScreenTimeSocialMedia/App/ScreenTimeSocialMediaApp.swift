@@ -9,7 +9,6 @@ import SwiftUI
 import Firebase
 import UserNotifications
 
-
 @main
 struct ScreenTimeApp: App {
 
@@ -41,7 +40,6 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     @objc func handleDefaultsChange() {
         // Handle UserDefaults changes here
         if let sharedData = sharedDefaults?.string(forKey: "sharedDataKey") {
-            // Perform action with sharedData
             print("Received data from app: \(sharedData)")
         }
     }

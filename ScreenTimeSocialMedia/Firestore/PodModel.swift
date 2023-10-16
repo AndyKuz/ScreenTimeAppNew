@@ -19,16 +19,35 @@ struct Pods {
     let podType: groupType!
     let totalStrikes: Int!
     let currentStrikes: Int!
+    let goal: Int!
     let timeframe: Double!
-    let inviter: String?    // used for formatting pod requests
+    let started: Bool!  // depending if the user has started the Pod
+    let failedDays: [Int]!
+    let completedDays: Int
+    let inviter: String?    // used for displaying pod invites
     
-    init(podID: String, title: String, podType: groupType, totalStrikes: Int, currentStrikes: Int, timeframe: Double, inviter: String? = "") {
+    init(podID: String,
+         title: String,
+         podType: groupType,
+         totalStrikes: Int,
+         currentStrikes: Int,
+         goal: Int,
+         timeframe: Double,
+         started: Bool,
+         failedDays: [Int],
+         completedDays: Int,
+         inviter: String? = ""
+    ) {
         self.podID = podID
         self.title = title
         self.podType = podType
         self.totalStrikes = totalStrikes
         self.currentStrikes = currentStrikes
+        self.goal = goal
         self.timeframe = timeframe
+        self.started = started
+        self.failedDays = failedDays
+        self.completedDays = completedDays
         self.inviter = inviter
     }
 }

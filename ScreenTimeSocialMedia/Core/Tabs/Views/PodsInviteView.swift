@@ -9,7 +9,6 @@ import SwiftUI
 
 struct PodsInviteView: View {
     @Binding var podsRequestList: [Pods]
-    @Binding var pods: [Pods]
     var fetchUsersPodsRequests: () -> Void // function to manually update list of pods requests in HomeView
     
     @State var errorMessage = ""
@@ -62,7 +61,7 @@ struct PodsInviteView: View {
                         .swipeActions(edge: .leading) {
                             Button {
                                 // if more than 4 pods or more prevent user from accepting more
-                                if pods.count >= 4 {
+                                if FirestoreFunctions.system.allPodsList.count >= 4 {
                                     errorMessage = "Maximum pod amount of 4 reached" // print error message
                                     
                                     // timer to remove error message after 3 seconds

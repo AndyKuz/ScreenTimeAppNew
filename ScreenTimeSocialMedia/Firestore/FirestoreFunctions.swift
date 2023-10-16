@@ -11,7 +11,7 @@ import FirebaseCore
 import FirebaseFirestore
 import FirebaseAuth
 
-class FirestoreFunctions {
+class FirestoreFunctions: ObservableObject {
     static let system = FirestoreFunctions()
     
     // Base reference for database
@@ -53,6 +53,13 @@ class FirestoreFunctions {
     var PODS_REF: CollectionReference {
         return BASE_REF.collection("pods")
     }
+    
+    @Published var allPodsListeners = [ListenerRegistration]()  // listener for every pod found in USERS POD COL
+    @Published var usersPodIDListeners: ListenerRegistration? = nil // listener for USERS POD COL
+    
+    @Published var allPodsList: [Pods] = [] // all up to date USERS PODS
+    @Published var allPodsIDs: [String] = []    // list of all users pod's ids
+    @Published var currentPod: Pods = Pods(podID: "", title: "title", podType: .screenTime, totalStrikes: 7, currentStrikes: 0, goal: 5, timeframe: 2, started: false, failedDays: [], completedDays: 0)
     
     // gets current logged in user's uid
     var CURRENT_USER_UID: String {
