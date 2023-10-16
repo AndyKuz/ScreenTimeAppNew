@@ -16,8 +16,20 @@ struct MyReportExtension: DeviceActivityReportExtension {
             return TotalActivityView(totalActivity: totalActivity)
         }
         
-        PieChartReport { totalActivity in
-            return PieChartView(totalActivity: totalActivity)
+        PieChartReport2() { totalActivity in
+            return PieChartView(totalActivity: totalActivity, totalHours: 2.0)
+        }
+        
+        PieChartReport3() { totalActivity in
+            return PieChartView(totalActivity: totalActivity, totalHours: 3.0)
+        }
+        
+        PieChartReport4() { totalActivity in
+            return PieChartView(totalActivity: totalActivity, totalHours: 4.0)
+        }
+        
+        PieChartReport5() { totalActivity in
+            return PieChartView(totalActivity: totalActivity, totalHours: 5.0)
         }
         // Add more reports here...
     }

@@ -21,6 +21,13 @@ struct TabBarPodView: View {
             }
             
             HStack {
+                PersonalScreenTimeView()
+            }
+            .tabItem {
+                Image(systemName: "hourglass")
+            }
+            
+            HStack {
                 ChatPodView()
             }
             .tabItem {

@@ -11,7 +11,6 @@ import SwiftUI
 struct PieSliceData {
     var startAngle: Angle
     var endAngle: Angle
-    var text: String
     var color: Color
 }
 
@@ -35,20 +34,13 @@ struct PieSliceView: View {
                     
                     path.addArc(
                         center: center,
-                        radius: width * 0.5,
+                        radius: width * 0.4,
                         startAngle: Angle(degrees: -90.0) + pieSliceData.startAngle,
                         endAngle: Angle(degrees: -90.0) + pieSliceData.endAngle,
                         clockwise: false)
                     
                 }
                 .fill(pieSliceData.color)
-                
-                Text(pieSliceData.text)
-                    .position(
-                        x: geometry.size.width * 0.5 * CGFloat(1.0 + 0.78 * cos(self.midRadians)),
-                        y: geometry.size.height * 0.5 * CGFloat(1.0 - 0.78 * sin(self.midRadians))
-                    )
-                    .foregroundColor(Color.white)
             }
         }
         .aspectRatio(1, contentMode: .fit)
@@ -57,13 +49,25 @@ struct PieSliceView: View {
 
 struct PieChartView: View {
     let totalActivity: Double
+    let totalHours: Double
+    
+    var hours: Int {
+        return Int(totalActivity)
+    }
+    
+    var fractionalHour: Double {
+        return totalActivity - Double(hours)
+    }
+    
+    var  minutes: Int {
+        return Int(fractionalHour * 60 + 0.5) // Rounding to the nearest minute
+    }
     
     var mainSlice: PieSliceData {
-        let total = 24.0
-        var endDeg: Double = 0
+        let endDeg: Double = 0
         
-        let degrees: Double = totalActivity * 360 / total
-        return PieSliceData(startAngle: Angle(degrees: endDeg), endAngle: Angle(degrees: endDeg + degrees), text: String(format: "%.0f%%", totalActivity * 100 / total), color: Color(red: 0.0666, green: 0.8275, blue: 0.6667))
+        let degrees: Double = totalActivity * 360 / totalHours
+        return PieSliceData(startAngle: Angle(degrees: endDeg), endAngle: Angle(degrees: endDeg + degrees), color: hours >= Int(totalHours) ? .red : Color(red: 0.0666, green: 0.8275, blue: 0.6667))
     }
     
     public var widthFraction: CGFloat = 0.75
@@ -82,11 +86,14 @@ struct PieChartView: View {
                     .frame(width: geometry.size.width * innerRadiusFraction, height: geometry.size.width * innerRadiusFraction)
                 
                 VStack {
-                    Text("Total")
+                    Text("\(hours)h \(minutes)m")
+                        .foregroundColor(hours >= Int(totalHours) ? .red : .white) // if over time change color to red
+                        .padding(.top, 0)
                         .font(.title)
-                        .foregroundColor(Color.gray)
-                    Text(String(totalActivity))
-                        .font(.title)
+                    Divider().background(hours >= Int(totalHours) ? .red : .gray) // if over time change color to red
+                        .frame(width: 60)
+                    Text("of \(Int(totalHours))h")
+                        .foregroundColor(hours >= Int(totalHours) ? .red: .white)   // if over time change color to red
                 }
             }
             .background(.black)

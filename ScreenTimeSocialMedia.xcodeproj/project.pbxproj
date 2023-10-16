@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4985EB992ADCE63C0040260F /* PieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4985EB982ADCE63C0040260F /* PieChartView.swift */; };
+		4985EB9B2ADCE6D50040260F /* PersonalScreenTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4985EB9A2ADCE6D50040260F /* PersonalScreenTimeView.swift */; };
 		4986CECE2AB7F5DC00D1E259 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4986CECD2AB7F5DC00D1E259 /* SearchBar.swift */; };
 		4986CED02AB956AA00D1E259 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4986CECF2AB956AA00D1E259 /* SignUpViewModel.swift */; };
 		4986CED22AB956B200D1E259 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4986CED12AB956B200D1E259 /* LoginViewModel.swift */; };
@@ -162,6 +163,7 @@
 
 /* Begin PBXFileReference section */
 		4985EB982ADCE63C0040260F /* PieChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartView.swift; sourceTree = "<group>"; };
+		4985EB9A2ADCE6D50040260F /* PersonalScreenTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalScreenTimeView.swift; sourceTree = "<group>"; };
 		4986CECD2AB7F5DC00D1E259 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		4986CECF2AB956AA00D1E259 /* SignUpViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		4986CED12AB956B200D1E259 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
@@ -457,6 +459,7 @@
 			children = (
 				49E303AB2AC12AAF004C2A49 /* TabBarPodView.swift */,
 				49E303A32ABE4E69004C2A49 /* MainPodView.swift */,
+				4985EB9A2ADCE6D50040260F /* PersonalScreenTimeView.swift */,
 				49E303A52ABE4E77004C2A49 /* MembersPodView.swift */,
 				49D5F8332AD8AC220010A644 /* MembersInvitePodView.swift */,
 				49E303A92AC122FB004C2A49 /* ChatPodView.swift */,
@@ -744,6 +747,7 @@
 				49FEC2042AB146D000F89C5C /* PodSelectionView.swift in Sources */,
 				49FEC2102AB2DE2800F89C5C /* FriendsRequestView.swift in Sources */,
 				49FDA9312AAD2D3C006E4059 /* CustomTextField.swift in Sources */,
+				4985EB9B2ADCE6D50040260F /* PersonalScreenTimeView.swift in Sources */,
 				4995B10B2AA849A2003A8E3A /* SignUpView.swift in Sources */,
 				4995B1162AA84A54003A8E3A /* ProfileView.swift in Sources */,
 				49D5F8432ADA5ECF0010A644 /* RowButtonView.swift in Sources */,
