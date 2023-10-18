@@ -36,7 +36,12 @@ class ScreenTimeViewModel: ObservableObject {
         }
     }
     
-    func startMonitoring(pod: Pods) {
+    func endMonitoring(pod: Pods) { // stops monitoring screentime for specific pod
+        let center = DeviceActivityCenter()
+        center.stopMonitoring([DeviceActivityName("\(pod.podID!).ScreenTime")])
+    }
+    
+    func beginMonitoring(pod: Pods) {
         let schedule = DeviceActivitySchedule(
             intervalStart: DateComponents(hour: 0, minute: 0, second: 0),
             intervalEnd: DateComponents(hour: 23, minute: 59, second: 59),
@@ -57,9 +62,8 @@ class ScreenTimeViewModel: ObservableObject {
         
         let center = DeviceActivityCenter()
         
-        center.stopMonitoring()
-        
-        let activity = DeviceActivityName("MyApp.ScreenTime")
+        // monitors screentime for each pod
+        let activity = DeviceActivityName("\(pod.podID!).ScreenTime")
         let eventName = DeviceActivityEvent.Name("\(pod.podID!).\(FirestoreFunctions.system.CURRENT_USER_UID)") // used to differentiate between each event
         
         do {

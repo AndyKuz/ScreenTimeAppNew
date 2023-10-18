@@ -15,11 +15,16 @@ import SwiftUI
 struct ScreenTimeAuthIntroView: View {
     var body: some View {
         VStack {
-            Text("Welcome to App Name!")
+            Text("Welcome to Aco!")
+                .padding()
+                .font(.title)
             Text("Before we get started we need to set a few things up")
+                .padding()
+            Spacer()
             NavigationLink(destination: ScreenTimeAuthPermissionView().navigationBarBackButtonHidden(true)) {
                 Text("Continue")
             }
+            Spacer()
         }
     }
 }
@@ -30,16 +35,24 @@ struct ScreenTimeAuthPermissionView: View {
     
     var body: some View {
         VStack {
+            Spacer()
+            
             Text("Since this app tracks your screen time please allow access to your screen time.")
+                .padding()
+            
             Button(action: {
                 // requests screen time authorization
-                screenTimeViewModel.screenTimeRequestAuth()
+                screenTimeViewModel.screenTimeRequestAuth() { } // waits for completion
                 if screenTimeViewModel.screenTimeAuth() {   // if auth is detected navigate to next View
                     permissionGranted = true
                 }
             }) {
                 Text("Allow Access")
             }
+            .padding()
+            
+            Spacer()
+            
             NavigationLink(
                 destination: ScreenTimeAuthAppsSelectView().navigationBarBackButtonHidden(true),
                 isActive: $permissionGranted,
@@ -54,8 +67,11 @@ struct ScreenTimeAuthAppsSelectView: View {
     @State var screenTimeManager = ScreenTimeViewModel()
     var body: some View {
         VStack {
+            Spacer()
             Text("Awesome! Last step!")
+                .padding()
             Text("Choose which apps you want us to monitor. Feel free to change this later in settings if need be.")
+                .padding()
             Button(action: {
                 presentScreenTimeSheet = true
             }) {
@@ -73,6 +89,8 @@ struct ScreenTimeAuthAppsSelectView: View {
         .onChange(of: screenTimeManager.activitySelection) {
             screenTimeManager.saveSelection()
         }
+        
+        Spacer()
     }
 }
 

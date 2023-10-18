@@ -9,6 +9,29 @@ import Foundation
 import Firebase
 
 extension FirestoreFunctions {
+    // for a specified pod load all the users in said pod
+    func loadPodUsers(podID: String, completion: @escaping ([User]) -> Void) {
+        PODS_REF.document(podID).collection("users").addSnapshotListener { (querySnapshot, error) in
+            guard let querySnapshot = querySnapshot else {
+                print("loadPodUsers(): Error listening to user's pods: \(error?.localizedDescription ?? "Unknown error")")
+                return
+            }
+            
+            var users:[User] = []
+            
+            for document in querySnapshot.documents {
+                let data = document.data()
+                let userID = document.documentID
+                let username = data["username"] as! String
+                let currentStreak = data["currentStreak"] as! Int
+                let numStrikes = data["numStrikes"] as! Int
+                
+                users.append(User(username: username, userID: userID, currentStreak: currentStreak, numStrikes: numStrikes))
+            }
+            completion(users)
+        }
+    }
+    
     // queries all CURRENT_USERs friends except those present in the pod
     func loadNonPodFriends(podID: String, completion: @escaping ([User]) -> Void) {
         var returnUsers: [User] = []

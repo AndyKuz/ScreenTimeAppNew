@@ -20,7 +20,7 @@ extension FirestoreFunctions {
             "timeframe": pod.timeframe!,
             "started": pod.started!,
             "failedDays": pod.failedDays!,
-            "completedDays": pod.completedDays,
+            "currentDay": pod.currentDay,
             "owner": CURRENT_USER_UID
         ]) { error in
             if let error = error {
@@ -105,19 +105,15 @@ extension FirestoreFunctions {
             for document in documents {
                 // TODO: implement calling listenPod only on change
                 let podID = document.documentID
-                if self.allPodsIDs.contains(where: { $0 == podID }) { continue } // doesn't "relisten to preexisting pods"
-                
-                self.allPodsIDs.append(document.documentID)
+                if self.allPodsList.contains(where: { $0.podID == podID }) { continue } // doesn't "relisten to preexisting pods"
                 
                 self.listenPod(podID: document.documentID) { newPod in
-                    print("newPod \(newPod)")
                     if let index = self.allPodsList.firstIndex(where: { $0.podID == newPod.podID }) {
                         self.allPodsList[index] = newPod    // so we don't add duplicate pods
                         self.currentPod = newPod
                     } else {
                         self.allPodsList.append(newPod)
                     }
-                    print("!!! userPods changed the podList! \(self.allPodsList)")
                     completion()
                 }
             }
@@ -140,9 +136,8 @@ extension FirestoreFunctions {
                let timeframe = data["timeframe"] as? Double,
                let started = data["started"] as? Bool,
                let failedDays = data["failedDays"] as? [Int],
-               let completedDays = data["completedDays"] as? Int {
-                let pod = Pods(podID: podID, title: title, podType: podType, totalStrikes: totalStrikes, currentStrikes: currentStrikes, goal: goal, timeframe: timeframe, started: started, failedDays: failedDays, completedDays: completedDays)
-                print("!!! pod w/ title \(pod.title ?? "default value") changed")
+               let currentDay = data["currentDay"] as? Int {
+                let pod = Pods(podID: podID, title: title, podType: podType, totalStrikes: totalStrikes, currentStrikes: currentStrikes, goal: goal, timeframe: timeframe, started: started, failedDays: failedDays, currentDay: currentDay)
                 completion(pod)
             }
         }

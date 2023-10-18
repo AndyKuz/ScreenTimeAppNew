@@ -26,7 +26,17 @@ struct MembersPodView: View {
                 ForEach(membersList, id: \.uid) { user in
                     HStack {
                         Text(user.username)
+                            .padding(.trailing, 10)
+                        if let currentStreak = user.currentStreak, currentStreak >= 2 { // only displays streak if >= 2
+                            Text("\(currentStreak)")
+                                .padding(.leading, 1)
+                            Image(systemName: "flame.fill")
+                                .foregroundColor(DefaultColors.teal1)
+                                .padding(.leading, 1)
+                        }
                         Spacer()
+                        Text("strikes: \(user.numStrikes ?? 0)")
+                            .padding(.horizontal)
                     }
                 }
             }

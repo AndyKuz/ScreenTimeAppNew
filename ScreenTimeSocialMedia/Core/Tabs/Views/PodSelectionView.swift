@@ -109,7 +109,7 @@ struct PodSelectionView: View {
                     
                 } else {
                     // add new pod in firestore
-                    FirestoreFunctions.system.createPod(pod: Pods(podID: "temp", title: name, podType: podType, totalStrikes: totalStrikes, currentStrikes: 0, goal: goal, timeframe: Double(numWeeks), started: false, failedDays: [], completedDays: 0))
+                    FirestoreFunctions.system.createPod(pod: Pods(podID: "temp", title: name, podType: podType, totalStrikes: totalStrikes, currentStrikes: 0, goal: goal, timeframe: Double(numWeeks), started: false, failedDays: [], currentDay: 0))
                     
                     // dismiss the sheet
                     isSheetPresented = false

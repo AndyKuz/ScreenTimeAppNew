@@ -62,7 +62,7 @@ struct MainPodView: View {
                     .padding(.horizontal, 30)
                     .padding(.top, 50)
                     .padding(.bottom, 7)
-                SegmentedProgressBar(failedDays: db.currentPod.failedDays, completedDays: db.currentPod.completedDays, totalDays: Int(db.currentPod.timeframe * 7.0))
+                SegmentedProgressBar(failedDays: db.currentPod.failedDays, completedDays: db.currentPod.currentDay, totalDays: Int(db.currentPod.timeframe * 7.0))
                 Text("\(Int(FirestoreFunctions.system.currentPod.timeframe!)) Weeks")
                     .padding(.horizontal, 30)
                     .padding(.bottom, 5)
@@ -80,7 +80,7 @@ struct MainPodView: View {
                     .padding()
                     .confirmationDialog("Are you sure?", isPresented: $startConfirmation, titleVisibility: .visible) {
                         Button(action: {
-                            screenTimeManager.startMonitoring(pod: FirestoreFunctions.system.currentPod)
+                            screenTimeManager.beginMonitoring(pod: FirestoreFunctions.system.currentPod) // begin monitoring screenTime for the currentUser
                             db.startPod(podID: FirestoreFunctions.system.currentPod.podID)
                         }) {
                             Text("Start Pod!")

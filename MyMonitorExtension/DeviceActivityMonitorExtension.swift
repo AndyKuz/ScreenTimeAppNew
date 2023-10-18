@@ -7,6 +7,7 @@
 
 import DeviceActivity
 import UserNotifications
+import Firebase
 
 // Optionally override any of the functions below.
 // Make sure that your class name matches the NSExtensionPrincipalClass in your Info.plist.
@@ -22,13 +23,12 @@ class MyMonitorExtension: DeviceActivityMonitor {
     }
     
     override func eventDidReachThreshold(_ event: DeviceActivityEvent.Name, activity: DeviceActivityName) {
+        super.eventDidReachThreshold(event, activity: activity)
         
-        // sets up UserDefaults for app group shared between app and extension
-        let sharedDefaults = UserDefaults(suiteName: "group.GB457U8UXN.com.ScreenTimeMonitor")
+        // each event name is named <podID>.<userID>
+        let components = event.rawValue.components(separatedBy: ".")
+        FirestoreFunctionsScreenTime.system.userFailed(podID: components[0], userID: components[1])
         
-        // sends over eventName to app
-        sharedDefaults?.set("\(event.rawValue)", forKey: "sharedDataKey")
-        sharedDefaults?.synchronize() // Ensure data is saved immediately
     }
     
     override func intervalWillStartWarning(for activity: DeviceActivityName) {

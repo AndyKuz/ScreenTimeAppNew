@@ -23,7 +23,7 @@ struct Pods {
     let timeframe: Double!
     let started: Bool!  // depending if the user has started the Pod
     let failedDays: [Int]!
-    let completedDays: Int
+    let currentDay: Int
     let inviter: String?    // used for displaying pod invites
     
     init(podID: String,
@@ -35,7 +35,7 @@ struct Pods {
          timeframe: Double,
          started: Bool,
          failedDays: [Int],
-         completedDays: Int,
+         currentDay: Int,
          inviter: String? = ""
     ) {
         self.podID = podID
@@ -47,7 +47,7 @@ struct Pods {
         self.timeframe = timeframe
         self.started = started
         self.failedDays = failedDays
-        self.completedDays = completedDays
+        self.currentDay = currentDay
         self.inviter = inviter
     }
 }

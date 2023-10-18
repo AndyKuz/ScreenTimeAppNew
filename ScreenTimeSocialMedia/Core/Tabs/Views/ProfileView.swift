@@ -56,6 +56,7 @@ struct ProfileView: View {
                     Task {
                         do {
                             try profileViewModel.signOut()
+                            FirestoreFunctions.system.cleanUp {}
                         } catch {
                             print("Error signing out")
                         }

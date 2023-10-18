@@ -10,7 +10,7 @@ import FamilyControls
 import UserNotifications
 
 struct PermissionsManagerViewModel {
-    func screenTimeRequestAuth() {
+    func screenTimeRequestAuth(completion: @escaping () -> Void) {
         let center = AuthorizationCenter.shared
         Task {
             do {
@@ -20,12 +20,12 @@ struct PermissionsManagerViewModel {
                 print("FAILED TO REQUEST SCREENTIME AUTH")
             }
         }
+        completion()
     }
     
     // returns true if screenTime Auth'd and false if not
     func screenTimeAuth() -> Bool {
         let center = AuthorizationCenter.shared
-        let cancellable = center.$authorizationStatus
         
         switch center.authorizationStatus {
         case .notDetermined:

@@ -58,8 +58,7 @@ class FirestoreFunctions: ObservableObject {
     @Published var usersPodIDListeners: ListenerRegistration? = nil // listener for USERS POD COL
     
     @Published var allPodsList: [Pods] = [] // all up to date USERS PODS
-    @Published var allPodsIDs: [String] = []    // list of all users pod's ids
-    @Published var currentPod: Pods = Pods(podID: "", title: "title", podType: .screenTime, totalStrikes: 7, currentStrikes: 0, goal: 5, timeframe: 2, started: false, failedDays: [], completedDays: 0)
+    @Published var currentPod: Pods = Pods(podID: "", title: "title", podType: .screenTime, totalStrikes: 7, currentStrikes: 0, goal: 5, timeframe: 2, started: false, failedDays: [], currentDay: 0)
     
     // gets current logged in user's uid
     var CURRENT_USER_UID: String {
@@ -102,5 +101,21 @@ class FirestoreFunctions: ObservableObject {
                 print("document does not exist")
             }
         }
+    }
+    
+    // used for logout so no info is stored when user logs out and doesn't close app
+    func cleanUp(completion: @escaping () -> Void) {
+        for listener in allPodsListeners {
+            listener.remove()
+        }
+        allPodsListeners.removeAll()
+        
+        if let listener = usersPodIDListeners {
+            listener.remove()
+            usersPodIDListeners = nil
+        }
+        
+        allPodsList.removeAll()
+        currentPod = Pods(podID: "", title: "title", podType: .screenTime, totalStrikes: 7, currentStrikes: 0, goal: 5, timeframe: 2, started: false, failedDays: [], currentDay: 0) // default Pod val
     }
 }

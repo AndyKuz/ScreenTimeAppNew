@@ -9,27 +9,6 @@ import Foundation
 import FirebaseFirestore
 
 extension FirestoreFunctions {
-    // for a specified pod load all the users in said pod
-    func loadPodUsers(podID: String, completion: @escaping ([User]) -> Void) {
-        PODS_REF.document(podID).collection("users").addSnapshotListener { (querySnapshot, error) in
-            guard let querySnapshot = querySnapshot else {
-                print("loadPodUsers(): Error listening to user's pods: \(error?.localizedDescription ?? "Unknown error")")
-                return
-            }
-            
-            var users:[User] = []
-            
-            for document in querySnapshot.documents {
-                let data = document.data()
-                let userID = document.documentID
-                let username = data["username"] as! String
-                
-                users.append(User(username: username, userID: userID))
-            }
-            completion(users)
-        }
-    }
-
     // function to manually update user's pods
     // called on deletion of documents
     func queryPods(completion: @escaping ([Pods]) -> Void) {
@@ -67,8 +46,8 @@ extension FirestoreFunctions {
                                let timeframe = data["timeframe"] as? Double,
                                let started = data["started"] as? Bool,
                                let failedDays = data["failedDays"] as? [Int],
-                               let completedDays = data["completedDays"] as? Int {
-                                let pod = Pods(podID: podID, title: title, podType: podType, totalStrikes: totalStrikes, currentStrikes: currentStrikes, goal: goal, timeframe: timeframe, started: started, failedDays: failedDays, completedDays: completedDays)
+                               let currentDay = data["currentDay"] as? Int {
+                                let pod = Pods(podID: podID, title: title, podType: podType, totalStrikes: totalStrikes, currentStrikes: currentStrikes, goal: goal, timeframe: timeframe, started: started, failedDays: failedDays, currentDay: currentDay)
                                 userPods.append(pod)
                             }
 
@@ -119,8 +98,8 @@ extension FirestoreFunctions {
                                let timeframe = data["timeframe"] as? Double,
                                let started = data["started"] as? Bool,
                                let failedDays = data["failedDays"] as? [Int],
-                               let completedDays = data["completedDays"] as? Int {
-                                let pod = Pods(podID: podID, title: title, podType: podType, totalStrikes: totalStrikes, currentStrikes: currentStrikes, goal: goal, timeframe: timeframe, started: started, failedDays: failedDays, completedDays: completedDays, inviter: inviter)
+                               let currentDay = data["currentDay"] as? Int {
+                                let pod = Pods(podID: podID, title: title, podType: podType, totalStrikes: totalStrikes, currentStrikes: currentStrikes, goal: goal, timeframe: timeframe, started: started, failedDays: failedDays, currentDay: currentDay, inviter: inviter)
                                 userPods.append(pod)
                             }
                             // Call the completion handler with the updated user pods
@@ -177,8 +156,8 @@ extension FirestoreFunctions {
                        let timeframe = data["timeframe"] as? Double,
                        let started = data["started"] as? Bool,
                        let failedDays = data["failedDays"] as? [Int],
-                       let completedDays = data["completedDays"] as? Int {
-                        let pod = Pods(podID: podID, title: title, podType: podType, totalStrikes: totalStrikes, currentStrikes: currentStrikes, goal: goal, timeframe: timeframe, started: started, failedDays: failedDays, completedDays: completedDays, inviter: inviter)
+                       let currentDay = data["currentDay"] as? Int {
+                        let pod = Pods(podID: podID, title: title, podType: podType, totalStrikes: totalStrikes, currentStrikes: currentStrikes, goal: goal, timeframe: timeframe, started: started, failedDays: failedDays, currentDay: currentDay, inviter: inviter)
                         userPods.append(pod)
                     }
                     
