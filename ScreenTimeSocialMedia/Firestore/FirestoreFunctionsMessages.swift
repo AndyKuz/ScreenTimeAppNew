@@ -9,7 +9,7 @@ import Foundation
 import FirebaseFirestore
 
 extension FirestoreFunctions {
-    func getMessageDatabase(podID: String, completion: @escaping ([Messages]?, Error?) -> Void) {
+    func getMessageDatabase(podID: String, completion: @escaping ([Messages]) -> Void) {
         
         // grabs messages from db
         let query = PODS_REF.document(podID).collection("messages").order(by: "createdAt", descending: false)
@@ -17,10 +17,9 @@ extension FirestoreFunctions {
         // listens in to see if any messages are sent
         let _ = query.addSnapshotListener { snapshot, error in
             if let error = error {
-                print("Error listening for messages: \(error)")
-                completion(nil, error)
-                    return
-                }
+                print("getMessageDatabase(): Error listening for messages: \(error)")
+                return
+            }
             
             var messages = [Messages]()
             
@@ -33,7 +32,7 @@ extension FirestoreFunctions {
                 let msg = Messages(userID: userID, username: username, text: text, createdAt: createdAt.dateValue())
                 messages.append(msg)
             }
-            completion(messages, nil)
+            completion(messages)
             
         }
     }
@@ -49,9 +48,7 @@ extension FirestoreFunctions {
         
         PODS_REF.document(podID).collection("messages").addDocument(data: message) { err in
             if let err = err {
-                print("Error saving message: \(err)")
-            } else {
-                print("message saved")
+                print("sendMessageDatabase(): Error saving message: \(err)")
             }
         }
     }

@@ -23,6 +23,7 @@ struct SignUpView: View {
             if let _ = viewModel.error {
                 Text(viewModel.error ?? "")
                     .foregroundColor(.red)
+                    .multilineTextAlignment(.center)
             }
             
             CustomTextField(text: $viewModel.email, placeholder: "email", type: .text)
@@ -50,12 +51,6 @@ struct SignUpView: View {
                 .frame(width:200, height: 45)
                 .background(Color.blue)
                 .cornerRadius(10)
-
-            // navigates to new view depending if screen time authorized
-            NavigationLink("", destination: permissionManager.screenTimeAuth() ?
-                AnyView(TabBarView().navigationBarBackButtonHidden(true)) :
-                AnyView(ScreenTimeAuthIntroView().navigationBarBackButtonHidden(true)),
-                isActive: $viewModel.navigateToNextView)
             
             Button(action: {
                 presentationMode.wrappedValue.dismiss() // go back to parent view (LoginView)
@@ -65,6 +60,13 @@ struct SignUpView: View {
                     .foregroundColor(.blue)
                     .padding()
             }
+
+            // navigates to new view depending if screen time authorized
+            NavigationLink("", destination: permissionManager.screenTimeAuth() ?
+                AnyView(TabBarView().navigationBarBackButtonHidden(true)) :
+                AnyView(ScreenTimeAuthIntroView().navigationBarBackButtonHidden(true)),
+                isActive: $viewModel.navigateToNextView)
+            
         }
     }
 }

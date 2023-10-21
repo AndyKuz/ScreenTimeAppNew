@@ -49,7 +49,7 @@ class ScreenTimeViewModel: ObservableObject {
         )
         
         guard let selection: FamilyActivitySelection = self.savedSelection() else {
-            print("saved selection not found")
+            print("beginMonitoring(): saved selection not found")
             return
         }
         
@@ -74,9 +74,8 @@ class ScreenTimeViewModel: ObservableObject {
                     eventName: event
                 ]
             )
-            print("began monitoring")
         } catch {
-            print("Error starting ScreenTimeMonitoring")
+            print("beginMonitoring(): Error starting ScreenTimeMonitoring")
         }
         
     }

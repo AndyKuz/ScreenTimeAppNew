@@ -16,8 +16,15 @@ final class LoginViewModel: ObservableObject {
     @Published var password = ""
 
     func signIn() {
-        guard !email.isEmpty, !password.isEmpty else {
+        // basic error handling
+        if email.isEmpty && password.isEmpty{
             self.error = "no email or password found"
+            return
+        } else if email.isEmpty {
+            self.error = "no email found"
+            return
+        } else if password.isEmpty {
+            self.error = "no password found"
             return
         }
 
@@ -26,8 +33,8 @@ final class LoginViewModel: ObservableObject {
                 _ = try await AuthenticationManager.shared.signIn(email: email, password: password)
                 self.navigateToNextView = true
             } catch {
-                print("Error while loging in: \(error.localizedDescription)")
-                self.error = "error in login"
+                print("signIn(): Error while loging in: \(error.localizedDescription)")
+                self.error = error.localizedDescription
             }
         }
     }

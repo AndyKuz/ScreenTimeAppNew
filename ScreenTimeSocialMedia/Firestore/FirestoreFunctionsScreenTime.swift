@@ -12,7 +12,6 @@ import CoreFoundation
 extension FirestoreFunctions {
     // called at the start of every day
     func intervalStarted(pod: Pods) {
-        print("intervalStarted() called for \(pod.title!)")
         if pod.started == true {    // if interval started called increment pod's currentDay
             PODS_REF.document(pod.podID).updateData([
                 "currentDay": FieldValue.increment(Int64(1))
@@ -22,9 +21,7 @@ extension FirestoreFunctions {
     
     // called when CURRENT_USER reaches screentime goal for specific pod
     func thresholdReached(pod: Pods) {
-        print("thresholdReached() called for \(pod.title!)")
         if pod.started == false {   // wont do anything unless pod is in started state
-            print("Threshold Reached on not started pod")
             return
         }
         

@@ -14,7 +14,7 @@ final class ProfileViewModel: ObservableObject {
             try AuthenticationManager.shared.signOut()
             showLoginView = true
         } catch {
-            print("Error signing out")
+            print("signOut(): Error signing out")
         }
 
     }

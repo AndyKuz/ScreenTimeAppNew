@@ -17,13 +17,13 @@ extension FirestoreFunctions {
             .whereField("username", isLessThanOrEqualTo: query + "\u{f8ff}") // usernames that start with query
             .getDocuments { (snapshot, error) in
                 if let error = error {
-                    print("Error searching users: \(error.localizedDescription)")
+                    print("searchUsers(): Error searching users: \(error.localizedDescription)")
                     completion([])
                     return
                 }
                 
                 guard let documents = snapshot?.documents else {
-                    print("No search results.")
+                    print("searchUsers(): No search results.")
                     completion([])
                     return
                 }

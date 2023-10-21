@@ -107,7 +107,6 @@ struct FriendsView: View {
             FirestoreFunctions.system.loadRecievedFriendRequests { users in
                 numFriendRequests = users.count
                 friendRequestList = users
-                print(friendRequestList)
             }
             
             FirestoreFunctions.system.loadSentFriendRequests { users in

@@ -97,10 +97,10 @@ class FirestoreFunctions: ObservableObject {
                 if let userIDUsername = document.data()?["username"] as? String {
                     completion(userIDUsername)
                 } else {
-                    print("username not found")
+                    print("getUsername(): username not found")
                 }
             } else {
-                print("document does not exist")
+                print("getUsername(): document does not exist")
             }
         }
     }

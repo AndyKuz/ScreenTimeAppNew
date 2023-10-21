@@ -49,7 +49,6 @@ struct TabBarPodView: View {
             .tag(3)
         }
         .onAppear() {
-            print("set currentPod")
             FirestoreFunctions.system.currentPod = pod
         }
     }

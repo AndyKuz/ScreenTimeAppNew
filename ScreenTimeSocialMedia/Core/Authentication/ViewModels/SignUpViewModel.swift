@@ -19,9 +19,18 @@ final class SignUpViewModel: ObservableObject {
     @Published var username = ""
 
     func signUp(){
-        guard !email.isEmpty, !password.isEmpty else {
-            self.error = "username and password empty"
+        // basic error handling
+        if email.isEmpty && password.isEmpty{
+            self.error = "no email, password, or username found"
             return
+        } else if email.isEmpty {
+            self.error = "no email found"
+            return
+        } else if password.isEmpty {
+            self.error = "no password found"
+            return
+        } else if username.isEmpty {
+            self.error = "no username found"
         }
 
         Task {
@@ -34,8 +43,8 @@ final class SignUpViewModel: ObservableObject {
                 self.navigateToNextView = true
                 
             } catch {
-                self.error = "error while signing up"
-                print("Error while signing up: \(error.localizedDescription)")
+                self.error = error.localizedDescription
+                print("signUp(): Error while signing up: \(error.localizedDescription)")
             }
         }
     }
@@ -46,9 +55,9 @@ final class SignUpViewModel: ObservableObject {
             "email": email
         ]) { err in
             if let err = err {
-                print("Error writing document: \(err)")
+                print("signUpFirebase(): Error writing document: \(err)")
             } else {
-                print("Document successfully written!")
+                print("signUpFirebase(): Document successfully written!")
             }
         }
     }

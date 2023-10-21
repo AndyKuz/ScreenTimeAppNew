@@ -58,7 +58,7 @@ struct ProfileView: View {
                             try profileViewModel.signOut()
                             FirestoreFunctions.system.cleanUp {}
                         } catch {
-                            print("Error signing out")
+                            print("ProfileView(): Error signing out")
                         }
                     }
                 } label: {

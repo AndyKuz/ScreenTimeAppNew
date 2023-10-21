@@ -13,9 +13,9 @@ class ChatPodViewModel: ObservableObject {
 }
 
 struct ChatPodView: View {
+    @ObservedObject var db = FirestoreFunctions.system
     @StateObject var viewModel = ChatPodViewModel()
     @State var message = ""
-    var pod: Pods
     
     @State var messageSent = false
      
@@ -50,7 +50,7 @@ struct ChatPodView: View {
                 
                 Button(action: {
                     // sends the message to db when user clicks send button
-                    FirestoreFunctions.system.sendMessagesDatabase(message: Messages(userID: Auth.auth().currentUser!.uid, username: (Auth.auth().currentUser?.displayName)!, text: message, createdAt: Date()), podID: pod.podID)
+                    FirestoreFunctions.system.sendMessagesDatabase(message: Messages(userID: Auth.auth().currentUser!.uid, username: (Auth.auth().currentUser?.displayName)!, text: message, createdAt: Date()), podID: db.currentPod.podID)
                     message = ""
                     messageSent = true
                 }) {
@@ -65,8 +65,8 @@ struct ChatPodView: View {
         }
         // saves messages in the database
         .onAppear() {
-            FirestoreFunctions.system.getMessageDatabase(podID: pod.podID) { retrievedMessages, error in
-                viewModel.data = retrievedMessages!
+            FirestoreFunctions.system.getMessageDatabase(podID: db.currentPod.podID) { retrievedMessages in
+                viewModel.data = retrievedMessages
             }
         }
     }

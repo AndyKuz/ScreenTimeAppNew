@@ -25,7 +25,7 @@ extension FirestoreFunctions {
             "owner": CURRENT_USER_UID
         ]) { error in
             if let error = error {
-                print("Error adding pod: \(error)")
+                print("createPod(): Error adding pod: \(error)")
                 return
             }
         }

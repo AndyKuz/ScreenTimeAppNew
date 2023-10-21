@@ -21,6 +21,7 @@ struct LoginView: View {
             if let error = viewModel.error {
                 Text(error)
                     .foregroundColor(.red)
+                    .multilineTextAlignment(.center)
             }
             
             CustomTextField(text: $viewModel.email, placeholder: "email", type: .text)
@@ -45,6 +46,14 @@ struct LoginView: View {
             .background(Color.blue)
             .cornerRadius(10)
             
+            NavigationLink(destination: SignUpView().navigationBarBackButtonHidden(true)){
+                Text("Don't have an account? Sign up")
+                    .font(.headline)
+                    .padding()
+                    .padding(.top, 10)
+                
+            }
+            
             // checks for if user has all screen time authorization setup on device navigates based on result
             NavigationLink(
                 destination: permissionManager.screenTimeAuth() ?
@@ -53,13 +62,6 @@ struct LoginView: View {
                 isActive: $viewModel.navigateToNextView
             ) {
                 EmptyView()
-            }
-            
-            NavigationLink(destination: SignUpView().navigationBarBackButtonHidden(true)){
-                Text("Don't have an account? Sign up")
-                    .font(.headline)
-                    .padding()
-                
             }
         }
     }

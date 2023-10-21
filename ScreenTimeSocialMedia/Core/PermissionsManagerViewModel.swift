@@ -15,10 +15,9 @@ struct PermissionsManagerViewModel {
         Task {
             do {
                 try await center.requestAuthorization(for: .individual)
-                print("REQUESTED SCREENTIME AUTH")
                 completion(true)
             } catch {
-                print("FAILED TO REQUEST SCREENTIME AUTH")
+                print("screenTimeRequestAuth(): failed to get screentime authorization")
                 completion(false)
             }
         }
@@ -33,7 +32,6 @@ struct PermissionsManagerViewModel {
             .sink() {_ in 
             switch center.authorizationStatus {
             case .notDetermined:
-                print("not determined!")
                 res =  false
                 break
             case .denied:
@@ -55,10 +53,8 @@ struct PermissionsManagerViewModel {
 
         // Request authorization for notifications
         center.requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in
-            if granted {
-                print("push notifications enabled successfully")
-            } else {
-                print("push notifications disabled")
+            if let error = error {
+                print("notificationsRequest(): error getting notification authorization \(error)")
             }
         }
 
