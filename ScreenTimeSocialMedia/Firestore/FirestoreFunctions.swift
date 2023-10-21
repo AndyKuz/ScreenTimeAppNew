@@ -11,7 +11,7 @@ import FirebaseCore
 import FirebaseFirestore
 import FirebaseAuth
 
-class FirestoreFunctions {
+class FirestoreFunctions: ObservableObject {
     static let system = FirestoreFunctions()
     
     @Published var messages = [Messages]()
@@ -32,17 +32,35 @@ class FirestoreFunctions {
         return CURRENT_USER_REF.collection("friends")
     }
     
-    var CURRENT_USER_RECEIVED_REQUESTS_REF: CollectionReference {
-        return CURRENT_USER_REF.collection("receivedRequests")
+    var CURRENT_USER_RECEIVED_FRIENDS_REQUESTS_REF: CollectionReference {
+        return CURRENT_USER_REF.collection("receivedFriendsRequests")
     }
     
-    var CURRENT_USER_SENT_REQUESTS_REF: CollectionReference {
-        return CURRENT_USER_REF.collection("sentRequests")
+    var CURRENT_USER_SENT_FRIENDS_REQUESTS_REF: CollectionReference {
+        return CURRENT_USER_REF.collection("sentFriendsRequests")
+    }
+    
+    var CURRENT_USER_RECEIVED_PODS_REQUEST_REF: CollectionReference {
+        return CURRENT_USER_REF.collection("receivedPodsRequests")
+    }
+    
+    var CURRENT_USER_SENT_PODS_REQUEST_REF: CollectionReference {
+        return CURRENT_USER_REF.collection("sentPodsRequests")
+    }
+    
+    var CURRENT_USER_PODS_REF: CollectionReference {
+        return CURRENT_USER_REF.collection("pods")
     }
     
     var PODS_REF: CollectionReference {
         return BASE_REF.collection("pods")
     }
+    
+    @Published var allPodsListeners = [ListenerRegistration]()  // listener for every pod found in USERS POD COL
+    @Published var usersPodIDListeners: ListenerRegistration? = nil // listener for USERS POD COL
+    
+    @Published var allPodsList: [Pods] = [] // all up to date USERS PODS
+    @Published var currentPod: Pods = Pods(podID: "", title: "title", podType: .screenTime, totalStrikes: 7, currentStrikes: 0, goal: 5, timeframe: 2, started: false, failedDays: [], currentDay: 0)
     
     // gets current logged in user's uid
     var CURRENT_USER_UID: String {
@@ -69,7 +87,8 @@ class FirestoreFunctions {
         }
     }
     
-    func getUsername(_ userID: String, completion: @escaping (String) -> Void) {
+    // given a userID return the users associated username
+    func getUsername(_ userID: String, completion: @escaping(String) -> Void){
         let userIDRef = USER_REF.document(userID)
         
         // gets document associated with userID
@@ -84,5 +103,21 @@ class FirestoreFunctions {
                 print("document does not exist")
             }
         }
+    }
+    
+    // used for logout so no info is stored when user logs out and doesn't close app
+    func cleanUp(completion: @escaping () -> Void) {
+        for listener in allPodsListeners {
+            listener.remove()
+        }
+        allPodsListeners.removeAll()
+        
+        if let listener = usersPodIDListeners {
+            listener.remove()
+            usersPodIDListeners = nil
+        }
+        
+        allPodsList.removeAll()
+        currentPod = Pods(podID: "", title: "title", podType: .screenTime, totalStrikes: 7, currentStrikes: 0, goal: 5, timeframe: 2, started: false, failedDays: [], currentDay: 0) // default Pod val
     }
 }

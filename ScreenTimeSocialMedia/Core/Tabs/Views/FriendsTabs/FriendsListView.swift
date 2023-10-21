@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FriendsListView: View {
-    @State var friendsList: [User]
+    @Binding var friendsList: [User]
     
     var body: some View {
         VStack {
@@ -33,8 +33,4 @@ struct FriendsListView: View {
         .listRowInsets(EdgeInsets())  // remove space between list elements
         .background(Color(UIColor.systemBackground))
     }
-}
-
-#Preview {
-    FriendsListView(friendsList:[User(username: "AndyKuz", userID: "r2317617238")])
 }

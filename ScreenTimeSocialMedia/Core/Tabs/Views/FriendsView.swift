@@ -24,7 +24,7 @@ struct FriendsView: View {
             VStack {
                 HStack {
                     Spacer()
-                    NavigationLink(destination: FriendsRequestView(friendRequestsList: friendRequestList)) {
+                    NavigationLink(destination: FriendsRequestView(friendRequestsList: $friendRequestList)) {
                          ZStack {
                              // clickable bell at top right of the screen
                              Image(systemName: "bell.fill")
@@ -47,7 +47,7 @@ struct FriendsView: View {
                 }
                 // displays the number of current friends
                 // if clicked on navigates to a view with a list of current friends
-                NavigationLink(destination: FriendsListView(friendsList: friendsList)) {
+                NavigationLink(destination: FriendsListView(friendsList: $friendsList)) {
                     Text("\(numFriends)")
                         .font(.title)
                         .bold()
@@ -107,6 +107,7 @@ struct FriendsView: View {
             FirestoreFunctions.system.loadRecievedFriendRequests { users in
                 numFriendRequests = users.count
                 friendRequestList = users
+                print(friendRequestList)
             }
             
             FirestoreFunctions.system.loadSentFriendRequests { users in
