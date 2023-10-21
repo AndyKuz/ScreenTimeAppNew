@@ -6,8 +6,12 @@
 //
 
 import Foundation
+import Firebase
 
-struct Messages {
-    let from: String
+struct Messages: Identifiable {
+    let id = UUID()
+    let userID: String
+    let username: String
     let text: String
+    let createdAt: Date
 }

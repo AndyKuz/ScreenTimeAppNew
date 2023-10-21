@@ -2,27 +2,72 @@
 //  ChatPodView.swift
 //  ScreenTimeSocialMedia
 //
-//  Created by Andrew Kuznetsov on 9/24/23.
+//  Created by Chad Baker on 9/24/23.
 //
 
 import SwiftUI
+import Firebase
 
-struct ChatPodView: View {
-    @State var message = ""
-    
-    var body: some View {
-        VStack {
-            Spacer()
-            TextField("message", text: $message)
-                .padding()
-                .background(Color.gray.opacity(0.2))
-                .frame(width: 300, height: 40)
-                .cornerRadius(10)
-        }
-        .padding(.bottom, 30)
-    }
+class ChatPodViewModel: ObservableObject {
+    @Published var data: [Messages] = []
 }
 
-#Preview {
-    ChatPodView()
+struct ChatPodView: View {
+    @StateObject var viewModel = ChatPodViewModel()
+    @State var message = ""
+    var pod: Pods
+    
+    @State var messageSent = false
+     
+    var body: some View {
+        VStack {
+            ScrollView {
+                ScrollViewReader { (proxy: ScrollViewProxy) in
+                    VStack(alignment: .leading, spacing: 7) {
+                        ForEach(viewModel.data, id: \.id) { message in
+                            MessageView(currentMessage: message)
+                                .id(message.id) // used for coordination w/ proxy
+                        }
+                    }
+                    .padding()
+                    // if the current user sends a message scroll ScrollView to the bottom
+                    .onChange(of: messageSent) { message in
+                        if message {
+                            messageSent = false
+                            
+                            withAnimation {
+                                proxy.scrollTo(viewModel.data.last?.id, anchor: .center)
+                            }
+                        }
+                    }
+                }
+            }
+            // textbar
+            HStack {
+                TextField("Type a message...", text: $message)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding()
+                
+                Button(action: {
+                    // sends the message to db when user clicks send button
+                    FirestoreFunctions.system.sendMessagesDatabase(message: Messages(userID: Auth.auth().currentUser!.uid, username: (Auth.auth().currentUser?.displayName)!, text: message, createdAt: Date()), podID: pod.podID)
+                    message = ""
+                    messageSent = true
+                }) {
+                    Text("Send")
+                        .padding()
+                        .background(DefaultColors.teal1)
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
+                }
+                .padding()
+            }
+        }
+        // saves messages in the database
+        .onAppear() {
+            FirestoreFunctions.system.getMessageDatabase(podID: pod.podID) { retrievedMessages, error in
+                viewModel.data = retrievedMessages!
+            }
+        }
+    }
 }
