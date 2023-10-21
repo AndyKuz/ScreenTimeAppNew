@@ -6,7 +6,7 @@
 	<true/>
 	<key>com.apple.security.application-groups</key>
 	<array>
-		<string>group.GB457U8UXN.com.ScreenTimeMonitor</string>
+		<string>group.com.Aco.ScreenTime</string>
 	</array>
 </dict>
 </plist>

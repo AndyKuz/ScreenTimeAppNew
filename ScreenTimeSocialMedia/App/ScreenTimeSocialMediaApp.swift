@@ -45,7 +45,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        // Handle how the notification should be presented in the foreground
-        completionHandler([.alert, .sound, .badge])
-    }
+            // Handle how the notification should be presented in the foreground
+            completionHandler([.alert, .sound, .badge])
+        }
 }

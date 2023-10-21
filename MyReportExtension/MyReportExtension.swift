@@ -12,10 +12,6 @@ import SwiftUI
 struct MyReportExtension: DeviceActivityReportExtension {
     var body: some DeviceActivityReportScene {
         // Create a report for each DeviceActivityReport.Context that your app supports.
-        TotalActivityReport { totalActivity in
-            return TotalActivityView(totalActivity: totalActivity)
-        }
-        
         PieChartReport2() { totalActivity in
             return PieChartView(totalActivity: totalActivity, totalHours: 2.0)
         }

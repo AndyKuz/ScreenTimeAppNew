@@ -13,8 +13,4 @@ extension FirestoreFunctions {
             "started": true
         ])
     }
-    
-    func thresholdReached(podID: String, userID: String) {
-        
-    }
 }

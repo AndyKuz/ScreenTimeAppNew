@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		494C24722ADDD82800552127 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 494C24712ADDD82700552127 /* GoogleService-Info.plist */; };
 		4985EB992ADCE63C0040260F /* PieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4985EB982ADCE63C0040260F /* PieChartView.swift */; };
 		4985EB9B2ADCE6D50040260F /* PersonalScreenTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4985EB9A2ADCE6D50040260F /* PersonalScreenTimeView.swift */; };
 		4986CECE2AB7F5DC00D1E259 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4986CECD2AB7F5DC00D1E259 /* SearchBar.swift */; };
@@ -53,6 +52,11 @@
 		49C8EF162AA98C3D00B2565B /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 49C8EF152AA98C3D00B2565B /* FirebaseStorage */; };
 		49C8EF182AA98C3D00B2565B /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 49C8EF172AA98C3D00B2565B /* FirebaseStorageCombine-Community */; };
 		49C8EF212AA9B02100B2565B /* DefaultColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C8EF202AA9B02100B2565B /* DefaultColors.swift */; };
+		49D1E7942AE3494A00394758 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49C8EEE02AA9877500B2565B /* GoogleService-Info.plist */; };
+		49D1E7982AE3509000394758 /* FirestoreFunctionsScreenTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D1E7972AE3509000394758 /* FirestoreFunctionsScreenTime.swift */; };
+		49D1E79B2AE3542700394758 /* DarwinNotificationsCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D1E79A2AE3542700394758 /* DarwinNotificationsCenter.swift */; };
+		49D1E79C2AE3558700394758 /* DarwinNotificationsCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D1E79A2AE3542700394758 /* DarwinNotificationsCenter.swift */; };
+		49D1E79E2AE37A3A00394758 /* AuthDataResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D1E79D2AE37A3A00394758 /* AuthDataResultModel.swift */; };
 		49D5F7F82ACF91670010A644 /* FirestoreFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D5F7F72ACF91670010A644 /* FirestoreFunctions.swift */; };
 		49D5F7FA2ACF91A20010A644 /* FirestoreFunctionsFriendsSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D5F7F92ACF91A20010A644 /* FirestoreFunctionsFriendsSystem.swift */; };
 		49D5F7FD2ACF91FC0010A644 /* FirestoreFunctionPodsSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D5F7FC2ACF91FC0010A644 /* FirestoreFunctionPodsSystem.swift */; };
@@ -69,7 +73,6 @@
 		49D5F83F2AD9094D0010A644 /* SettingsPodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D5F83E2AD9094D0010A644 /* SettingsPodView.swift */; };
 		49D5F8412AD90CEA0010A644 /* MainPodViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D5F8402AD90CEA0010A644 /* MainPodViewModel.swift */; };
 		49D5F8432ADA5ECF0010A644 /* RowButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D5F8422ADA5ECF0010A644 /* RowButtonView.swift */; };
-		49D5F84A2ADB09C30010A644 /* FirestoreFunctionsScreenTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D5F8442ADB067F0010A644 /* FirestoreFunctionsScreenTime.swift */; };
 		49D5F84C2ADB0D270010A644 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 49D5F84B2ADB0D270010A644 /* FirebaseAnalytics */; };
 		49D5F84E2ADB0D270010A644 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 49D5F84D2ADB0D270010A644 /* FirebaseAnalyticsOnDeviceConversion */; };
 		49D5F8502ADB0D270010A644 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 49D5F84F2ADB0D270010A644 /* FirebaseAnalyticsSwift */; };
@@ -98,7 +101,7 @@
 		49D5F87E2ADB0D270010A644 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 49D5F87D2ADB0D270010A644 /* FirebaseStorage */; };
 		49D5F8802ADB0D270010A644 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 49D5F87F2ADB0D270010A644 /* FirebaseStorageCombine-Community */; };
 		49D5F8A62ADB3EE40010A644 /* MyReportExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D5F8A52ADB3EE40010A644 /* MyReportExtension.swift */; };
-		49D5F8A82ADB3EE40010A644 /* TotalActivityReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D5F8A72ADB3EE40010A644 /* TotalActivityReport.swift */; };
+		49D5F8A82ADB3EE40010A644 /* ActivityReports.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D5F8A72ADB3EE40010A644 /* ActivityReports.swift */; };
 		49D5F8AA2ADB3EE40010A644 /* TotalActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D5F8A92ADB3EE40010A644 /* TotalActivityView.swift */; };
 		49D5F8AF2ADB3EE40010A644 /* MyReportExtension.appex in Embed ExtensionKit Extensions */ = {isa = PBXBuildFile; fileRef = 49D5F8A32ADB3EE40010A644 /* MyReportExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		49E3039E2ABCCF23004C2A49 /* CustomNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E3039D2ABCCF23004C2A49 /* CustomNavBar.swift */; };
@@ -162,7 +165,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		494C24712ADDD82700552127 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4985EB982ADCE63C0040260F /* PieChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartView.swift; sourceTree = "<group>"; };
 		4985EB9A2ADCE6D50040260F /* PersonalScreenTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalScreenTimeView.swift; sourceTree = "<group>"; };
 		4986CECD2AB7F5DC00D1E259 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
@@ -182,6 +184,9 @@
 		49C8EEDE2AA97F7E00B2565B /* SettingsRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRowView.swift; sourceTree = "<group>"; };
 		49C8EEE02AA9877500B2565B /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "ScreenTimeSocialMedia/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		49C8EF202AA9B02100B2565B /* DefaultColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultColors.swift; sourceTree = "<group>"; };
+		49D1E7972AE3509000394758 /* FirestoreFunctionsScreenTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreFunctionsScreenTime.swift; sourceTree = "<group>"; };
+		49D1E79A2AE3542700394758 /* DarwinNotificationsCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarwinNotificationsCenter.swift; sourceTree = "<group>"; };
+		49D1E79D2AE37A3A00394758 /* AuthDataResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDataResultModel.swift; sourceTree = "<group>"; };
 		49D5F7F72ACF91670010A644 /* FirestoreFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreFunctions.swift; sourceTree = "<group>"; };
 		49D5F7F92ACF91A20010A644 /* FirestoreFunctionsFriendsSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreFunctionsFriendsSystem.swift; sourceTree = "<group>"; };
 		49D5F7FC2ACF91FC0010A644 /* FirestoreFunctionPodsSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreFunctionPodsSystem.swift; sourceTree = "<group>"; };
@@ -200,10 +205,9 @@
 		49D5F83E2AD9094D0010A644 /* SettingsPodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPodView.swift; sourceTree = "<group>"; };
 		49D5F8402AD90CEA0010A644 /* MainPodViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPodViewModel.swift; sourceTree = "<group>"; };
 		49D5F8422ADA5ECF0010A644 /* RowButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowButtonView.swift; sourceTree = "<group>"; };
-		49D5F8442ADB067F0010A644 /* FirestoreFunctionsScreenTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreFunctionsScreenTime.swift; sourceTree = "<group>"; };
 		49D5F8A32ADB3EE40010A644 /* MyReportExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.extensionkit-extension"; includeInIndex = 0; path = MyReportExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		49D5F8A52ADB3EE40010A644 /* MyReportExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyReportExtension.swift; sourceTree = "<group>"; };
-		49D5F8A72ADB3EE40010A644 /* TotalActivityReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalActivityReport.swift; sourceTree = "<group>"; };
+		49D5F8A72ADB3EE40010A644 /* ActivityReports.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityReports.swift; sourceTree = "<group>"; };
 		49D5F8A92ADB3EE40010A644 /* TotalActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalActivityView.swift; sourceTree = "<group>"; };
 		49D5F8AB2ADB3EE40010A644 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49D5F8AC2ADB3EE40010A644 /* MyReportExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MyReportExtension.entitlements; sourceTree = "<group>"; };
@@ -336,6 +340,7 @@
 				49C8EED92AA97BB300B2565B /* Core */,
 				49FEC1FC2AAEF59900F89C5C /* UserData */,
 				49D5F7F62ACF912B0010A644 /* Firestore */,
+				49D1E7992AE3541000394758 /* DarwinNotifications */,
 				4995B0FD2AA84934003A8E3A /* Assets.xcassets */,
 				4995B0FF2AA84934003A8E3A /* Preview Content */,
 				49C8EEE02AA9877500B2565B /* GoogleService-Info.plist */,
@@ -418,8 +423,17 @@
 				4986CED52AB9573400D1E259 /* AuthenticationManager.swift */,
 				4986CECF2AB956AA00D1E259 /* SignUpViewModel.swift */,
 				4986CED12AB956B200D1E259 /* LoginViewModel.swift */,
+				49D1E79D2AE37A3A00394758 /* AuthDataResultModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		49D1E7992AE3541000394758 /* DarwinNotifications */ = {
+			isa = PBXGroup;
+			children = (
+				49D1E79A2AE3542700394758 /* DarwinNotificationsCenter.swift */,
+			);
+			path = DarwinNotifications;
 			sourceTree = "<group>";
 		};
 		49D5F7F62ACF912B0010A644 /* Firestore */ = {
@@ -428,6 +442,7 @@
 				49D5F7F72ACF91670010A644 /* FirestoreFunctions.swift */,
 				49D5F7F92ACF91A20010A644 /* FirestoreFunctionsFriendsSystem.swift */,
 				49D5F7FC2ACF91FC0010A644 /* FirestoreFunctionPodsSystem.swift */,
+				49D1E7972AE3509000394758 /* FirestoreFunctionsScreenTime.swift */,
 				49E303B42AC633AF004C2A49 /* UserModel.swift */,
 				49D5F7FE2ACF92440010A644 /* MessageModel.swift */,
 				635849032AC8E08200A6F8C4 /* PodModel.swift */,
@@ -447,9 +462,7 @@
 			isa = PBXGroup;
 			children = (
 				49D5F80B2AD13DA40010A644 /* DeviceActivityMonitorExtension.swift */,
-				49D5F8442ADB067F0010A644 /* FirestoreFunctionsScreenTime.swift */,
 				49D5F80D2AD13DA40010A644 /* Info.plist */,
-				494C24712ADDD82700552127 /* GoogleService-Info.plist */,
 				49D5F80E2AD13DA40010A644 /* MyMonitorExtension.entitlements */,
 			);
 			path = MyMonitorExtension;
@@ -482,7 +495,7 @@
 			isa = PBXGroup;
 			children = (
 				49D5F8A52ADB3EE40010A644 /* MyReportExtension.swift */,
-				49D5F8A72ADB3EE40010A644 /* TotalActivityReport.swift */,
+				49D5F8A72ADB3EE40010A644 /* ActivityReports.swift */,
 				49D5F8A92ADB3EE40010A644 /* TotalActivityView.swift */,
 				4985EB982ADCE63C0040260F /* PieChartView.swift */,
 				49D5F8AB2ADB3EE40010A644 /* Info.plist */,
@@ -562,6 +575,7 @@
 				4995B0F42AA84933003A8E3A /* Resources */,
 				49D5F8152AD13DA40010A644 /* Embed Foundation Extensions */,
 				49D5F8972ADB133E0010A644 /* Embed ExtensionKit Extensions */,
+				4900371C2AE0A572008AB00B /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -725,7 +739,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				494C24722ADDD82800552127 /* GoogleService-Info.plist in Resources */,
+				49D1E7942AE3494A00394758 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -738,6 +752,31 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4900371C2AE0A572008AB00B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${PRODUCT_NAME}",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Info.plist",
+				"$(TARGET_BUILD_DIR)/$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/GoogleService-Info.plist",
+				"$(TARGET_BUILD_DIR)/$(EXECUTABLE_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		4995B0F22AA84933003A8E3A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -749,6 +788,7 @@
 				49FEC2102AB2DE2800F89C5C /* FriendsRequestView.swift in Sources */,
 				49FDA9312AAD2D3C006E4059 /* CustomTextField.swift in Sources */,
 				4985EB9B2ADCE6D50040260F /* PersonalScreenTimeView.swift in Sources */,
+				49D1E79E2AE37A3A00394758 /* AuthDataResultModel.swift in Sources */,
 				4995B10B2AA849A2003A8E3A /* SignUpView.swift in Sources */,
 				4995B1162AA84A54003A8E3A /* ProfileView.swift in Sources */,
 				49D5F8432ADA5ECF0010A644 /* RowButtonView.swift in Sources */,
@@ -759,6 +799,7 @@
 				49FEC20D2AB2DE1000F89C5C /* FriendsListView.swift in Sources */,
 				4995B10D2AA849AD003A8E3A /* TabBarView.swift in Sources */,
 				4986CED62AB9573400D1E259 /* AuthenticationManager.swift in Sources */,
+				49D1E7982AE3509000394758 /* FirestoreFunctionsScreenTime.swift in Sources */,
 				4995B1122AA84A3F003A8E3A /* FriendsView.swift in Sources */,
 				4995B1142AA84A49003A8E3A /* HomeView.swift in Sources */,
 				49D5F8302AD5273C0010A644 /* PodsInviteView.swift in Sources */,
@@ -776,6 +817,7 @@
 				4986CECE2AB7F5DC00D1E259 /* SearchBar.swift in Sources */,
 				49C8EF212AA9B02100B2565B /* DefaultColors.swift in Sources */,
 				49D5F83D2AD8BA6B0010A644 /* MembersViewModel.swift in Sources */,
+				49D1E79B2AE3542700394758 /* DarwinNotificationsCenter.swift in Sources */,
 				49E303A42ABE4E69004C2A49 /* MainPodView.swift in Sources */,
 				4995B0FA2AA84933003A8E3A /* ScreenTimeSocialMediaApp.swift in Sources */,
 				49E303AE2AC29885004C2A49 /* ProfileViewModel.swift in Sources */,
@@ -794,7 +836,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				49D5F80C2AD13DA40010A644 /* DeviceActivityMonitorExtension.swift in Sources */,
-				49D5F84A2ADB09C30010A644 /* FirestoreFunctionsScreenTime.swift in Sources */,
+				49D1E79C2AE3558700394758 /* DarwinNotificationsCenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -805,7 +847,7 @@
 				4985EB992ADCE63C0040260F /* PieChartView.swift in Sources */,
 				49D5F8AA2ADB3EE40010A644 /* TotalActivityView.swift in Sources */,
 				49D5F8A62ADB3EE40010A644 /* MyReportExtension.swift in Sources */,
-				49D5F8A82ADB3EE40010A644 /* TotalActivityReport.swift in Sources */,
+				49D5F8A82ADB3EE40010A644 /* ActivityReports.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -859,7 +901,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;

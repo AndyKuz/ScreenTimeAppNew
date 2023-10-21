@@ -10,33 +10,44 @@ import FamilyControls
 import UserNotifications
 
 struct PermissionsManagerViewModel {
-    func screenTimeRequestAuth(completion: @escaping () -> Void) {
+    func screenTimeRequestAuth(completion: @escaping (Bool) -> Void) {
         let center = AuthorizationCenter.shared
         Task {
             do {
                 try await center.requestAuthorization(for: .individual)
                 print("REQUESTED SCREENTIME AUTH")
+                completion(true)
             } catch {
                 print("FAILED TO REQUEST SCREENTIME AUTH")
+                completion(false)
             }
         }
-        completion()
     }
     
-    // returns true if screenTime Auth'd and false if not
+    // returns true if screenTime Authorized and false if not
     func screenTimeAuth() -> Bool {
-        let center = AuthorizationCenter.shared
+        var res: Bool = false
         
-        switch center.authorizationStatus {
-        case .notDetermined:
-            return false
-        case .denied:
-            return false
-        case .approved:
-            return true
-        @unknown default:
-            return false // handles unknown case
+        let center = AuthorizationCenter.shared
+        let cancellable = center.$authorizationStatus
+            .sink() {_ in 
+            switch center.authorizationStatus {
+            case .notDetermined:
+                print("not determined!")
+                res =  false
+                break
+            case .denied:
+                res = false
+                break
+            case .approved:
+                res = true
+                break
+            @unknown default:
+                res = false
+                break
+            }
         }
+        return res
     }
     
     func notificationsRequest() {

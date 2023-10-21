@@ -10,6 +10,7 @@ import SwiftUI
 struct SettingsPodView: View {
     @StateObject var db = FirestoreFunctions.system
     var fetchUsersPods: () -> Void
+    
     @State var presentLeaveConfirmation: Bool = false
     @State var leavePod = false
     @Environment(\.dismiss) private var dismiss
@@ -25,11 +26,14 @@ struct SettingsPodView: View {
                     } label: {
                         SettingsRowView(imageName: "rectangle.portrait.and.arrow.right", title: "Leave Pod", tintColor: .red)
                     }
+                    // allows user to confirm Leave
                     .confirmationDialog("Are you sure?",
-                                        isPresented: $presentLeaveConfirmation) {   // allows user to confirm Leave
+                                        isPresented: $presentLeaveConfirmation) {
                         Button("Leave?", role: .destructive) {
                             print("clicked")
+                            // removes CURRENT_USER from current pod
                             FirestoreFunctions.system.removeUserFromPod(podID: FirestoreFunctions.system.currentPod.podID, user: User(username: FirestoreFunctions.system.CURRENT_USER_USERNAME, userID: FirestoreFunctions.system.CURRENT_USER_UID)) {
+                                
                                 fetchUsersPods()    // fetch new list of pods and update it in HomeView
                                 
                                 // TODO: Need a way to not use NavigationLink
@@ -38,7 +42,7 @@ struct SettingsPodView: View {
                                     leavePod = true
                                 } else {
                                     print("started false")
-                                    dismiss()
+                                    dismiss() // MARK: can be buggy
                                 }
                             }
                         }

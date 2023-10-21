@@ -9,7 +9,9 @@ import SwiftUI
 
 struct SignUpView: View {
     @Environment(\.presentationMode) var presentationMode
+    
     @StateObject private var viewModel = SignUpViewModel()
+    @State var permissionManager = PermissionsManagerViewModel()
 
     var body: some View {
         VStack {
@@ -49,7 +51,11 @@ struct SignUpView: View {
                 .background(Color.blue)
                 .cornerRadius(10)
 
-            NavigationLink("", destination: TabBarView().navigationBarBackButtonHidden(true), isActive: $viewModel.navigateToNextView)
+            // navigates to new view depending if screen time authorized
+            NavigationLink("", destination: permissionManager.screenTimeAuth() ?
+                AnyView(TabBarView().navigationBarBackButtonHidden(true)) :
+                AnyView(ScreenTimeAuthIntroView().navigationBarBackButtonHidden(true)),
+                isActive: $viewModel.navigateToNextView)
             
             Button(action: {
                 presentationMode.wrappedValue.dismiss() // go back to parent view (LoginView)

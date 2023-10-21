@@ -9,7 +9,8 @@ import Foundation
 import FirebaseFirestore
 
 extension FirestoreFunctions {
-    // stores a "Pod" in firestore based on passed on Pod Model
+    
+    // stores a a Pods instance in firestore
     func createPod(pod: Pods) {
         let docRef = PODS_REF.addDocument(data: [
             "title": pod.title!,
@@ -35,33 +36,55 @@ extension FirestoreFunctions {
         CURRENT_USER_PODS_REF.document(generatedPodID).setData([:])
         
         // Add the current user to the list of pod users
-        addUserToPod(podID: generatedPodID, user: User(username: self.CURRENT_USER_USERNAME, userID: self.CURRENT_USER_UID))
+        addUserToPod(podID: generatedPodID)
+        
+        // as soon as user creates pod begin monitoring screentime in the background
+        ScreenTimeViewModel().beginMonitoring(pod: pod)
     }
-    func addUserToPod(podID: String, user: User) {
+    
+    func addUserToPod(podID: String) {
         // save user uid and username in pod instance document
-        PODS_REF.document(podID).collection("users").document(user.uid).setData([
-            "username": user.username!,
+        PODS_REF.document(podID).collection("users").document(CURRENT_USER_UID).setData([
+            "username": CURRENT_USER_USERNAME,
             "currentStreak": 0,
             "numStrikes": 0
         ]) { err in
             if let err = err {
-                print("error adding user to pod: \(err)")
+                print("addUserToPod(): error adding user to pod: \(err)")
             }
         }
         
-        // sets podID as document for CURRENT_USER
+        // adds pod instance to CURRENT_USER's doucment
         CURRENT_USER_PODS_REF.document(podID).setData([:])
     }
     
     func removeUserFromPod(podID: String, user: User, completion: @escaping () -> Void) {
+        var deletePod = false
+        
+        PODS_REF.document(podID).collection("users").getDocuments { (querySnapshot, error) in
+            if let error = error {
+                print("removeUserFromPod(): Error getting documents: \(error)")
+            } else {
+                // Count the number of documents
+                let documentCount = querySnapshot?.documents.count ?? 0
+                if documentCount <= 1 { deletePod = true }
+            }
+        }
+        
         // remove user instance from users collection in podID document
         PODS_REF.document(podID).collection("users").document(user.uid).delete()
         
         // removes pod instance from CURRENT_USER
-        CURRENT_USER_PODS_REF.document(podID).delete()
+        USER_REF.document(user.uid!).collection("pods").document(podID).delete()
+        
+        if deletePod { // if user is last person in Pod delete Pod
+            PODS_REF.document(podID).delete()
+        }
+        
         completion()
     }
     
+    // used to invite another user to pod
     func sendPodRequest(podID: String, user: User) {
         // adds Pod info to userID's receivedPodsRequests collection
         USER_REF.document(user.uid).collection("receivedPodsRequests").document(podID).setData([
@@ -74,28 +97,30 @@ extension FirestoreFunctions {
         ])
     }
     
-    
     func rejectPodRequest(podID: String, userID: String) {
         // removes userID from collection sentInvites from podID document
         PODS_REF.document(podID).collection("sentInvites").document(userID).delete()
         
-        // deletes invite from CURRENT_USER_RECIEVED_PODS_REQUESTS
+        // deletes invite from user's pod invites
         CURRENT_USER_RECEIVED_PODS_REQUEST_REF.document(podID).delete()
     }
     
-    func acceptPodRequest(podID: String, userID: String) {
+    func acceptPodRequest(pod: Pods, userID: String) {
         // removes invite instance from CURRENT_USER and userID
-        rejectPodRequest(podID: podID, userID: userID)
+        // doesn't actually "reject" invite used more as a cleanup in this instance
+        rejectPodRequest(podID: pod.podID, userID: userID)
         
-        // adds CURRENT_USER to collection users for podID document and vice versa
-        addUserToPod(podID: podID, user: User(username: CURRENT_USER_USERNAME, userID: CURRENT_USER_UID))
+        addUserToPod(podID: pod.podID)
+        
+        // begin monitoring in the background as soon as user accepts pod request
+        ScreenTimeViewModel().beginMonitoring(pod: pod)
     }
     
-    func beginListeningPods() {
-        listenUsersPods { }
-    }
+    // MARK: Fetching pods from firestore ----------------------------
     
     func listenUsersPods(completion: @escaping () -> Void) {
+        
+        // listen to current user's collection of pod id docs
         CURRENT_USER_PODS_REF.addSnapshotListener { querySnapshot, error in
             guard let documents = querySnapshot?.documents else {
                 print("listenUsersPods(): Error fetching documents")
@@ -103,16 +128,36 @@ extension FirestoreFunctions {
             }
             
             for document in documents {
-                // TODO: implement calling listenPod only on change
                 let podID = document.documentID
-                if self.allPodsList.contains(where: { $0.podID == podID }) { continue } // doesn't "relisten to preexisting pods"
                 
+                // doesn't "relisten to pre-existing pods"
+                if self.allPodsList.contains(where: { $0.podID == podID }) { continue }
+                
+                // add a listener for every pod id in current user's pods collection
                 self.listenPod(podID: document.documentID) { newPod in
                     if let index = self.allPodsList.firstIndex(where: { $0.podID == newPod.podID }) {
                         self.allPodsList[index] = newPod    // so we don't add duplicate pods
-                        self.currentPod = newPod
+                        if self.currentPod.podID == newPod.podID {
+                            self.currentPod = newPod    // updates current pod
+                        }
                     } else {
                         self.allPodsList.append(newPod)
+                        
+                        // add observer for threshold reahced
+                        DarwinNotificationCenter.shared.addObserver(
+                            DarwinNotificationCenter.shared,
+                            for: DarwinNotification.Name("\(newPod.podID!).threshold")
+                        ) { notification in
+                            FirestoreFunctions.system.thresholdReached(pod: newPod)
+                        }
+                        
+                        // add observer for intervalStarted
+                        DarwinNotificationCenter.shared.addObserver(
+                            DarwinNotificationCenter.shared,
+                            for: DarwinNotification.Name("\(newPod.podID!).intervalStarted")
+                        ) { notification in
+                            FirestoreFunctions.system.intervalStarted(pod: newPod)
+                        }
                     }
                     completion()
                 }

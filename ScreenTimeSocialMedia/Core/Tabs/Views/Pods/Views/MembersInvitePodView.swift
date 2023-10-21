@@ -12,10 +12,11 @@ struct MembersInvitePodView: View {
                     HStack {
                         Text(user.username.wrappedValue)
                         Spacer()
+                        // if user has been sent a pod invite display "invited" next to their name
                         if sentPodsRequestsList.contains( where: { $0.uid == user.uid.wrappedValue }) {
                             Text("Invited")
                         } else {
-                            Button(action: {
+                            Button(action: {    // when clicked invite user
                                 FirestoreFunctions.system.sendPodRequest(podID: FirestoreFunctions.system.currentPod.podID, user: User(username: user.username.wrappedValue, userID: user.uid.wrappedValue))
                             }) {
                                 Image(systemName: "plus.circle.fill")
@@ -31,6 +32,8 @@ struct MembersInvitePodView: View {
         .background(Color(UIColor.systemBackground))
         .onAppear() {
             let podID = FirestoreFunctions.system.currentPod.podID
+            
+            // fetches all friends of CURRENT_USER who are NOT in the current pod
             FirestoreFunctions.system.loadNonPodFriends(podID: podID!) { users in
                 nonPodFriendsList = users
             }

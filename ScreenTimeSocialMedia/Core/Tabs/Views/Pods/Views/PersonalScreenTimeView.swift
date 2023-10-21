@@ -10,6 +10,7 @@ import DeviceActivity
 
 struct PersonalScreenTimeView: View {
     @ObservedObject var db = FirestoreFunctions.system
+    
     @State private var filter = DeviceActivityFilter(
         segment: .daily(
             during: Calendar.current.dateInterval(
@@ -18,23 +19,33 @@ struct PersonalScreenTimeView: View {
         ),
         users: .all,
         devices: .init([.iPhone, .iPad]),
-        applications: ScreenTimeViewModel().savedSelection()!.applicationTokens,
-        categories: ScreenTimeViewModel().savedSelection()!.categoryTokens,
-        webDomains: ScreenTimeViewModel().savedSelection()!.webDomainTokens
+        applications: ScreenTimeViewModel().savedSelection()?.applicationTokens ?? Set(),
+        categories: ScreenTimeViewModel().savedSelection()?.categoryTokens ?? Set(),
+        webDomains: ScreenTimeViewModel().savedSelection()?.webDomainTokens ?? Set()
     )
     
     var body: some View {
-        let context: DeviceActivityReport.Context
-            if let timeframe = db.currentPod.goal {
-                print("timeframe is \(timeframe)")
-                // display pie graph out of n hours based on the screentime goal of pod/
-                context = DeviceActivityReport.Context(rawValue: (timeframe == 2) ? "2 Hour Pie Chart" : (timeframe == 3) ? "3 Hour Pie Chart" : (timeframe == 4) ? "4 Hour Pie Chart" : "5 Hour Pie Chart")
-            } else {
-                context = DeviceActivityReport.Context(rawValue: "5 Hour Pie Chart")
-            }
+        let timeframe = db.currentPod.goal
+        
+        // display pie graph out of x hours based on the screentime goal of pod
+        let context = DeviceActivityReport.Context(rawValue: (timeframe == 2) ? "2 Hour Pie Chart" : (timeframe == 3) ? "3 Hour Pie Chart" : (timeframe == 4) ? "4 Hour Pie Chart" : "5 Hour Pie Chart")
 
             return ZStack {
-                DeviceActivityReport(context, filter: filter)
+                // in case user has not chosen what apps to monitor
+                if ScreenTimeViewModel().savedSelection() == nil {
+                    VStack {
+                        Text("No Apps To Monitor...")
+                            .padding(.horizontal)
+                            .font(.title2)
+                        Text("Please select them in settings")
+                            .font(.title3)
+                            .padding(.horizontal)
+                    }
+                    
+                } else {
+                    // display pie graph of screenTime catered to pod goal
+                    DeviceActivityReport(context, filter: filter)
+                }
             }
     }
 }

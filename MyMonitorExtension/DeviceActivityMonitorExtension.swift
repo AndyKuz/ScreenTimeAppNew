@@ -7,28 +7,32 @@
 
 import DeviceActivity
 import UserNotifications
-import Firebase
+import CoreFoundation
 
 // Optionally override any of the functions below.
 // Make sure that your class name matches the NSExtensionPrincipalClass in your Info.plist.
 class MyMonitorExtension: DeviceActivityMonitor {
+    
+    // post a Darwin Notification with func call and associated podID
+    func sendFunctionRequestToMainApp(notifName: String, podID: String) {
+        DarwinNotificationCenter.shared.postNotification(DarwinNotification.Name("\(podID).\(notifName)"))
+    }
+
+    
     override func intervalDidStart(for activity: DeviceActivityName) {
         super.intervalDidStart(for: activity)
+        
+        sendFunctionRequestToMainApp(notifName: "intervalStarted", podID: activity.rawValue)
     }
     
     override func intervalDidEnd(for activity: DeviceActivityName) {
         super.intervalDidEnd(for: activity)
-        
-        // Handle the end of the interval.
     }
     
     override func eventDidReachThreshold(_ event: DeviceActivityEvent.Name, activity: DeviceActivityName) {
         super.eventDidReachThreshold(event, activity: activity)
         
-        // each event name is named <podID>.<userID>
-        let components = event.rawValue.components(separatedBy: ".")
-        FirestoreFunctionsScreenTime.system.userFailed(podID: components[0], userID: components[1])
-        
+        sendFunctionRequestToMainApp(notifName: "threshold", podID: activity.rawValue)
     }
     
     override func intervalWillStartWarning(for activity: DeviceActivityName) {

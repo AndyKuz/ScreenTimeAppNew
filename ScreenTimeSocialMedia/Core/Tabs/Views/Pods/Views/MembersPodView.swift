@@ -35,6 +35,7 @@ struct MembersPodView: View {
                                 .padding(.leading, 1)
                         }
                         Spacer()
+                        // displays user's strikes
                         Text("strikes: \(user.numStrikes ?? 0)")
                             .padding(.horizontal)
                     }
@@ -46,6 +47,7 @@ struct MembersPodView: View {
             .background(Color(UIColor.systemBackground))
         }
         .onAppear() {
+            // fetches all the pod users
             FirestoreFunctions.system.loadPodUsers(podID: FirestoreFunctions.system.currentPod.podID) { users in
                 membersList = users
             }

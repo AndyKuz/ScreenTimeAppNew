@@ -71,7 +71,7 @@ struct PodsInviteView: View {
                                         }
                                     }
                                 } else {
-                                    FirestoreFunctions.system.acceptPodRequest(podID: pod.podID, userID: FirestoreFunctions.system.CURRENT_USER_UID)
+                                    FirestoreFunctions.system.acceptPodRequest(pod: pod, userID: FirestoreFunctions.system.CURRENT_USER_UID)
                                     fetchUsersPodsRequests()
                                 }
                             } label: {

@@ -24,7 +24,7 @@ class ScreenTimeViewModel: ObservableObject {
         }
     }
 
-    // returns the last selected activities
+    // returns the last selected activities from user Defaults
     func savedSelection() -> FamilyActivitySelection? {
         let defaults = UserDefaults.standard
         guard let data = defaults.data(forKey: userDefaultsKey) else { return nil }
@@ -38,7 +38,7 @@ class ScreenTimeViewModel: ObservableObject {
     
     func endMonitoring(pod: Pods) { // stops monitoring screentime for specific pod
         let center = DeviceActivityCenter()
-        center.stopMonitoring([DeviceActivityName("\(pod.podID!).ScreenTime")])
+        center.stopMonitoring([DeviceActivityName(pod.podID)])
     }
     
     func beginMonitoring(pod: Pods) {
@@ -63,8 +63,8 @@ class ScreenTimeViewModel: ObservableObject {
         let center = DeviceActivityCenter()
         
         // monitors screentime for each pod
-        let activity = DeviceActivityName("\(pod.podID!).ScreenTime")
-        let eventName = DeviceActivityEvent.Name("\(pod.podID!).\(FirestoreFunctions.system.CURRENT_USER_UID)") // used to differentiate between each event
+        let activity = DeviceActivityName(pod.podID)
+        let eventName = DeviceActivityEvent.Name("ScreenTimeMonitoring")
         
         do {
             try center.startMonitoring(

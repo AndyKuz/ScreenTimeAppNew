@@ -366,8 +366,8 @@
             filePath = "ScreenTimeSocialMedia/Core/Tabs/Views/Pods/Views/TabBarPodView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
             landmarkName = "body"
             landmarkType = "24">
             <Locations>
@@ -430,6 +430,85 @@
                   startingLineNumber = "31"
                   endingLineNumber = "31"
                   offsetFromSymbolStart = "232">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AEE63F32-5CB8-4584-86A1-0964E553328C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MyMonitorExtension/DeviceActivityMonitorExtension.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "intervalDidStart(for:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CB99B1BA-81B9-4B18-B24E-DB8881587CE8"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MyMonitorExtension/DeviceActivityMonitorExtension.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "14"
+            endingLineNumber = "14"
+            landmarkName = "MyMonitorExtension"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "CB99B1BA-81B9-4B18-B24E-DB8881587CE8 - 9d6224c424a33550"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MyMonitorExtension.MyMonitorExtension.__allocating_init() -&gt; MyMonitorExtension.MyMonitorExtension"
+                  moduleName = "MyMonitorExtension"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrew/Documents/Developer/MainAppFolder/MainBranch/ScreenTimeAppNew/MyMonitorExtension/DeviceActivityMonitorExtension.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  uuid = "CB99B1BA-81B9-4B18-B24E-DB8881587CE8 - c684c7d26de75681"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MyMonitorExtension.MyMonitorExtension.init() -&gt; MyMonitorExtension.MyMonitorExtension"
+                  moduleName = "MyMonitorExtension"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrew/Documents/Developer/MainAppFolder/MainBranch/ScreenTimeAppNew/%3Ccompiler-generated%3E"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  uuid = "CB99B1BA-81B9-4B18-B24E-DB8881587CE8 - 63368662d3f7b4fd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MyMonitorExtension.MyMonitorExtension.__deallocating_deinit"
+                  moduleName = "MyMonitorExtension"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrew/Documents/Developer/MainAppFolder/MainBranch/ScreenTimeAppNew/MyMonitorExtension/DeviceActivityMonitorExtension.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
                </Location>
             </Locations>
          </BreakpointContent>

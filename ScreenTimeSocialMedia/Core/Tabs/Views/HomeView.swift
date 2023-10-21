@@ -3,6 +3,7 @@ import FirebaseFirestore
 
 struct HomeView: View {
     @ObservedObject var db = FirestoreFunctions.system
+    
     @State var isSheetPresented = false
     @State var errorMessage = ""
     
@@ -93,9 +94,12 @@ struct HomeView: View {
                 }
             }
             .onAppear() {
-                // load all current pods
+                // request user to enable notifications
+                PermissionsManagerViewModel().notificationsRequest()
+                
+                // call user's pods listen on first appear
                 if !didAppear {
-                    db.beginListeningPods()
+                    db.listenUsersPods() {}
                     didAppear = true
                 }
                 

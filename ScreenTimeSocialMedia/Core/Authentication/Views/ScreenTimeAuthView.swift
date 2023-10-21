@@ -11,7 +11,6 @@ import SwiftUI
  Takes user through process of setting up Screen Time Authentication
  as well as what apps they want to monitor
  */
-
 struct ScreenTimeAuthIntroView: View {
     var body: some View {
         VStack {
@@ -20,17 +19,23 @@ struct ScreenTimeAuthIntroView: View {
                 .font(.title)
             Text("Before we get started we need to set a few things up")
                 .padding()
+                .multilineTextAlignment(.center)
+                .font(.title2)
             Spacer()
             NavigationLink(destination: ScreenTimeAuthPermissionView().navigationBarBackButtonHidden(true)) {
                 Text("Continue")
+                    .frame(width: 200, height: 25)
+                    .background(.blue)
+                    .foregroundColor(.white)
+                    .padding()
             }
-            Spacer()
+            .buttonStyle(.borderedProminent)
         }
     }
 }
 
 struct ScreenTimeAuthPermissionView: View {
-    var screenTimeViewModel = PermissionsManagerViewModel()
+    @State var permissionManager = PermissionsManagerViewModel()
     @State var permissionGranted = false
     
     var body: some View {
@@ -38,19 +43,23 @@ struct ScreenTimeAuthPermissionView: View {
             Spacer()
             
             Text("Since this app tracks your screen time please allow access to your screen time.")
+                .font(.title2)
+                .multilineTextAlignment(.center)
                 .padding()
             
             Button(action: {
                 // requests screen time authorization
-                screenTimeViewModel.screenTimeRequestAuth() { } // waits for completion
-                if screenTimeViewModel.screenTimeAuth() {   // if auth is detected navigate to next View
-                    permissionGranted = true
+                permissionManager.screenTimeRequestAuth() { bool in
+                    permissionGranted = bool
                 }
             }) {
                 Text("Allow Access")
+                    .frame(width: 200, height: 25)
+                    .background(.blue)
+                    .foregroundColor(.white)
+                    .padding()
             }
-            .padding()
-            
+            .buttonStyle(.borderedProminent)
             Spacer()
             
             NavigationLink(
@@ -69,18 +78,28 @@ struct ScreenTimeAuthAppsSelectView: View {
         VStack {
             Spacer()
             Text("Awesome! Last step!")
+                .font(.title2)
                 .padding()
             Text("Choose which apps you want us to monitor. Feel free to change this later in settings if need be.")
+                .font(.title2)
                 .padding()
+                .multilineTextAlignment(.center)
             Button(action: {
                 presentScreenTimeSheet = true
             }) {
                 Text("Choose Apps")
+                    .padding()
             }
-            
+            Spacer()
             NavigationLink(destination: TabBarView().navigationBarBackButtonHidden(true)) {
                 Text("Finish!")
+                    .frame(width: 200, height: 25)
+                    .background(.blue)
+                    .foregroundColor(.white)
+                    .padding()
             }
+            .buttonStyle(.borderedProminent)
+            Spacer()
         }
         .familyActivityPicker(  // allow user to select what apps they want to monitor
             isPresented: $presentScreenTimeSheet,

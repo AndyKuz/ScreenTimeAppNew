@@ -34,8 +34,9 @@ struct SegmentedProgressBar: View {
 struct MainPodView: View {
     @StateObject var db = FirestoreFunctions.system
     @StateObject var screenTimeManager = ScreenTimeViewModel()
-    @State var startConfirmation = false
-    @State var navigateToMemberView: Bool = false
+    
+    @State var startConfirmation = false    // present alert when user clicks "start pod"
+    @State var navigateToMemberView: Bool = false   // when user clicks on member icon
     
     var body: some View {
         ZStack {
@@ -70,7 +71,7 @@ struct MainPodView: View {
                 Text("\(FirestoreFunctions.system.currentPod.currentStrikes)/\(FirestoreFunctions.system.currentPod.totalStrikes)")
                 
                 Spacer()
-                
+                                
                 if !db.currentPod.started {
                     Button (action: {
                         startConfirmation = true
@@ -89,9 +90,13 @@ struct MainPodView: View {
                         Text("Once you start the pod you will not be able to invite anymore friends nor stop the pod")
                     }
                     
-                    Spacer()
                 }
+                Spacer()
             }
+        }
+        .onAppear() {
+            // requests screenTime
+            PermissionsManagerViewModel().screenTimeRequestAuth() { _ in }
         }
         NavigationLink("", destination: MembersPodView(), isActive: $navigateToMemberView)
         

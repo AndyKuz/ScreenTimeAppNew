@@ -11,6 +11,9 @@ struct TabBarPodView: View {
     var pod: Pods
     var fetchUsersPods: () -> Void
     
+    @State private var showAlert = false
+    @State private var selectedTab = 0
+    
     var body: some View {
         TabView {
             HStack {
@@ -19,6 +22,7 @@ struct TabBarPodView: View {
             .tabItem {
                 Image(systemName: "house.fill")
             }
+            .tag(0)
             
             HStack {
                 PersonalScreenTimeView()
@@ -26,6 +30,7 @@ struct TabBarPodView: View {
             .tabItem {
                 Image(systemName: "hourglass")
             }
+            .tag(1)
             
             HStack {
                 ChatPodView()
@@ -33,6 +38,7 @@ struct TabBarPodView: View {
             .tabItem {
                 Image(systemName: "message.fill")
             }
+            .tag(2)
             
             HStack {
                 SettingsPodView(fetchUsersPods: fetchUsersPods)
@@ -40,6 +46,7 @@ struct TabBarPodView: View {
             .tabItem {
                 Image(systemName: "gear")
             }
+            .tag(3)
         }
         .onAppear() {
             print("set currentPod")
