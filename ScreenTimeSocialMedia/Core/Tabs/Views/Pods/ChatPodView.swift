@@ -2,7 +2,7 @@
 //  ChatPodView.swift
 //  ScreenTimeSocialMedia
 //
-//  Created by Andrew Kuznetsov on 9/24/23.
+//  Created by Chad Baker on 9/24/23.
 //
 
 import SwiftUI
@@ -10,14 +10,6 @@ import Firebase
 
 class ChatPodViewModel: ObservableObject {
     @Published var data: [Messages] = []
-    
-    func scrollTo(messageID: UUID, anchor: UnitPoint? = nil, Animate: Bool, scrollReader: ScrollViewProxy) {
-        DispatchQueue.main.async {
-            withAnimation(Animate ? Animation.easeIn : nil) {
-                scrollReader.scrollTo(messageID, anchor: anchor)
-            }
-        }
-    }
 }
 
 struct ChatPodView: View {
@@ -25,18 +17,29 @@ struct ChatPodView: View {
     @State var message = ""
     var pod: Pods
     
-    @State private var messageIdToScroll: UUID?
+    @State var messageSent = false
      
     var body: some View {
         VStack {
             ScrollView {
-                ScrollViewReader { scrollReader in
+                ScrollViewReader { (proxy: ScrollViewProxy) in
                     VStack(alignment: .leading, spacing: 7) {
                         ForEach(viewModel.data, id: \.id) { message in
                             MessageView(currentMessage: message)
+                                .id(message.id) // used for coordination w/ proxy
                         }
                     }
                     .padding()
+                    // if the current user sends a message scroll ScrollView to the bottom
+                    .onChange(of: messageSent) { message in
+                        if message {
+                            messageSent = false
+                            
+                            withAnimation {
+                                proxy.scrollTo(viewModel.data.last?.id, anchor: .center)
+                            }
+                        }
+                    }
                 }
             }
             // textbar
@@ -49,6 +52,7 @@ struct ChatPodView: View {
                     // sends the message to db when user clicks send button
                     FirestoreFunctions.system.sendMessagesDatabase(message: Messages(userID: Auth.auth().currentUser!.uid, username: (Auth.auth().currentUser?.displayName)!, text: message, createdAt: Date()), podID: pod.podID)
                     message = ""
+                    messageSent = true
                 }) {
                     Text("Send")
                         .padding()
