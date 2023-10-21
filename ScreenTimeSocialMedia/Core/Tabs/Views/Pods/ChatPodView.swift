@@ -10,32 +10,43 @@ import Firebase
 
 class ChatPodViewModel: ObservableObject {
     @Published var data: [Messages] = []
+    
+    func scrollTo(messageID: UUID, anchor: UnitPoint? = nil, Animate: Bool, scrollReader: ScrollViewProxy) {
+        DispatchQueue.main.async {
+            withAnimation(Animate ? Animation.easeIn : nil) {
+                scrollReader.scrollTo(messageID, anchor: anchor)
+            }
+        }
+    }
 }
 
 struct ChatPodView: View {
     @StateObject var viewModel = ChatPodViewModel()
     @State var message = ""
     var pod: Pods
+    
+    @State private var messageIdToScroll: UUID?
      
     var body: some View {
         VStack {
-            ScrollView(showsIndicators: false) {
-                VStack(alignment: .leading, spacing: 7) {
-                    ForEach(viewModel.data.sorted(by: { $0.createdAt < $1.createdAt }), id: \.createdAt) { message in
-                        MessageView(currentMessage: message)
+            ScrollView {
+                ScrollViewReader { scrollReader in
+                    VStack(alignment: .leading, spacing: 7) {
+                        ForEach(viewModel.data, id: \.id) { message in
+                            MessageView(currentMessage: message)
+                        }
                     }
-                }.frame(maxHeight: .infinity, alignment: .bottom)
-                .padding()
-                .background(Color.clear)
+                    .padding()
+                }
             }
-            Spacer()
+            // textbar
             HStack {
                 TextField("Type a message...", text: $message)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
                 
                 Button(action: {
-                    // Handle sending the message
+                    // sends the message to db when user clicks send button
                     FirestoreFunctions.system.sendMessagesDatabase(message: Messages(userID: Auth.auth().currentUser!.uid, username: (Auth.auth().currentUser?.displayName)!, text: message, createdAt: Date()), podID: pod.podID)
                     message = ""
                 }) {
@@ -48,15 +59,10 @@ struct ChatPodView: View {
                 .padding()
             }
         }
+        // saves messages in the database
         .onAppear() {
-            FirestoreFunctions.system.getMessageDatabase(podID: pod.podID) { (retrievedMessages, error) in
-                if let error = error {
-                    // Handle the error
-                    print("Error: \(error)")
-                } else if let loadedMessages = retrievedMessages {
-                    // Access the retrieved messages here
-                    viewModel.data = loadedMessages
-                }
+            FirestoreFunctions.system.getMessageDatabase(podID: pod.podID) { retrievedMessages, error in
+                viewModel.data = retrievedMessages!
             }
         }
     }

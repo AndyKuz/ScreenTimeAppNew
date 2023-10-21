@@ -14,6 +14,8 @@ import FirebaseAuth
 class FirestoreFunctions {
     static let system = FirestoreFunctions()
     
+    @Published var messages = [Messages]()
+    
     // Base reference for database
     let BASE_REF = Firestore.firestore()
     

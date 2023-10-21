@@ -10,16 +10,20 @@ import FirebaseFirestore
 
 extension FirestoreFunctions {
     func getMessageDatabase(podID: String, completion: @escaping ([Messages]?, Error?) -> Void) {
-        let MESSAGE_COLLECTION_REF = PODS_REF.document(podID).collection("messages")
-            
-        let _ = MESSAGE_COLLECTION_REF.addSnapshotListener { snapshot, error in
+        
+        // grabs messages from db
+        let query = PODS_REF.document(podID).collection("messages").order(by: "createdAt", descending: false)
+        
+        // listens in to see if any messages are sent
+        let _ = query.addSnapshotListener { snapshot, error in
             if let error = error {
-                // Handle the error
                 print("Error listening for messages: \(error)")
                 completion(nil, error)
                     return
                 }
+            
             var messages = [Messages]()
+            
             for doc in snapshot?.documents ?? []{
                 let data = doc.data()
                 let text = data["text"] as? String ?? "Error"
@@ -30,9 +34,11 @@ extension FirestoreFunctions {
                 messages.append(msg)
             }
             completion(messages, nil)
+            
         }
     }
     
+    // stores message in db
     func sendMessagesDatabase(message: Messages, podID: String) {
         let message = [
             "userID": message.userID,
