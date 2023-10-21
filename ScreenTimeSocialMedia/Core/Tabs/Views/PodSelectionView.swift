@@ -9,14 +9,14 @@ import SwiftUI
 
 struct PodSelectionView: View {
     @Binding var isSheetPresented: Bool
+    
     @State var name = ""
-    @State var group: groupType = .screenTime
-    @State var numWeeks: Double = 2
-    @State var numStrikes = 3
+    @State var podType: groupType = .screenTime // default picker value
+    @State var goal: Int = 2 // default picker value
+    @State var numWeeks: Int = 2 // default picker value
+    @State var totalStrikes: Int = 3 // default picker values
     
     @State var printError = false
-    
-    var addPod: (String, groupType, Double, Int) -> Void
     
     var body: some View {
         VStack {
@@ -38,7 +38,7 @@ struct PodSelectionView: View {
                 .padding()
                 .padding(.bottom, 40)
             
-            
+            // if done button clicked w/ no name specified show error
             if printError {
                 Text("Please provide a name")
                     .foregroundColor(.red)
@@ -52,9 +52,22 @@ struct PodSelectionView: View {
             // picker for pod type [screentime]
             HStack {
                 Text("Pod Type:")
-                Picker("group", selection: $group) {
+                Picker("group", selection: $podType) {
                     ForEach(groupType.allCases, id: \.self) { selection in
                         Text(selection.rawValue).tag(selection)
+                    }
+                }
+                .pickerStyle(DefaultPickerStyle())
+            }
+            .padding(.horizontal, 30)
+            .padding(.bottom, 10)
+            
+            // picker for daily pod goal
+            HStack {
+                Text("Daily Goal")
+                Picker("goal", selection: $goal) {
+                    ForEach([2, 3, 4, 5], id: \.self) { selection in
+                        Text("\(selection) hours")
                     }
                 }
                 .pickerStyle(DefaultPickerStyle())
@@ -67,7 +80,7 @@ struct PodSelectionView: View {
                 Text("Timeframe:")
                 Picker("timeframe", selection: $numWeeks) {
                     ForEach([2,4,8,12], id: \.self) { selection in
-                        Text("\(selection) weeks")
+                        Text("\(selection) weeks").tag(selection)
                     }
                 }
                 .pickerStyle(DefaultPickerStyle())
@@ -78,7 +91,7 @@ struct PodSelectionView: View {
             // picker for number of strikes
             HStack {
                 Text("Strikes:")
-                Picker("strikes", selection: $numStrikes) {
+                Picker("strikes", selection: $totalStrikes) {
                     ForEach([3,4,5,6,7,8,9,10], id: \.self) { selection in
                         Text("\(selection) strikes")
                     }
@@ -95,8 +108,10 @@ struct PodSelectionView: View {
                     printError = true
                     
                 } else {
-                    // Add the new pod and dismiss the sheet
-                    addPod(name, group, numWeeks, numStrikes)
+                    // add new pod in firestore
+                    FirestoreFunctions.system.createPod(pod: Pods(podID: "temp", title: name, podType: podType, totalStrikes: totalStrikes, currentStrikes: 0, goal: goal, timeframe: Double(numWeeks), started: false, failedDays: [], currentDay: 0))
+                    
+                    // dismiss the sheet
                     isSheetPresented = false
                 }
             }) {

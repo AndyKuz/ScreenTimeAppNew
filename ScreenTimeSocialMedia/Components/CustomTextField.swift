@@ -21,25 +21,31 @@ struct CustomTextField: View {
     var body: some View {
         switch type {
         case .text:
-            TextField(placeholder, text: $text)
-                .focused($isFocused, equals: true)
-                .padding()
-                .background(Color.gray.opacity(0.2))
-                .cornerRadius(10)
-                .overlay {
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke((isFocused ?? false) ? DefaultColors.teal1 : Color.white, lineWidth: 3)
-                }
+            HStack {
+                TextField(placeholder, text: $text)
+                    .focused($isFocused, equals: true)
+                    .padding()
+                    .background(Color.gray.opacity(0.0))
+                    .foregroundColor(DefaultColors.lightGray2)
+                    .cornerRadius(10)
+                    .overlay {
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke((isFocused ?? false) ? DefaultColors.teal1 : DefaultColors.lightGray2, lineWidth: 2.5)
+                    }
+            }
         case .secure:
-            SecureField(placeholder, text: $text)
-                .focused($isFocused, equals: true)
-                .padding()
-                .background(Color.gray.opacity(0.2))
-                .cornerRadius(10)
-                .overlay{
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke((isFocused ?? false) ? DefaultColors.teal1 : Color.white, lineWidth: 3)
-                }
+            HStack {
+                SecureField(placeholder, text: $text)
+                    .focused($isFocused, equals: true)
+                    .padding()
+                    .background(Color.gray.opacity(0.0))
+                    .foregroundColor(DefaultColors.lightGray2)
+                    .cornerRadius(10)
+                    .overlay{
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke((isFocused ?? false) ? DefaultColors.teal1 : DefaultColors.lightGray2, lineWidth: 2.5)
+                    }
+            }
         }
     }
     

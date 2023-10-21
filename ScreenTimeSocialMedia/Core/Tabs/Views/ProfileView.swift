@@ -6,16 +6,20 @@
 //
 
 import SwiftUI
+import FamilyControls
 
 struct ProfileView: View {
-    @StateObject private var viewModel = ProfileViewModel()
+    @StateObject private var profileViewModel = ProfileViewModel()
+    @StateObject private var screenTimeManager = ScreenTimeViewModel()
+    
+    @State private var presentScreenTimeSheet = false
     
     var email: String {
-        FriendsSystem.system.CURRENT_USER_EMAIL
+        FirestoreFunctions.system.CURRENT_USER_EMAIL
     }
     
     var username: String {
-        FriendsSystem.system.CURRENT_USER_USERNAME
+        FirestoreFunctions.system.CURRENT_USER_USERNAME
     }
     
     var firstLetter: String {
@@ -51,7 +55,8 @@ struct ProfileView: View {
                 Button {
                     Task {
                         do {
-                            try viewModel.signOut()
+                            try profileViewModel.signOut()
+                            FirestoreFunctions.system.cleanUp {}
                         } catch {
                             print("Error signing out")
                         }
@@ -59,11 +64,25 @@ struct ProfileView: View {
                 } label: {
                     SettingsRowView(imageName: "rectangle.portrait.and.arrow.right", title: "Log Out", tintColor: .red)
                 }
+                
+                Button(action: {
+                    presentScreenTimeSheet = true
+                }) {
+                    SettingsRowView(imageName: "hourglass", title: "Choose Monitored Apps", tintColor: DefaultColors.teal1)
+                }
             }
         }
+        .familyActivityPicker(
+            isPresented: $presentScreenTimeSheet,
+            selection: $screenTimeManager.activitySelection
+        )
+        .onChange(of: screenTimeManager.activitySelection) {
+            screenTimeManager.saveSelection()
+        }
+        
         NavigationLink(
             destination: LoginView().navigationBarBackButtonHidden(true),
-            isActive: $viewModel.showLoginView,
+            isActive: $profileViewModel.showLoginView,
             label: {EmptyView()}
         )
         .isDetailLink(false)

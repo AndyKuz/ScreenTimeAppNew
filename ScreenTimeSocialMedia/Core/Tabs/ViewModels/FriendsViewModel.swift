@@ -9,9 +9,7 @@ import Firebase
 import FirebaseFirestore
 import FirebaseAuth
 
-extension FriendsSystem {
-    // MARK: - User Search Functions
-
+extension FirestoreFunctions {
     // functionality to load search bar results
     func searchUsers(query: String, completion: @escaping ([User]) -> Void) {
         USER_REF
@@ -33,6 +31,9 @@ extension FriendsSystem {
                 let users = documents.compactMap { document -> User? in
                     let data = document.data()
                     let uid = document.documentID
+                    if uid == self.CURRENT_USER_UID {
+                        return nil
+                    }
                     let username = data["username"] as? String
                     return User(username: username ?? "", userID: uid)
                 }
@@ -41,10 +42,9 @@ extension FriendsSystem {
             }
     }
     
-    
-    func loadFriendRequests(completion: @escaping ([User]) -> Void) {
+    func loadRecievedFriendRequests(completion: @escaping ([User]) -> Void) {
         // adds a listener to the friend request collection of the current user
-        CURRENT_USER_REQUESTS_REF
+        CURRENT_USER_RECEIVED_FRIENDS_REQUESTS_REF
             .addSnapshotListener { querySnapshot, error in
                 guard let _ = querySnapshot?.documents else {
                     print("loadUserData(): Error fetching documents: \(error!)")
@@ -58,6 +58,29 @@ extension FriendsSystem {
                         return (User(username: username ?? "", userID: uid))
                     }
                     // creates a list of type User encompassing all friend requests
+                    completion(users)
+                } else {
+                    print("loadReceivedFriendsRequests(): Error could not get querySnapshot")
+                    return
+                }
+            }
+    }
+    
+    func loadSentFriendRequests(completion: @escaping ([User]) -> Void) {
+        CURRENT_USER_SENT_FRIENDS_REQUESTS_REF
+            .addSnapshotListener { querySnapshot, error in
+                guard let _ = querySnapshot?.documents else {
+                    print("loadFriends(): Error fetching documents: \(error!)")
+                    return
+                }
+                if let querySnapshot = querySnapshot {
+                    let users = querySnapshot.documents.compactMap { document -> User? in
+                        let data = document.data()
+                        let uid = document.documentID
+                        let username = data["username"] as? String
+                        return (User(username: username ?? "", userID: uid))
+                    }
+                    // creates a list of type User encompassing all friends
                     completion(users)
                 }
             }

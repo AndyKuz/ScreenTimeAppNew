@@ -6,16 +6,6 @@
 import Foundation
 import FirebaseAuth
 
-struct AuthDataResultModel {
-    let uid: String
-    let email: String?
-
-    init(user: FirebaseAuth.User) {
-        self.uid = user.uid
-        self.email = user.email
-    }
-}
-
 final class AuthenticationManager {
     static let shared = AuthenticationManager()
     private init() {}
@@ -45,6 +35,7 @@ final class AuthenticationManager {
         try Auth.auth().signOut()
     }
 
+    // TODO: implement properly
     func resetPassword(email: String) {
         Auth.auth().sendPasswordReset(withEmail: email) { error in
             if let _ = error {

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FriendsRequestView: View {
-    @State var friendRequestsList: [User] // pass in a list of friend requests
+    @Binding var friendRequestsList: [User] // pass in a list of friend requests
     
     var body: some View {
         VStack {
@@ -20,13 +20,13 @@ struct FriendsRequestView: View {
                         Spacer()
                         // when button clicked accept corresponding user's friend request
                         Button(action: {
-                            FriendsSystem.system.acceptFriendRequest(user.uid)
+                            FirestoreFunctions.system.acceptFriendRequest(user.uid)
                         }) {
                             Text("accept")
                         }
                         
                         Button(action: {
-                            FriendsSystem.system.rejectFriendRequest(user.uid)
+                            FirestoreFunctions.system.rejectFriendRequest(user.uid)
                         }) {
                             Image(systemName: "multiply.circle.fill")
                         }

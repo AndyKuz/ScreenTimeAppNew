@@ -11,6 +11,8 @@ struct FriendsView: View {
     @State private var searchQuery = ""
     @State private var searchResults: [User] = []
     
+    @State var sentFriendRequestsList: [User] = []
+    
     @State var numFriendRequests = 0    // store count of number of friend requests
     @State var friendRequestList: [User] = [] // init list of friendRequests
     
@@ -22,7 +24,7 @@ struct FriendsView: View {
             VStack {
                 HStack {
                     Spacer()
-                    NavigationLink(destination: FriendsRequestView(friendRequestsList: friendRequestList)) {
+                    NavigationLink(destination: FriendsRequestView(friendRequestsList: $friendRequestList)) {
                          ZStack {
                              // clickable bell at top right of the screen
                              Image(systemName: "bell.fill")
@@ -45,7 +47,7 @@ struct FriendsView: View {
                 }
                 // displays the number of current friends
                 // if clicked on navigates to a view with a list of current friends
-                NavigationLink(destination: FriendsListView(friendsList: friendsList)) {
+                NavigationLink(destination: FriendsListView(friendsList: $friendsList)) {
                     Text("\(numFriends)")
                         .font(.title)
                         .bold()
@@ -61,7 +63,7 @@ struct FriendsView: View {
                     // waits until searchQuery changes
                     .onChange(of: searchQuery) { newQuery in
                         // calls searchUsers with the newQuery
-                        FriendsSystem.system.searchUsers(query: newQuery) { users in
+                        FirestoreFunctions.system.searchUsers(query: newQuery) { users in
                             self.searchResults = users
                         }
                     }
@@ -74,13 +76,13 @@ struct FriendsView: View {
                         
                         if friendsList.contains( where: {$0.uid == user.uid}) {
                             Text("friends")
-                        } else if friendRequestList.contains( where: {$0.uid == user.uid}) {
+                        } else if sentFriendRequestsList.contains( where: {$0.uid == user.uid}) {
                             Text("requested")
                         }
                         else {
                             // if button clicked add associated user
                             Button (action: {
-                                FriendsSystem.system.sendFriendRequestToUser(user.uid)
+                                FirestoreFunctions.system.sendFriendRequestToUser(user.uid)
                             }){
                                 Image(systemName: "plus.circle.fill")
                             }
@@ -97,14 +99,19 @@ struct FriendsView: View {
         }
         .onAppear() {
             // load friends list
-            FriendsSystem.system.loadFriends { users in
+            FirestoreFunctions.system.loadFriends { users in
                 numFriends = users.count
                 friendsList = users
             }
             
-            FriendsSystem.system.loadFriendRequests { users in
+            FirestoreFunctions.system.loadRecievedFriendRequests { users in
                 numFriendRequests = users.count
                 friendRequestList = users
+                print(friendRequestList)
+            }
+            
+            FirestoreFunctions.system.loadSentFriendRequests { users in
+                sentFriendRequestsList = users
             }
         }
     }
