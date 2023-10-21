@@ -1,4 +1,9 @@
-# Aco
+<p align="center">
+  <img src="ScreenTimeSocialMedia/Assets.xcassets/AppIcon.appiconset/AcoLogoPNG-1024x1024.png?raw=true" width="350" height="350">
+</p>
+<h1 align="center">
+  Aco
+</h1>
 
 ## About
 
