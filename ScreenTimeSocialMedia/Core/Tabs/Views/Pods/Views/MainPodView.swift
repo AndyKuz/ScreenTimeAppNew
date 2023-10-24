@@ -19,9 +19,9 @@ struct SegmentedProgressBar: View {
     
     var body: some View {
         HStack(spacing: 2) {
-            ForEach(0 ..< totalDays, id: \.self) { index in
+            ForEach(1 ..< totalDays + 1, id: \.self) { index in
                 Rectangle()
-                    .foregroundColor(index < self.completedDays ? (failedDays.contains(index) ? .red : .green) : self.unselectedColor)
+                    .foregroundColor(index <= self.completedDays ? (failedDays.contains(index) ? .red : .green) : self.unselectedColor)
             }
         }
         .frame(maxWidth: 330, maxHeight: 20)
