@@ -59,29 +59,25 @@ extension FirestoreFunctions {
     }
     
     func removeUserFromPod(podID: String, user: User, completion: @escaping () -> Void) {
-        var deletePod = false
-        
         PODS_REF.document(podID).collection("users").getDocuments { (querySnapshot, error) in
             if let error = error {
                 print("removeUserFromPod(): Error getting documents: \(error)")
             } else {
                 // Count the number of documents
                 let documentCount = querySnapshot?.documents.count ?? 0
-                if documentCount <= 1 { deletePod = true }
+                print("DOCUMENTCOUNT \(documentCount)")
+                // remove user instance from users collection in podID document
+                self.PODS_REF.document(podID).collection("users").document(user.uid).delete()
+                
+                if documentCount <= 1 { // if user is last person in Pod delete Pod
+                    self.PODS_REF.document(podID).delete()
+                }
+                
+                // removes pod instance from CURRENT_USER
+                self.USER_REF.document(user.uid!).collection("pods").document(podID).delete()
             }
+            completion()
         }
-        
-        // remove user instance from users collection in podID document
-        PODS_REF.document(podID).collection("users").document(user.uid).delete()
-        
-        // removes pod instance from CURRENT_USER
-        USER_REF.document(user.uid!).collection("pods").document(podID).delete()
-        
-        if deletePod { // if user is last person in Pod delete Pod
-            PODS_REF.document(podID).delete()
-        }
-        
-        completion()
     }
     
     // used to invite another user to pod

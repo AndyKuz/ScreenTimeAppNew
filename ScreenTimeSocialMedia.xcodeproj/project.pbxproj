@@ -23,7 +23,6 @@
 		4995B1142AA84A49003A8E3A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4995B1132AA84A49003A8E3A /* HomeView.swift */; };
 		4995B1162AA84A54003A8E3A /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4995B1152AA84A54003A8E3A /* ProfileView.swift */; };
 		49C8EEDF2AA97F7E00B2565B /* SettingsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C8EEDE2AA97F7E00B2565B /* SettingsRowView.swift */; };
-		49C8EEE12AA9877500B2565B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49C8EEE02AA9877500B2565B /* GoogleService-Info.plist */; };
 		49C8EEE42AA98C3D00B2565B /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 49C8EEE32AA98C3D00B2565B /* FirebaseAnalytics */; };
 		49C8EEE62AA98C3D00B2565B /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 49C8EEE52AA98C3D00B2565B /* FirebaseAnalyticsOnDeviceConversion */; };
 		49C8EEE82AA98C3D00B2565B /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 49C8EEE72AA98C3D00B2565B /* FirebaseAnalyticsSwift */; };
@@ -52,7 +51,6 @@
 		49C8EF162AA98C3D00B2565B /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 49C8EF152AA98C3D00B2565B /* FirebaseStorage */; };
 		49C8EF182AA98C3D00B2565B /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 49C8EF172AA98C3D00B2565B /* FirebaseStorageCombine-Community */; };
 		49C8EF212AA9B02100B2565B /* DefaultColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C8EF202AA9B02100B2565B /* DefaultColors.swift */; };
-		49D1E7942AE3494A00394758 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49C8EEE02AA9877500B2565B /* GoogleService-Info.plist */; };
 		49D1E7982AE3509000394758 /* FirestoreFunctionsScreenTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D1E7972AE3509000394758 /* FirestoreFunctionsScreenTime.swift */; };
 		49D1E79B2AE3542700394758 /* DarwinNotificationsCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D1E79A2AE3542700394758 /* DarwinNotificationsCenter.swift */; };
 		49D1E79C2AE3558700394758 /* DarwinNotificationsCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D1E79A2AE3542700394758 /* DarwinNotificationsCenter.swift */; };
@@ -112,6 +110,7 @@
 		49E303AE2AC29885004C2A49 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E303AD2AC29885004C2A49 /* ProfileViewModel.swift */; };
 		49E303B32AC5473F004C2A49 /* FriendsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E303B22AC5473F004C2A49 /* FriendsViewModel.swift */; };
 		49E303B52AC633AF004C2A49 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E303B42AC633AF004C2A49 /* UserModel.swift */; };
+		49F397F72AEA4353003F0DE7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49F397F62AEA4353003F0DE7 /* GoogleService-Info.plist */; };
 		49FDA9312AAD2D3C006E4059 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FDA9302AAD2D3C006E4059 /* CustomTextField.swift */; };
 		49FDA9342AAD985E006E4059 /* PermissionsManagerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FDA9332AAD985E006E4059 /* PermissionsManagerViewModel.swift */; };
 		49FEC1FB2AAEC4DE00F89C5C /* ScreenTimeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FEC1FA2AAEC4DE00F89C5C /* ScreenTimeViewModel.swift */; };
@@ -185,7 +184,6 @@
 		4995B1132AA84A49003A8E3A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		4995B1152AA84A54003A8E3A /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		49C8EEDE2AA97F7E00B2565B /* SettingsRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRowView.swift; sourceTree = "<group>"; };
-		49C8EEE02AA9877500B2565B /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "ScreenTimeSocialMedia/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		49C8EF202AA9B02100B2565B /* DefaultColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultColors.swift; sourceTree = "<group>"; };
 		49D1E7972AE3509000394758 /* FirestoreFunctionsScreenTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreFunctionsScreenTime.swift; sourceTree = "<group>"; };
 		49D1E79A2AE3542700394758 /* DarwinNotificationsCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarwinNotificationsCenter.swift; sourceTree = "<group>"; };
@@ -222,6 +220,7 @@
 		49E303AD2AC29885004C2A49 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		49E303B22AC5473F004C2A49 /* FriendsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewModel.swift; sourceTree = "<group>"; };
 		49E303B42AC633AF004C2A49 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		49F397F62AEA4353003F0DE7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		49FDA9302AAD2D3C006E4059 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		49FDA9322AAD9633006E4059 /* ScreenTimeSocialMedia.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ScreenTimeSocialMedia.entitlements; sourceTree = "<group>"; };
 		49FDA9332AAD985E006E4059 /* PermissionsManagerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionsManagerViewModel.swift; sourceTree = "<group>"; };
@@ -320,6 +319,7 @@
 			isa = PBXGroup;
 			children = (
 				4995B0F82AA84933003A8E3A /* ScreenTimeSocialMedia */,
+				49F397F62AEA4353003F0DE7 /* GoogleService-Info.plist */,
 				49D5F80A2AD13DA40010A644 /* MyMonitorExtension */,
 				49D5F8A42ADB3EE40010A644 /* MyReportExtension */,
 				49D5F8072AD13DA30010A644 /* Frameworks */,
@@ -349,7 +349,6 @@
 				49D1E7992AE3541000394758 /* DarwinNotifications */,
 				4995B0FD2AA84934003A8E3A /* Assets.xcassets */,
 				4995B0FF2AA84934003A8E3A /* Preview Content */,
-				49C8EEE02AA9877500B2565B /* GoogleService-Info.plist */,
 			);
 			path = ScreenTimeSocialMedia;
 			sourceTree = "<group>";
@@ -747,8 +746,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4995B1012AA84934003A8E3A /* Preview Assets.xcassets in Resources */,
+				49F397F72AEA4353003F0DE7 /* GoogleService-Info.plist in Resources */,
 				4995B0FE2AA84934003A8E3A /* Assets.xcassets in Resources */,
-				49C8EEE12AA9877500B2565B /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -756,7 +755,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49D1E7942AE3494A00394758 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1022,7 +1020,7 @@
 				DEVELOPMENT_TEAM = GB457U8UXN;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = Aco;
+				INFOPLIST_KEY_CFBundleDisplayName = Acco;
 				INFOPLIST_KEY_CLKComplicationPrincipalClass = "";
 				INFOPLIST_KEY_NSPrincipalClass = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -1058,7 +1056,7 @@
 				DEVELOPMENT_TEAM = GB457U8UXN;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = Aco;
+				INFOPLIST_KEY_CFBundleDisplayName = Acco;
 				INFOPLIST_KEY_CLKComplicationPrincipalClass = "";
 				INFOPLIST_KEY_NSPrincipalClass = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
